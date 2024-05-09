@@ -20,10 +20,11 @@ Para dar vida a la simulación contaremos con tres tipos de animales. Para repre
 
 Cada animal tendrá que tener cuidado de no dejar bajar sus niveles demasiado, ya que éstos tendrán un efecto en sus habilidades. Ambos comenzarán merodeando tranquilamente por el bosque, bajando constantemente  poco a poco su nivel de energía y rápidamente su nivel de hambre. 
 
-**INTRODUCIR IMAGENES DE LOS TRES ANIMALES**
-Ciervo
+![Animales](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/a18be436-1821-4cbc-96f9-c168641cff51)
+**Ciervo**
 
-Lobos
+
+**Lobos**
 
 Arbustos **GENERACION DE ARBUSTOS CON PERLIN**
 
