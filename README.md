@@ -16,7 +16,7 @@ Wildlife Simulator será un simulador en el que distintos tipos de animales conv
 - Los herbívoros se alimentarán de plantas y usarán su avanzado sentido del oído para tratar de detectar a posibles depredadores, huyendo a su nido cuando se sientan atacados o necesiten descansar. 
 - Los carnívoros merodearán por el terreno y, cuando comiencen a tener hambre, tratarán de cazar algún animal usando su agudo sentido del olfato, teniendo constantemente en cuenta su nivel de energía, el cual bajará al correr y, en caso de agotarse, volverán a su hogar.
 
-Para dar vida a la simulación contaremos con tres tipos de animales. Para representar a los herbívoros usaremos ciervos, para los carnívoros lobos y añadiremos conejos para equilibrar el hábitat y evitar que los lobos acaben con los ciervos rápidamente. Estos conejos simplemente se usarán como cebo y se encargarán exclusivamente de merodear. En caso de oler a ambos animales, los lobos preferirán cazar a los ciervos. 
+Para dar vida a la simulación contaremos con tres tipos de animales. Para representar a los herbívoros usaremos ciervos, a los carnívoros lobos y añadiremos conejos para equilibrar el hábitat y evitar que los lobos acaben con los ciervos rápidamente. Estos conejos simplemente se usarán como cebo y se encargarán exclusivamente de merodear. En caso de oler a ambos animales, los lobos preferirán cazar a los ciervos. 
 
 Cada animal tendrá que tener cuidado de no dejar bajar sus niveles demasiado, ya que éstos tendrán un efecto en sus habilidades. Ambos comenzarán merodeando tranquilamente por el bosque, bajando constantemente  poco a poco su nivel de energía y rápidamente su nivel de hambre. 
 
@@ -24,28 +24,25 @@ Cada animal tendrá que tener cuidado de no dejar bajar sus niveles demasiado, y
 
 ## Terreno
 El hábitat consta de distintas zonas valiosas:
-- A los extremos encontramos los hogares de ambos animales, la derecha siendo de los carnívoros y la izquierda de herbívoros. En estas áreas, los animales podrán resguardarse con seguridad de cualquier animal ya que solo los de su misma especie pueden entrar en dicho lugar. Aquí los animales descansarán hasta que ambas barras, de energía y salud, esten completas. Una vez recuperados, continuarán con sus rutinas normales.
+- A los extremos encontramos los hogares de ambos animales, la derecha siendo de los carnívoros y la izquierda de herbívoros. En estas áreas, los animales podrán resguardarse con seguridad de cualquier animal ya que solo los de su misma especie pueden entrar en dicho lugar. Aquí los animales descansarán hasta que ambas barras, de energía y hambre, esten completas. Una vez recuperados, continuarán con sus rutinas normales.
 
 - Esparcidos por el terreno, podremos encontrar arbustos con frutos para alimentar a los herbívoros. Estos arbustos se posicionarán de manera aleatoria utilizando **Perlin Noise**, un tipo de ruido basado en gradientes, desarrollado por Ken Perlin en 1983. La ventaja que tiene el Perlin Noise frente a otros ruidos clásicos ( como puede ser el White Noise ) es que es un ruido aleatorio, pero coherente. Después de que un ciervo se pare a comer, deberán transcurrir unos segundos antes de que salgan nuevos frutos.
 
 - Durante la partida habra un número constante de conejos rondando el área. En caso de perder alguno, saldrán de sus madrigueras nuevos conejos, hasta llegar al número predefinido deseado. Este podrá ser modificado por el usuario para realizar distintas pruebas.
 
-  
-**DIAGRAMA DEL TERRENO** 
+  ![Diagrama terreno](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/5cc055e6-0b0c-44c3-9b0e-10fed633d730)
 
-**Ciervo**
+## Ciervo
+ 
 
-
-**Lobos**
-
-Arbustos **GENERACION DE ARBUSTOS CON PERLIN**
-
-Hogares
+## Lobos
 
 
 ---------------------------------------------------------
-**EXPLICAR HUD Y LAS DIFERENTES CÁMARAS**
-**INPUT DE JUGADOR** 
+## Input, cámaras y HUD
+![CameraPrinicpal](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/ccae9643-6981-420b-b3fb-04c62c229937)
+![cameraLobo](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/ff4e591d-7f01-4860-abc9-adb137d18abe)
+![cameraCiervo](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/15696fab-e3f0-410e-81c5-ba398449d4ab)
 
  
 ## Punto de partida
@@ -57,12 +54,12 @@ La idea es desarrollar los diferentes comportamientos y estados de los animales 
 ## Diseño de la solución
 ### Mecánicas de juego
 Las mecánicas de juego que se pretenden implementar son las siguientes:
-![Mecánicas Proyecto Final]()
+
 
 
 ## Diagrama de comportamientos
 Partimos del siguiente diagrama inicial:
-![Diagrama Inicial BB]()
+
 
 Merodeo
 Perseguir
@@ -78,3 +75,5 @@ Claudia Zarzuela, Andrea Vega Saugar, autores de la documentación, código y re
 Una vez superada con éxito la asignatura se prevee publicar todo en abierto (la documentación con licencia Creative Commons Attribution 4.0 International (CC BY 4.0) y el código con licencia GNU Lesser General Public License 3.0).
 
 ## Referencias
+
+- Generación aleatoria de Perlin (https://riull.ull.es/xmlui/bitstream/handle/915/1395/Generacion+aleatoria+de+terrenos+3D+con+Unity.pdf;jsessionid=8C0D709D170ADE765FE348DCC336A62B?sequence=1)
