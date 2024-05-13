@@ -38,26 +38,32 @@ El hábitat consta de distintas zonas valiosas:
 ## Lobos
 
 
----------------------------------------------------------
-## Input, cámaras y HUD
 
+## Input, cámaras y HUD
+### Cámara principal 
+Durante la partida habrá distintos tipos de cámaras. La principal mostrará un plano cenital del escenario, acompañado de seis botones en la parte superior de la pantalla. Estos botones representan un animal del juego y, al hacer click en ellos, aparecerá un indicativo en la parte inferior de dicho animal para hubicarle mejor. Esto esta pensado para facilitar futuras pruebas y un mejor entendimiento sobre el panoráma general y acciones individuales. En la parte inferior de cada botón, esta situado otro más pequeño que permitirá cambiar a una cámara picáda, en tercera persona, de ese animal en concreto. A la derecha aparecen dos barras, una de energía y otra de hambre, que irán variando según sus necesidades.  
+![CameraPrinicpal](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/674cbaca-2ca8-47ce-b819-271f1f1cfcea)
+
+Ya que se trata de una simulación, el único input que podrá realizar el jugador será hacer click sobre los botones en pantalla.
+
+### Cámaras individuales
 ![CamarasAnimales](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/4500375a-a643-40c1-8693-3deb7c390fb9)
 
-## Punto de partida
+## Menús
+### Main Menú
+Al comienzo de la simulación se podrá especificár cuantos arbustos y conejos totales se quieren en la partida.
+### InGame
+En el caso de que todos los herbívoros mueran, se volverá al menú principal.
 
+## Punto de partida
 Se parte de las tres prácticas ya realizadas para la asignatura, las cuales podremos usar como base para el desarrollo de los distintos comportamientos, sistemas de percepción, y métodos de navegación.
 
-La idea es desarrollar los diferentes comportamientos y estados de los animales usando behaviour bricks, y teniendo en cuenta el estado de cada uno de ellos y cómo afecta a sus acciones. Su desplazamiento usaría comportamientos como el de huída o persecución o merodeo pero aplicados a un NavMesh como el usado en la tercera práctica, e integrándolos con el uso de waypoints. 
+La idea es desarrollar los diferentes comportamientos y estados de los animales usando behaviour bricks, y teniendo en cuenta el estado de cada uno de ellos y cómo afecta a sus acciones. Su desplazamiento usaría comportamientos como el de huída, persecución o merodeo pero aplicados a un NavMesh como el usado en la tercera práctica, e integrándolos con el uso de waypoints. 
 
 ## Diseño de la solución
-### Mecánicas de juego
-Las mecánicas de juego que se pretenden implementar son las siguientes:
-
-
 
 ## Diagrama de comportamientos
 Partimos del siguiente diagrama inicial:
-
 
 Merodeo
 Perseguir
