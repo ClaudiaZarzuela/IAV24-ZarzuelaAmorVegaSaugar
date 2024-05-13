@@ -286,7 +286,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &12533146
 Transform:
   m_ObjectHideFlags: 0
@@ -344,7 +344,7 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 2
+  m_TargetDisplay: 6
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
@@ -1178,11 +1178,11 @@ GameObject:
   - component: {fileID: 146364552}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &146364550
 Transform:
   m_ObjectHideFlags: 0
@@ -1240,7 +1240,7 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
+  m_TargetDisplay: 1
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
@@ -2200,7 +2200,7 @@ Canvas:
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_TargetDisplay: 0
+  m_TargetDisplay: 1
 --- !u!1001 &248105455
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2980,7 +2980,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &328963471
 Transform:
   m_ObjectHideFlags: 0
@@ -3038,7 +3038,7 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
+  m_TargetDisplay: 2
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
@@ -3938,7 +3938,7 @@ Canvas:
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_TargetDisplay: 2
+  m_TargetDisplay: 5
 --- !u!1 &538495816 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2993916035906271186, guid: 5e60539fb14b81c40afd7b5a066ee5a4, type: 3}
@@ -4203,6 +4203,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d13ddb1dcdca8246ab450ba09e0f1d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 963194225}
+  individualCameras:
+  - {fileID: 146364549}
+  - {fileID: 328963470}
+  - {fileID: 1964258163}
+  - {fileID: 1066936700}
+  - {fileID: 2129331797}
+  - {fileID: 12533145}
 --- !u!4 &568043597
 Transform:
   m_ObjectHideFlags: 0
@@ -4884,7 +4892,7 @@ Canvas:
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_TargetDisplay: 2
+  m_TargetDisplay: 4
 --- !u!1001 &665240705
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5040,7 +5048,7 @@ Canvas:
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_TargetDisplay: 1
+  m_TargetDisplay: 0
 --- !u!224 &669648419
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5825,7 +5833,7 @@ Canvas:
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_TargetDisplay: 0
+  m_TargetDisplay: 2
 --- !u!1001 &746505809
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6606,7 +6614,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f1aa80defded74c419f77fa51c7ff91c, type: 3}
       propertyPath: m_Name
-      value: Wolf_3
+      value: Wolf_5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7405,7 +7413,7 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 1
+  m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
@@ -7557,7 +7565,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6430bd52150c31b4a8137e889f66f19a, type: 3}
       propertyPath: m_Name
-      value: Stag_2
+      value: Stag_1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7907,7 +7915,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f1aa80defded74c419f77fa51c7ff91c, type: 3}
       propertyPath: m_Name
-      value: Wolf_2
+      value: Wolf_4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8300,7 +8308,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1066936701
 Transform:
   m_ObjectHideFlags: 0
@@ -8358,7 +8366,7 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 2
+  m_TargetDisplay: 4
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
@@ -9091,7 +9099,7 @@ Canvas:
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_TargetDisplay: 0
+  m_TargetDisplay: 3
 --- !u!1001 &1181440873
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10932,7 +10940,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 4.5}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1427980170
@@ -10982,8 +10990,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -11018,7 +11026,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 9.2571335, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -11596,7 +11604,7 @@ Canvas:
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_TargetDisplay: 2
+  m_TargetDisplay: 6
 --- !u!1001 &1523011203
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11757,7 +11765,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1523115637}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 568043596}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ChangeToIndividualCamera
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1523115637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11862,7 +11882,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f1aa80defded74c419f77fa51c7ff91c, type: 3}
       propertyPath: m_Name
-      value: Wolf_1
+      value: Wolf_3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13313,7 +13333,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6430bd52150c31b4a8137e889f66f19a, type: 3}
       propertyPath: m_Name
-      value: Stag_3
+      value: Stag_2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14010,20 +14030,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6430bd52150c31b4a8137e889f66f19a, type: 3}
       propertyPath: m_Name
-      value: Stag_1
+      value: Stag_0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6430bd52150c31b4a8137e889f66f19a, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 1357657008}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6430bd52150c31b4a8137e889f66f19a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 146364550}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6430bd52150c31b4a8137e889f66f19a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 242653597}
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6430bd52150c31b4a8137e889f66f19a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1357657008}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6430bd52150c31b4a8137e889f66f19a, type: 3}
 --- !u!4 &1806758738 stripped
@@ -14796,7 +14816,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1964258164
 Transform:
   m_ObjectHideFlags: 0
@@ -14854,7 +14874,7 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
+  m_TargetDisplay: 3
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
@@ -16514,7 +16534,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2129331798
 Transform:
   m_ObjectHideFlags: 0
@@ -16572,7 +16592,7 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 2
+  m_TargetDisplay: 5
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
