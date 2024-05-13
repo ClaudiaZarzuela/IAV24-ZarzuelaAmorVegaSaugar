@@ -40,11 +40,9 @@ El hábitat consta de distintas zonas valiosas:
 
 ---------------------------------------------------------
 ## Input, cámaras y HUD
-![CameraPrinicpal](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/ccae9643-6981-420b-b3fb-04c62c229937)
-![cameraLobo](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/ff4e591d-7f01-4860-abc9-adb137d18abe)
-![cameraCiervo](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/15696fab-e3f0-410e-81c5-ba398449d4ab)
 
- 
+![CamarasAnimales](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/4500375a-a643-40c1-8693-3deb7c390fb9)
+
 ## Punto de partida
 
 Se parte de las tres prácticas ya realizadas para la asignatura, las cuales podremos usar como base para el desarrollo de los distintos comportamientos, sistemas de percepción, y métodos de navegación.
