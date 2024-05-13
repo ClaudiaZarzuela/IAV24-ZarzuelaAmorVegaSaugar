@@ -6,8 +6,8 @@
 
 ## Propuesta
 Este documento refleja la propuesta de proyecto final para la asignatura de Inteligencia Artificial para Videojuegos del Grado en Desarrollo de Videojuegos de la UCM.
+![portada](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/c11f77eb-25d6-45cf-862f-99abc7fde9f9)
 
-![WILDLIFE SIMULATOR]()
 
 Nos hemos inspirado en el comportamiento animal salvaje según su puesto en la cadena alimenticia y en el uso de sus diferentes sentidos para sobrevivir.
 
@@ -21,6 +21,18 @@ Para dar vida a la simulación contaremos con tres tipos de animales. Para repre
 Cada animal tendrá que tener cuidado de no dejar bajar sus niveles demasiado, ya que éstos tendrán un efecto en sus habilidades. Ambos comenzarán merodeando tranquilamente por el bosque, bajando constantemente  poco a poco su nivel de energía y rápidamente su nivel de hambre. 
 
 ![Animales](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/a18be436-1821-4cbc-96f9-c168641cff51)
+
+## Terreno
+El hábitat consta de distintas zonas valiosas:
+- A los extremos encontramos los hogares de ambos animales, la derecha siendo de los carnívoros y la izquierda de herbívoros. En estas áreas, los animales podrán resguardarse con seguridad de cualquier animal ya que solo los de su misma especie pueden entrar en dicho lugar. Aquí los animales descansarán hasta que ambas barras, de energía y salud, esten completas. Una vez recuperados, continuarán con sus rutinas normales.
+
+- Esparcidos por el terreno, podremos encontrar arbustos con frutos para alimentar a los herbívoros. Estos arbustos se posicionarán de manera aleatoria utilizando **Perlin Noise**, un tipo de ruido basado en gradientes, desarrollado por Ken Perlin en 1983. La ventaja que tiene el Perlin Noise frente a otros ruidos clásicos ( como puede ser el White Noise ) es que es un ruido aleatorio, pero coherente. Después de que un ciervo se pare a comer, deberán transcurrir unos segundos antes de que salgan nuevos frutos.
+
+- Durante la partida habra un número constante de conejos rondando el área. En caso de perder alguno, saldrán de sus madrigueras nuevos conejos, hasta llegar al número predefinido deseado. Este podrá ser modificado por el usuario para realizar distintas pruebas.
+
+  
+**DIAGRAMA DEL TERRENO** 
+
 **Ciervo**
 
 
@@ -31,7 +43,6 @@ Arbustos **GENERACION DE ARBUSTOS CON PERLIN**
 Hogares
 
 
-**DIAGRAMA DEL TERRENO** 
 ---------------------------------------------------------
 **EXPLICAR HUD Y LAS DIFERENTES CÁMARAS**
 **INPUT DE JUGADOR** 
