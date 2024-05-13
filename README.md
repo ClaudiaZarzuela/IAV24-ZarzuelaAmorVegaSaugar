@@ -33,9 +33,22 @@ El hábitat consta de distintas zonas valiosas:
   ![Diagrama terreno](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/5cc055e6-0b0c-44c3-9b0e-10fed633d730)
 
 ## Ciervo
- 
+El esquema de comportamiento en Behaviour Bricks de los ciervos es el siguiente:
+ ![herbivoros](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/99989921/4f87fbc7-fe76-4c35-8952-f94b6ed484b5)
+En primer lugar harán la comprobación más prioritaria, siendo esta la de su sentido del oído, para comprobar si están siendo acechados por algún lobo y en ese caso iniciar la huida.
+A continuación comprobarán sus niveles de hambre, en caso de necesitarlo buscarán el arbusto más cercano, y si está disponible comerán de él. Si por el contrario el arbusto está ocupado, o siguen teniendo hambre, repetirán esa búsqueda con el siguiente arbusto más cercano hasta quedar satisfechos.
+Una vez comprobada el hambre, comprobarán su energía, que en el caso de estar baja, les obligará a volver a su "guarida" para reponerla.
+En caso de que no se cumpla ninguna de las condiciones anteriores (ha detectado a un enemigo, tiene hambre o tiene sueño), el animal se dedicará a merodear por el escenario.
+
 
 ## Lobos
+El esquema de comportamiento en Behaviour Bricks de los lobos es el siguiente:
+![carnivoros](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/99989921/cce034d8-0bc6-44bd-9d9e-6d45cd097987)
+En el caso de los lobos, como no están en peligro de ser perseguidos su primera comprobación será su olfato. Esto es así porque en caso de chequear primero el hambre y no encontrar ningún rastro nunca saldría de ese bucle.
+En caso de haber encontrado un rastro y tener hambre, seguirán el rastro de la presa hasta estar lo suficientemente cerca como para verla, momento en el cual comenzarán a perseguirla hasta cazarla o perder su rastro.
+En segundo lugar comprobarán su energía, lo cual funcionará igual que en el caso de los ciervos, en caso de estar baja irán a la "guarida" a descansar.
+Y por último, también símil a los ciervos, si todas estas comprobaciones fallan, se limitarán a merodear por el escenario.
+
 
 
 
