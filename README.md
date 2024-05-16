@@ -63,19 +63,18 @@ Y por último, también símil a los ciervos, si todas estas comprobaciones fall
 ## Input, cámaras y HUD
 ### Cámara principal 
 Durante la partida habrá distintos tipos de cámaras. La principal mostrará un plano cenital del escenario, acompañado de seis botones en la parte superior de la pantalla. Estos botones representan un animal del juego y, al hacer click en ellos, aparecerá un indicativo en la parte inferior de dicho animal para hubicarle mejor. Esto esta pensado para facilitar futuras pruebas y un mejor entendimiento sobre el panoráma general y acciones individuales. En la parte central superior, esta situado otro llamado **P.O.V** que permitirá cambiar a una cámara picáda, en tercera persona, de ese animal en concreto. A la derecha aparecen dos barras, una de energía y otra de hambre, que irán variando según sus necesidades.  
-![CameraPrinicpal](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/674cbaca-2ca8-47ce-b819-271f1f1cfcea)
+
+![CameraPrinicpalExplicado](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/2dbddc04-2cd7-4dce-b3b3-f9ddc51bcb05)
 
 Ya que se trata de una simulación, el único input que podrá realizar el jugador será hacer click sobre los botones en pantalla.
 
 ### Cámaras individuales
 Una vez cambiado a la cámara individual de un animal, aparecerá arriba a la izquierda su información personal (energía y hambre). En la parte inferior derecha se encontrará un boton **Main Camera** con el cual podremos volver a la vista cenital.
-![CamarasAnimales](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/4500375a-a643-40c1-8693-3deb7c390fb9)
+![CamarasAnimales](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/6492b4fa-e7ea-4720-8238-1263f32488e7)
 
-## Menús
 ### Main Menú
-Al comienzo de la simulación se podrá especificár cuantos arbustos y conejos totales se quieren en la partida.
-### InGame
-En el caso de que todos los herbívoros mueran, se volverá al menú principal.
+![MainMenu](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/5ff68812-3026-415a-b1c0-ac8de509b4e3)
+Al comienzo de la simulación se podrá especificár cuantos arbustos y conejos totales se quieren en la partida. En el caso de que todos los herbívoros mueran, se volverá al menú principal.
 
 ## Punto de partida
 Se parte de las tres prácticas ya realizadas para la asignatura, las cuales podremos usar como base para el desarrollo de los distintos comportamientos, sistemas de percepción, y métodos de navegación.
