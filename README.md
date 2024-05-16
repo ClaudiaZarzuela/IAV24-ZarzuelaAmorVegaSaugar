@@ -82,9 +82,6 @@ Se parte de las tres prácticas ya realizadas para la asignatura, las cuales pod
 
 La idea es desarrollar los diferentes comportamientos y estados de los animales usando behaviour bricks, y teniendo en cuenta el estado de cada uno de ellos y cómo afecta a sus acciones. Su desplazamiento usaría comportamientos como el de huída, persecución o merodeo pero aplicados a un NavMesh como el usado en la tercera práctica, e integrándolos con el uso de waypoints. 
 
-## Diagrama de comportamientos
-Partimos del siguiente diagrama inicial:
-
 #### Wander
 ```
 class Wander extends AgentBehaviour:
