@@ -22,7 +22,8 @@ Cada animal tendrá que tener cuidado de no dejar bajar sus niveles demasiado, y
 
 ![Animales](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/a18be436-1821-4cbc-96f9-c168641cff51)
 
-## Terreno
+## Mecánicas de juego
+### Terreno
 El hábitat consta de distintas zonas valiosas:
 - A los extremos encontramos los hogares de ambos animales, la derecha siendo de los carnívoros y la izquierda de herbívoros. En estas áreas, los animales podrán resguardarse con seguridad de cualquier animal ya que solo los de su misma especie pueden entrar en dicho lugar. Aquí los animales descansarán hasta que ambas barras, de energía y hambre, esten completas. Una vez recuperados, continuarán con sus rutinas normales.
 
@@ -32,7 +33,7 @@ El hábitat consta de distintas zonas valiosas:
 
   ![Diagrama terreno](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/5cc055e6-0b0c-44c3-9b0e-10fed633d730)
 
-## Ciervo
+### Ciervo
 El esquema de comportamiento en Behaviour Bricks de los ciervos es el siguiente:
 
  ![herbivoros](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/99989921/4f87fbc7-fe76-4c35-8952-f94b6ed484b5)
@@ -46,7 +47,7 @@ Una vez comprobada el hambre, comprobarán su energía, que en el caso de estar 
 En caso de que no se cumpla ninguna de las condiciones anteriores (ha detectado a un enemigo, tiene hambre o tiene sueño), el animal se dedicará a merodear por el escenario.
 
 
-## Lobos
+### Lobos
 El esquema de comportamiento en Behaviour Bricks de los lobos es el siguiente:
 
 ![carnivoros](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/99989921/cce034d8-0bc6-44bd-9d9e-6d45cd097987)
@@ -59,17 +60,15 @@ En segundo lugar comprobarán su energía, lo cual funcionará igual que en el c
 
 Y por último, también símil a los ciervos, si todas estas comprobaciones fallan, se limitarán a merodear por el escenario.
 
-
-
-
 ## Input, cámaras y HUD
 ### Cámara principal 
-Durante la partida habrá distintos tipos de cámaras. La principal mostrará un plano cenital del escenario, acompañado de seis botones en la parte superior de la pantalla. Estos botones representan un animal del juego y, al hacer click en ellos, aparecerá un indicativo en la parte inferior de dicho animal para hubicarle mejor. Esto esta pensado para facilitar futuras pruebas y un mejor entendimiento sobre el panoráma general y acciones individuales. En la parte inferior de cada botón, esta situado otro más pequeño que permitirá cambiar a una cámara picáda, en tercera persona, de ese animal en concreto. A la derecha aparecen dos barras, una de energía y otra de hambre, que irán variando según sus necesidades.  
+Durante la partida habrá distintos tipos de cámaras. La principal mostrará un plano cenital del escenario, acompañado de seis botones en la parte superior de la pantalla. Estos botones representan un animal del juego y, al hacer click en ellos, aparecerá un indicativo en la parte inferior de dicho animal para hubicarle mejor. Esto esta pensado para facilitar futuras pruebas y un mejor entendimiento sobre el panoráma general y acciones individuales. En la parte central superior, esta situado otro llamado **P.O.V** que permitirá cambiar a una cámara picáda, en tercera persona, de ese animal en concreto. A la derecha aparecen dos barras, una de energía y otra de hambre, que irán variando según sus necesidades.  
 ![CameraPrinicpal](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/674cbaca-2ca8-47ce-b819-271f1f1cfcea)
 
 Ya que se trata de una simulación, el único input que podrá realizar el jugador será hacer click sobre los botones en pantalla.
 
 ### Cámaras individuales
+Una vez cambiado a la cámara individual de un animal, aparecerá arriba a la izquierda su información personal (energía y hambre). En la parte inferior derecha se encontrará un boton **Main Camera** con el cual podremos volver a la vista cenital.
 ![CamarasAnimales](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/4500375a-a643-40c1-8693-3deb7c390fb9)
 
 ## Menús
@@ -82,8 +81,6 @@ En el caso de que todos los herbívoros mueran, se volverá al menú principal.
 Se parte de las tres prácticas ya realizadas para la asignatura, las cuales podremos usar como base para el desarrollo de los distintos comportamientos, sistemas de percepción, y métodos de navegación.
 
 La idea es desarrollar los diferentes comportamientos y estados de los animales usando behaviour bricks, y teniendo en cuenta el estado de cada uno de ellos y cómo afecta a sus acciones. Su desplazamiento usaría comportamientos como el de huída, persecución o merodeo pero aplicados a un NavMesh como el usado en la tercera práctica, e integrándolos con el uso de waypoints. 
-
-## Diseño de la solución
 
 ## Diagrama de comportamientos
 Partimos del siguiente diagrama inicial:
@@ -237,7 +234,7 @@ class MoveToGameObject extends State
             else:
                 if navAgent not equals null
                     navAgent.Stop()
-``
+```
 ## Pruebas y métricas
 
 ## Producción
