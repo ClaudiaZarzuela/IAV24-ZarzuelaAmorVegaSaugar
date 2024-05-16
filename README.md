@@ -88,14 +88,168 @@ La idea es desarrollar los diferentes comportamientos y estados de los animales 
 ## Diagrama de comportamientos
 Partimos del siguiente diagrama inicial:
 
-Merodeo
-Perseguir
-Huir
+#### Wander
+```
+class Wander extends AgentBehaviour:
+    wanderOffset : float = 1.5f
+    wanderRadius : float = 4f
+    wanderRate : float = 0.4f
+    wanderOrientation : float = 0f
 
+    timeToWait : float = 0.1f
+    float auxTime : float = 0f
+	
+    function RandomBinomial() -> float
+        return (Random.value : float - Random.value : float)
+	
+    function OrientationToVector(orientation : float) -> Vector3
+	return (Cos(orientation), 0, Sin(orientation)) : Vector3
+
+    function Start() -> void
+	agente.orientacion = Random(0f, 360f);
+	
+    function GetDireccion() -> Direccion
+	result : Direccion
+        if (auxTime > timeToWait)
+        {
+	    wanderOrientation += RandomBinomial() * wanderRate
+	    targetOrientation : float = wanderOrientation + agent.orientation
+	    targetPosition : Vector3 = agent.transform.position + (wanderOffset * OrientationToVector(agent.orientation))	
+	    targetPosition += wanderRadius * OrientationToVector(targetOrientation)
+	    result.lineal = targetPosition - agent.transform.position
+	    result.lineal.Normalize()
+	    result.lineal *= agent.accelerationMax
+	    return result
+	    auxTime = 0
+	}
+	else result = agente.direction
+	auxTime += deltaTime
+```
+
+#### Pursue
+```
+class Pursue extends Seek:
+    maxPrediction : float = 2.0f
+    
+    function SetObjetive(obj : GameObject) -> void:
+        objetive = obj
+
+    function getDirection() -> Direction:
+        direction : Direction
+
+        dir : Vector3 = objetive.position - character.position
+        distance : float = dir.magnitude
+
+        speed : float = Rigidbody.velocity.magnitude
+        prediction : float
+
+        if speed <= distance / maxPrediction:
+            prediction = maxPrediction
+        else:
+            prediction = distance / speed
+
+        predictionObjetive : Vector3 = objetive.position + objetive.Rigidbody.velocity * prediction
+        SetDirection(direction, predictionObjetive)
+        return direction
+```
+
+#### Flee
+```
+class Flee extends AgentBehaviour:
+    distance : float = 7
+    timeToTarget : float = 0.1f
+
+    function GetDirection() -> Direction
+        direction : Direction 
+        dir : Vector3 = transform.position - objetive.transform.position
+        distance = dir.magnitude
+        speed : float = 0
+        speed = agent.velocityMax
+        dir.Normalize()
+        dir *= speed
+        direction.lineal = dir - agent.velocity
+        direction.lineal /= timeToTarget
+
+        if direction.lineal.magnitude > agent.acelerationMax
+            direction.lineal.Normalize()
+            direction.lineal *= agent.acelerationMax
+
+        direction.angular = 0
+        return direction
+```
+
+##### LookAt
+Estado que apunta al target
+```
+class LookAt extends State
+    _finished : bool
+    function void Update() -> void
+        transform.LookAt(EnemyBlackboard.target)
+        _finished = true
+```
+
+##### MoveToGameObject
+Estado en el que se mueve a una entidad
+```
+class MoveToGameObject extends State
+    _target : GameObject
+    _closeDistance : float
+    _lockToFirstGameObjectPosition : bool
+
+    _navAgent : NavMeshAgent
+    _targetTransform : Transform
+
+    function Enter() -> void:
+        if _target is null:
+            return
+
+        _targetTransform = _target.transform
+
+        _navAgent = _gameObject.NavMeshAgent
+        if _navAgent is null:
+            _navAgent = _gameObject.AddComponent<NavMeshAgent>()
+
+        path : NavMeshPath = new NavMeshPath();
+        if _navAgent.CalculatePath(_targetTransform.position, path):
+            corners = path.corners
+            fullDistance : float = 0f
+
+            for int i = 1; i < corners.Length; i++:
+                fullDistance += Distance(corners[i - 1], corners[i])
+
+            if fullDistance > _closeDistance:
+                _navAgent.SetDestination(_targetTransform.position)
+
+
+            if UNITY_5_6_OR_NEWER:
+                _navAgent.isStopped = false;
+            else:
+                navAgent.Resume();
+
+    function void Update() -> void:
+        if not _lockToFirstGameObjectPosition and _navAgent.destination not equals _targetTransform.position:
+            _navAgent.SetDestination(_targetTransform.position)
+
+    function Exit() -> void:
+        if UNITY_5_6_OR_NEWER:
+            if _navAgent not equals null:
+                _navAgent.isStopped = true
+            else:
+                if navAgent not equals null
+                    navAgent.Stop()
+``
 ## Pruebas y métricas
 
 ## Producción
+Las tareas se han realizado y el esfuerzo ha sido repartido entre los autores.
 
+| Estado  |  Tarea  |  Fecha  |  
+|:-:|:--|:-:|
+| ✔ | Read me |16-05-2024|
+| ✔ | Creación incial del proyecto |8-04-2024|
+| ✔ | Botones de HUD (cambio entre cámaras) |13-04-2024|
+| ✔ | Creación Main Menu |23-04-2024|
+| ✔ | Spawn de conejos (con máximo total) |23-04-2024|
 ## Licencia
 Claudia Zarzuela, Andrea Vega Saugar, autores de la documentación, código y recursos de este trabajo, no concedemos permiso permanente a los profesores de la Facultad de Informática de la Universidad Complutense de Madrid para utilizar nuestro material, con sus comentarios y evaluaciones, con fines educativos o de investigación; ya sea para obtener datos agregados de forma anónima como para utilizarlo total o parcialmente reconociendo expresamente nuestra autoría.
 
@@ -103,4 +257,6 @@ Una vez superada con éxito la asignatura se prevee publicar todo en abierto (la
 
 ## Referencias
 
-- Generación aleatoria de Perlin (https://riull.ull.es/xmlui/bitstream/handle/915/1395/Generacion+aleatoria+de+terrenos+3D+con+Unity.pdf;jsessionid=8C0D709D170ADE765FE348DCC336A62B?sequence=1)
+- *Generación aleatoria de Perlin* (https://riull.ull.es/xmlui/bitstream/handle/915/1395/Generacion+aleatoria+de+terrenos+3D+con+Unity.pdf;jsessionid=8C0D709D170ADE765FE348DCC336A62B?sequence=1)
+- *AI for Games*, Ian Millington.
+- *Edirlei Lima* (https://edirlei.com/aulas/game-ai-2020/GAME_AI_Lecture_07_Steering_Behaviours_2020.html)
