@@ -6,7 +6,10 @@ public class AnimalController : MonoBehaviour
 {
     private List<GameObject> stags = new List<GameObject>();
     private List<GameObject> wolfs = new List<GameObject>();
-
+    protected enum States
+    {
+        RESTING = 0, WALKING = 1, RUNNING = 2, DEAD = 3, EAT = 4
+    }
     public void Start()
     {
     }
@@ -18,6 +21,11 @@ public class AnimalController : MonoBehaviour
     public void RegisterStag(GameObject stag)
     {
         stags.Add(stag);
+    }
+
+    protected void Rest(GameObject animal)
+    {
+
     }
     
 }
