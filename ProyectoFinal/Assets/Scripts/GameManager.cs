@@ -14,6 +14,12 @@ public class GameManager : MonoBehaviour
     public GameObject mainCamera = null;
     [SerializeField]
     public GameObject[] individualCameras = null;
+
+    [SerializeField]
+    public GameObject[] stags = null;
+    [SerializeField]
+    public GameObject[] wolfs = null;
+
     public void SelectAnimal(GameObject obj)
     {
         if (currentSelectedAnimal != null)
@@ -55,6 +61,39 @@ public class GameManager : MonoBehaviour
         for(int i = 0; i < individualCameras.Length; i++)
         {
             individualCameras[i].SetActive(false);
+        }
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            for (int i = 0; i < stags.Length; ++i) stags[i].gameObject.GetComponent<Animator>().Play("Idle");
+            for (int i = 0; i < wolfs.Length; ++i) wolfs[i].gameObject.GetComponent<Animator>().Play("Idle");
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            for (int i = 0; i < stags.Length; ++i) stags[i].gameObject.GetComponent<Animator>().Play("Walk");
+            for (int i = 0; i < wolfs.Length; ++i) wolfs[i].gameObject.GetComponent<Animator>().Play("Walk");
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            for (int i = 0; i < stags.Length; ++i) stags[i].gameObject.GetComponent<Animator>().Play("Run");
+            for (int i = 0; i < wolfs.Length; ++i) wolfs[i].gameObject.GetComponent<Animator>().Play("Run");
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            for (int i = 0; i < stags.Length; ++i) stags[i].gameObject.GetComponent<Animator>().Play("Eat");
+            for (int i = 0; i < wolfs.Length; ++i) wolfs[i].gameObject.GetComponent<Animator>().Play("Eat");
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            for (int i = 0; i < stags.Length; ++i) stags[i].gameObject.GetComponent<Animator>().Play("Death");
+            for (int i = 0; i < wolfs.Length; ++i) wolfs[i].gameObject.GetComponent<Animator>().Play("Death");
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            for (int i = 0; i < wolfs.Length; ++i) wolfs[i].gameObject.GetComponent<Animator>().Play("Attack");
         }
     }
 }
