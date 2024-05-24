@@ -204,6 +204,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1041714785}
     m_Modifications:
+    - target: {fileID: 5443217996720745930, guid: f02116c209ecd9e488fc4d2cd8996133, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8783306491908617939, guid: f02116c209ecd9e488fc4d2cd8996133, type: 3}
       propertyPath: m_Name
       value: Rock_04
@@ -1322,6 +1326,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2097380215}
     m_Modifications:
+    - target: {fileID: 7007591236292485129, guid: c6308cb7062fac34e8e50600086b12a1, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7405846476849542632, guid: c6308cb7062fac34e8e50600086b12a1, type: 3}
       propertyPath: m_Name
       value: Rock_01
@@ -2368,7 +2376,7 @@ MonoBehaviour:
         m_MethodName: SelectAnimal
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 149072050}
+          m_ObjectArgument: {fileID: 283288421}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -2425,6 +2433,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 271583497}
   m_CullTransparentMesh: 1
+--- !u!1 &283288421 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8392596048554812823, guid: 3e4eadbabd11e0c4185329b5e2b8ae84, type: 3}
+  m_PrefabInstance: {fileID: 2069212729}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &300109750
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2971,11 +2984,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 9069115365609054727, guid: 60f79905accf3b24fa0114b941f1aac0, type: 3}
   m_PrefabInstance: {fileID: 371890400}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &386393939 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4145704222482117770, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
-  m_PrefabInstance: {fileID: 7812626468616518324}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &409418667
 PrefabInstance:
@@ -3628,11 +3636,6 @@ MonoBehaviour:
   mainCamera: {fileID: 669648415}
   individualCameras:
   - {fileID: 964638454}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 386393939}
-  - {fileID: 0}
-  - {fileID: 0}
   stags:
   - {fileID: 149072050}
   wolfs: []
@@ -4877,6 +4880,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1041714785}
     m_Modifications:
+    - target: {fileID: 7007591236292485129, guid: c6308cb7062fac34e8e50600086b12a1, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7405846476849542632, guid: c6308cb7062fac34e8e50600086b12a1, type: 3}
       propertyPath: m_Name
       value: Rock_01
@@ -6652,6 +6659,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2097380215}
     m_Modifications:
+    - target: {fileID: 5443217996720745930, guid: f02116c209ecd9e488fc4d2cd8996133, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8783306491908617939, guid: f02116c209ecd9e488fc4d2cd8996133, type: 3}
       propertyPath: m_Name
       value: Rock_04
@@ -9273,6 +9284,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2097380215}
     m_Modifications:
+    - target: {fileID: 5443217996720745930, guid: f02116c209ecd9e488fc4d2cd8996133, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8783306491908617939, guid: f02116c209ecd9e488fc4d2cd8996133, type: 3}
       propertyPath: m_Name
       value: Rock_04 (1)
@@ -9821,7 +9836,7 @@ Transform:
   m_GameObject: {fileID: 1551328851}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -201.389, y: -409.407, z: -210.65}
+  m_LocalPosition: {x: -200.7, y: -409.407, z: -210.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11445,6 +11460,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1041714785}
     m_Modifications:
+    - target: {fileID: 5443217996720745930, guid: f02116c209ecd9e488fc4d2cd8996133, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8783306491908617939, guid: f02116c209ecd9e488fc4d2cd8996133, type: 3}
       propertyPath: m_Name
       value: Rock_04 (1)
@@ -12483,6 +12502,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4311808359049942130, guid: 3e4eadbabd11e0c4185329b5e2b8ae84, type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4311808359049942130, guid: 3e4eadbabd11e0c4185329b5e2b8ae84, type: 3}
+      propertyPath: stoppedTime
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6277432727303013177, guid: 3e4eadbabd11e0c4185329b5e2b8ae84, type: 3}
       propertyPath: animalController
       value: 
@@ -12493,7 +12520,7 @@ PrefabInstance:
       objectReference: {fileID: 1551328851}
     - target: {fileID: 6753945143603603122, guid: 3e4eadbabd11e0c4185329b5e2b8ae84, type: 3}
       propertyPath: runningSpeed
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
