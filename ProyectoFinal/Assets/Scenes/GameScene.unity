@@ -1175,6 +1175,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953, type: 3}
   m_PrefabInstance: {fileID: 80885254}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &111609330
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 111609331}
+  - component: {fileID: 111609332}
+  m_Layer: 0
+  m_Name: Rabit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &111609331
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111609330}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 348571029}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &111609332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111609330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3313e2ef8ea4a3d45b939696935dbbbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currRabitsNum: 0
+  rabbits: []
 --- !u!1001 &134095636
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1336,11 +1382,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953, type: 3}
   m_PrefabInstance: {fileID: 137046815}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &149072050 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 352340780192250796, guid: 3e4eadbabd11e0c4185329b5e2b8ae84, type: 3}
-  m_PrefabInstance: {fileID: 2069212729}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &149337508
 PrefabInstance:
@@ -2921,6 +2962,38 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1279437348525638701, guid: e2e682b966e3f644392ffbfab511e0e2, type: 3}
   m_PrefabInstance: {fileID: 335218963}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &348571028
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 348571029}
+  m_Layer: 0
+  m_Name: Controllers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &348571029
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 348571028}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 111609331}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &371890400
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3677,9 +3750,8 @@ MonoBehaviour:
   mainCamera: {fileID: 669648415}
   individualCameras:
   - {fileID: 964638454}
-  stags:
-  - {fileID: 149072050}
-  wolfs: []
+  rabbit: {fileID: 352340780192250796, guid: 3e4eadbabd11e0c4185329b5e2b8ae84, type: 3}
+  rabbitController: {fileID: 111609332}
 --- !u!4 &568043597
 Transform:
   m_ObjectHideFlags: 0
@@ -14036,3 +14108,4 @@ SceneRoots:
   - {fileID: 327272350}
   - {fileID: 669648419}
   - {fileID: 568043597}
+  - {fileID: 348571029}
