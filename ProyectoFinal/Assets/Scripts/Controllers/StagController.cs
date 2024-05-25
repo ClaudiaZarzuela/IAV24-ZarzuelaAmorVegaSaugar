@@ -106,7 +106,6 @@ public class StagController : AnimalController
             {
                 if (fleeComponent.GotHome())
                 {
-                    Debug.Log("AAAAA");
                     currentState = (int)States.WANDER;
                     StartAction(currentState);
                 }
