@@ -35,7 +35,6 @@ public class Wander : MonoBehaviour
         {
             if (elapsedTime >= stoppedTime)
             {
-                Debug.Log("Se paso el tiempo");
                 elapsedTime = 0;
                 agent.SetDestination(RandomNavMeshLocation());
             }

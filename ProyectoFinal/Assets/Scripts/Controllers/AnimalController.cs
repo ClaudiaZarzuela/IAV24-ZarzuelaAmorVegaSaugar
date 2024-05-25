@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class AnimalController : MonoBehaviour
 {
+    public static int rabitsNum = 10;
+    public int currRabitsNum = 0;
+    public List<GameObject> rabbits = new List<GameObject>();
     private List<GameObject> stags = new List<GameObject>();
     private List<GameObject> wolfs = new List<GameObject>();
     protected enum States

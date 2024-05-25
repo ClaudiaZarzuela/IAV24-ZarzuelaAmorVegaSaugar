@@ -2,12 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RabitController : MonoBehaviour
+public class RabitController : AnimalController
 {
-    public static int rabitsNum = 10;
-    public int currRabitsNum = 0;
-    public List<GameObject> rabbits = new List<GameObject>();
-
     enum States
     {
        WANDER = 0, DEAD = 1
@@ -30,7 +26,7 @@ public class RabitController : MonoBehaviour
     {
         if(currentState == States.WANDER)
         {
-            animator.Play("Walk");
+            animator.Play("Run");
             wanderComponent.StartWander();
         }
         else

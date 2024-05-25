@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class StagController : AnimalController
 {
-    [SerializeField]
-    AnimalController animalController;
-
     Flee fleeComponent;
     Wander wanderComponent;
     enum AnimationStates
@@ -27,7 +24,7 @@ public class StagController : AnimalController
         wanderComponent = gameObject.GetComponent<Wander>();
         animator = gameObject.GetComponent<Animator>();
 
-        animalController.RegisterStag(this.gameObject);
+        RegisterStag(this.gameObject);
         currentState = (int)States.WANDER;
         StartAction(currentState);
     }

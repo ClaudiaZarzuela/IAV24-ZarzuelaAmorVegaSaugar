@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     public GameObject rabbit = null;
 
     [SerializeField]
-    RabitController rabbitController = null;
+    AnimalController rabbitController = null;
 
     private void Start()
     {
@@ -48,16 +48,20 @@ public class GameManager : MonoBehaviour
         Vector3 randomPoint;
         NavMeshHit hit;
 
-        for (int i = rabbitController.currRabitsNum; i < RabitController.rabitsNum; i++)
+        for (int i = rabbitController.currRabitsNum; i < AnimalController.rabitsNum; i++)
         {
-            randomPoint = transform.position + Random.insideUnitSphere * Random.Range(-5.0f, 5.0f);
-            //do
-            //{
-            //    randomPoint = transform.position + Random.insideUnitSphere * Random.Range(-5.0f, 5.0f);
-            //}
-            //while (!NavMesh.SamplePosition(randomPoint, out hit, Random.Range(-5.0f, 5.0f), NavMesh.AllAreas));
 
-            randomPoint.y += 10.0f;
+            randomPoint = transform.position + Random.insideUnitSphere * 20;
+            if (NavMesh.SamplePosition(randomPoint, out hit, 20, NavMesh.AllAreas))
+            {
+                randomPoint = hit.position;
+            }
+            else
+            {
+                Debug.Log("Rabbit: " + i);
+                randomPoint = transform.position + Random.insideUnitSphere * Random.Range(-5.0f, 5.0f);
+            }
+            randomPoint.y = 0.0f;
             GameObject newRabbit = Instantiate(rabbit, randomPoint, Quaternion.identity);
             rabbitController.rabbits.Add(newRabbit);
             rabbitController.currRabitsNum++;
