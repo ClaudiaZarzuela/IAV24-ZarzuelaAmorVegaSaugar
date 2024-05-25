@@ -132,8 +132,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 324782418}
+  - component: {fileID: 324782421}
+  - component: {fileID: 324782420}
+  - component: {fileID: 324782419}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: SceneManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -154,6 +157,44 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &324782419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324782417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47bb32121e25ae343ac794fe41a703a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &324782420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324782417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3313e2ef8ea4a3d45b939696935dbbbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currRabitsNum: 0
+  rabbits: []
+--- !u!114 &324782421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324782417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afa9860d317c1ba418e0f257f49d3873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &342959826
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,7 +401,7 @@ GameObject:
   - component: {fileID: 454011531}
   - component: {fileID: 454011530}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Conejos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -736,6 +777,7 @@ GameObject:
   - component: {fileID: 1089320973}
   - component: {fileID: 1089320972}
   - component: {fileID: 1089320971}
+  - component: {fileID: 1089320975}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -832,6 +874,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1089320975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089320970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77e649b645ef6b040ac06cf9e82888b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rabitsNum: {fileID: 454011530}
+  bushesNum: {fileID: 1980002697}
 --- !u!1 &1196397054
 GameObject:
   m_ObjectHideFlags: 0
@@ -1280,7 +1336,7 @@ GameObject:
   - component: {fileID: 1980002698}
   - component: {fileID: 1980002697}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Arbustos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
