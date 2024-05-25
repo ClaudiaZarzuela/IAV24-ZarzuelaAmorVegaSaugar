@@ -50,11 +50,12 @@ public class GameManager : MonoBehaviour
 
         for (int i = rabbitController.currRabitsNum; i < RabitController.rabitsNum; i++)
         {
-            do
-            {
-                randomPoint = transform.position + Random.insideUnitSphere * Random.Range(-5.0f, 5.0f);
-            }
-            while (!NavMesh.SamplePosition(randomPoint, out hit, Random.Range(-5.0f, 5.0f), NavMesh.AllAreas));
+            randomPoint = transform.position + Random.insideUnitSphere * Random.Range(-5.0f, 5.0f);
+            //do
+            //{
+            //    randomPoint = transform.position + Random.insideUnitSphere * Random.Range(-5.0f, 5.0f);
+            //}
+            //while (!NavMesh.SamplePosition(randomPoint, out hit, Random.Range(-5.0f, 5.0f), NavMesh.AllAreas));
 
             randomPoint.y += 10.0f;
             GameObject newRabbit = Instantiate(rabbit, randomPoint, Quaternion.identity);
