@@ -10,9 +10,7 @@ public class AnimalController : MonoBehaviour
     {
         RESTING = 0, WALKING = 1, RUNNING = 2, DEAD = 3, EAT = 4
     }
-    public void Start()
-    {
-    }
+  
     public void RegisterWolf(GameObject wolf)
     {
         wolfs.Add(wolf);

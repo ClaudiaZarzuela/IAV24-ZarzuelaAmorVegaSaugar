@@ -1,12 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 using static UnityEditor.PlayerSettings;
 
 
 public class GameManager : MonoBehaviour
 {
+    #region references
+    static private GameManager _instance;
+    static public GameManager Instance
+    {
+        get
+        {
+            return _instance;
+        }
+    }
+    #endregion
+
+    #region methods
+    private void Awake()
+    {
+        _instance = this;
+    }
+    #endregion
 
     private GameObject currentSelectedAnimal = null;
     private Button selectedButton = null;
@@ -15,11 +33,36 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public GameObject[] individualCameras = null;
 
-    [SerializeField]
-    public GameObject[] stags = null;
-    [SerializeField]
-    public GameObject[] wolfs = null;
+    [SerializeField] 
+    public GameObject rabbit = null;
 
+    [SerializeField]
+    RabitController rabbitController = null;
+
+    private void Start()
+    {
+        InstanciateRabbits();
+    }
+    public void InstanciateRabbits()
+    {
+        Vector3 randomPoint;
+        NavMeshHit hit;
+
+        for (int i = rabbitController.currRabitsNum; i < RabitController.rabitsNum; i++)
+        {
+            do
+            {
+                randomPoint = transform.position + Random.insideUnitSphere * Random.Range(-5.0f, 5.0f);
+            }
+            while (!NavMesh.SamplePosition(randomPoint, out hit, Random.Range(-5.0f, 5.0f), NavMesh.AllAreas));
+
+            randomPoint.y += 10.0f;
+            GameObject newRabbit = Instantiate(rabbit, randomPoint, Quaternion.identity);
+            rabbitController.rabbits.Add(newRabbit);
+            rabbitController.currRabitsNum++;
+
+        }
+    }
     public void SelectAnimal(GameObject obj)
     {
         if (currentSelectedAnimal != null)
