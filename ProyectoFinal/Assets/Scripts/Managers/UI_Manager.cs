@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class UI_Manager : MonoBehaviour
 {
-    TMPro.TextMeshPro rabitsNum;
-    TMPro.TextMeshPro bushesNum;
+    [SerializeField]
+    public TMPro.TextMeshProUGUI rabitsNum;
+    [SerializeField]
+    public TMPro.TextMeshProUGUI bushesNum;
     int rabitsNumber = 10;
     int bushesNumber = 5;
 
