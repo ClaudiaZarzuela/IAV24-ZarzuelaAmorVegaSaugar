@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -32,16 +33,22 @@ public class GameManager : MonoBehaviour
     public GameObject mainCamera = null;
     [SerializeField]
     public GameObject[] individualCameras = null;
+    [SerializeField]
+    public GameObject ground = null;
 
     [SerializeField] 
     public GameObject rabbit = null;
 
     [SerializeField]
     AnimalController rabbitController = null;
+    [SerializeField]
+    BushesController bushesController = null;
 
     private void Start()
     {
         InstanciateRabbits();
+        bushesController.InstanciateBushes();
+        ground.GetComponent<NavMeshSurface>().BuildNavMesh();
     }
     public void InstanciateRabbits()
     {
