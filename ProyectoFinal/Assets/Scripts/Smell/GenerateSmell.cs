@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class GenerateSmell : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    public float timeToSpawn;
+    [SerializeField]
+    public GameObject scent;
+    private float elapsedTime;
+
+    private void Update()
     {
-        
+        if (elapsedTime >= timeToSpawn)
+        {
+            elapsedTime = 0;
+            Instantiate(scent, new Vector3(gameObject.transform.position.x, 0.02f, gameObject.transform.position.z), Quaternion.identity);
+        }
+        else elapsedTime += Time.deltaTime;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
