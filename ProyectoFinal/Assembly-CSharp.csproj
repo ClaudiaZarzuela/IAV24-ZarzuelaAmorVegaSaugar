@@ -92,8 +92,8 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
-    <Compile Include="Assets\Scripts\Managers\UI_Manager.cs" />
     <Compile Include="Assets\BehaviorBricks\Conditions\System\Perception\IsTargetCloseAndInSight.cs" />
+    <Compile Include="Assets\Scripts\Managers\UI_Manager.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\Audio\PlaySound.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
@@ -152,9 +152,11 @@
     <Compile Include="Assets\BehaviorBricks\Samples\ProgrammersQuickStartGuide\Done\DoneBulletScript.cs" />
     <Compile Include="Assets\BehaviorBricks\Samples\ProgrammersQuickStartGuide\Done\DoneDayNightCycle.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\SetActive.cs" />
+    <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\GetRandomPoint.cs" />
     <Compile Include="Assets\Scripts\Controllers\RabitController.cs" />
     <Compile Include="Assets\Scripts\Agent\Behaviour\Face.cs" />
     <Compile Include="Assets\Scripts\Agent\Behaviour\Flee.cs" />
+    <Compile Include="Assets\BehaviorBricks\Actions\System\Animation\StartAnimation.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\Navigation\MoveToGameObject.cs" />
     <Compile Include="Assets\BehaviorBricks\Conditions\System\Basic\CheckMouseButton.cs" />
     <Compile Include="Assets\BehaviorBricks\Samples\ProgrammersQuickStartGuide\Done\DoneShoot.cs" />

@@ -96,7 +96,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Run
+      name: Walk
       takeName: Armature.001|Run
       internalID: -2969036542940970518
       firstFrame: 0

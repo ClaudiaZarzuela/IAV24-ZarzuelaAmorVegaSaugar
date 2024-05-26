@@ -77,13 +77,13 @@ PrefabInstance:
       addedObject: {fileID: 1096142165057718158}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5b9242171f9fe8045b82aeda5b7bd29e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1999987984309396520}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5b9242171f9fe8045b82aeda5b7bd29e, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1332804920473619829}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5b9242171f9fe8045b82aeda5b7bd29e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4764646544065508743}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5b9242171f9fe8045b82aeda5b7bd29e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 48359913136171875}
   m_SourcePrefab: {fileID: 100100000, guid: 5b9242171f9fe8045b82aeda5b7bd29e, type: 3}
 --- !u!1 &2902405853457148759 stripped
 GameObject:
@@ -111,22 +111,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1999987984309396520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2902405853457148759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 196080119ebd398498902a0834eab734, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 1332804920473619829}
-  stoppedTime: 8
-  speed: 2
-  walkRadius: 50
 --- !u!195 &1332804920473619829
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -156,10 +140,78 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2902405853457148759}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3313e2ef8ea4a3d45b939696935dbbbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currRabitsNum: 0
   rabbits: []
+--- !u!114 &48359913136171875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2902405853457148759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 422fb6956201c7944ae2113a1a53b0b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxTasksPerTick: 500
+  behavior: {fileID: 11400000, guid: 5cd7c72c092d86a40974c269f363c67b, type: 2}
+  paused: 0
+  restartWhenFinished: 0
+  blackboard:
+    intParams: 
+    intParamsNames: []
+    intParamsLostDefaultValue: 
+    boolParams: 
+    boolParamsNames: []
+    boolParamsLostDefaultValue: 
+    floatParams:
+    - 2
+    floatParamsNames:
+    - speed
+    floatParamsLostDefaultValue: 
+    stringParams: []
+    stringParamsNames: []
+    stringParamsLostDefaultValue: 
+    colorParams: []
+    colorParamsNames: []
+    colorParamsLostDefaultValue: 
+    objectParams: []
+    objectParamsNames: []
+    objectParamsLostDefaultValue: 
+    layerMaskParams: []
+    layerMaskParamsNames: []
+    layerMaskParamsLostDefaultValue: 
+    enumParamsNames: []
+    enumParamsLostDefaultValue: 
+    vector2Params: []
+    vector2ParamsNames: []
+    vector2ParamsLostDefaultValue: 
+    vector3Params:
+    - {x: 0, y: 0, z: 0}
+    vector3ParamsNames:
+    - target
+    vector3ParamsLostDefaultValue: 
+    vector4Params: []
+    vector4ParamsNames: []
+    vector4ParamsLostDefaultValue: 
+    rectParams: []
+    rectParamsNames: []
+    rectParamsLostDefaultValue: 
+    animationCurveParams: []
+    animationCurveParamsNames: []
+    animationCurveParamsLostDefaultValue: 
+    boundsParams: []
+    boundsParamsNames: []
+    boundsParamsLostDefaultValue: 
+    gradientParams: []
+    gradientParamsNames: []
+    gradientParamsLostDefaultValue: 
+    quaternionParams: []
+    quaternionParamsNames: []
+    quaternionParamsLostDefaultValue: 

@@ -1,6 +1,8 @@
 ﻿using Pada1.BBCore.Tasks;
 using Pada1.BBCore;
 using UnityEngine;
+using UCM.IAV.Movimiento;
+using UnityEngine.AI;
 
 namespace BBUnity.Actions
 {
@@ -15,7 +17,8 @@ namespace BBUnity.Actions
         [InParam("target")]
         [Help("Target position where the game object will be moved")]
         public Vector3 target;
-
+        [InParam("speed")]
+        [Range(0, 100)] public float speed;
         private UnityEngine.AI.NavMeshAgent navAgent;
 
         /// <summary>Initialization Method of MoveToPosition.</summary>
@@ -23,6 +26,9 @@ namespace BBUnity.Actions
         public override void OnStart()
         {
             navAgent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
+            navAgent.stoppingDistance = 0.4f;
+            navAgent.speed = speed;
+
             if (navAgent == null)
             {
                 Debug.LogWarning("The " + gameObject.name + " game object does not have a Nav Mesh Agent component to navigate. One with default values has been added", gameObject);
