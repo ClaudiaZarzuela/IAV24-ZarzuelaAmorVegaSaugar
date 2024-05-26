@@ -19,9 +19,8 @@ MonoBehaviour:
     <SequenceNode id=\"8\" />\r\n      </root>\r\n      <inputParams>\r\n       
     <inputValues>\r\n          <entry name=\"target\" type=\"UnityEngine.Vector3\"
     isBlackboard=\"False\" value=\"0 0 0\" />\r\n          <entry name=\"speed\"
-    type=\"System.Single\" isBlackboard=\"False\" value=\"0\" />\r\n          <entry
-    name=\"animation\" type=\"System.String\" isBlackboard=\"False\" />\r\n       
-    </inputValues>\r\n      </inputParams>\r\n      <outputParams>\r\n        <outputValues>\r\n         
+    type=\"System.Single\" isBlackboard=\"False\" value=\"0\" />\r\n        </inputValues>\r\n     
+    </inputParams>\r\n      <outputParams>\r\n        <outputValues>\r\n         
     <entry name=\"target\" type=\"UnityEngine.Vector3\" isBlackboard=\"True\" />\r\n       
     </outputValues>\r\n      </outputParams>\r\n      <localParams />\r\n    </BehaviorTree>\r\n   
     <SequenceNode id=\"8\">\r\n      <children>\r\n        <elem>\r\n          <ActionNode

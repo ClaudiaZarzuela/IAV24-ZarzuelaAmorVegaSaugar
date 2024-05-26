@@ -171,12 +171,14 @@ MonoBehaviour:
     boolParamsNames: []
     boolParamsLostDefaultValue: 
     floatParams:
-    - 2
+    - 3
     floatParamsNames:
     - speed
     floatParamsLostDefaultValue: 
-    stringParams: []
-    stringParamsNames: []
+    stringParams:
+    - 
+    stringParamsNames:
+    - animation
     stringParamsLostDefaultValue: 
     colorParams: []
     colorParamsNames: []
