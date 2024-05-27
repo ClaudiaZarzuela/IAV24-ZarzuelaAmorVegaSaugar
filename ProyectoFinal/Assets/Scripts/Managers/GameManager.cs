@@ -36,47 +36,18 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public GameObject ground = null;
 
-    [SerializeField] 
-    public GameObject rabbit = null;
-
     [SerializeField]
-    AnimalController rabbitController = null;
+    RabitController rabbitController = null;
     [SerializeField]
     BushesController bushesController = null;
 
     private void Start()
     {
-        InstanciateRabbits();
+        rabbitController.InstanciateRabbits();
         bushesController.InstanciateBushes();
         ground.GetComponent<NavMeshSurface>().BuildNavMesh();
     }
-    public void InstanciateRabbits()
-    {
-        Vector3 randomPoint;
-        NavMeshHit hit;
-        Transform parent = new GameObject("Rabbits").transform;
 
-        for (int i = rabbitController.currRabitsNum; i < AnimalController.rabitsNum; i++)
-        {
-
-            randomPoint = transform.position + Random.insideUnitSphere * 20;
-            if (NavMesh.SamplePosition(randomPoint, out hit, 20, NavMesh.AllAreas))
-            {
-                randomPoint = hit.position;
-            }
-            else
-            {
-                Debug.Log("Rabbit: " + i);
-                randomPoint = transform.position + Random.insideUnitSphere * Random.Range(-5.0f, 5.0f);
-            }
-            randomPoint.y = 0.0f;
-            GameObject newRabbit = Instantiate(rabbit, randomPoint, Quaternion.identity);
-            newRabbit.transform.SetParent(parent);
-            rabbitController.rabbits.Add(newRabbit);
-            rabbitController.currRabitsNum++;
-
-        }
-    }
     public void SelectAnimal(GameObject obj)
     {
         if (currentSelectedAnimal != null)

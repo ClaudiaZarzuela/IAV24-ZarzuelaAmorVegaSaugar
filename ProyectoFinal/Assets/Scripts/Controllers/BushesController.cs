@@ -1,7 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 using UnityEngine.AI;
+using UnityEditor;
 
 public class BushesController : MonoBehaviour
 {
@@ -14,6 +18,8 @@ public class BushesController : MonoBehaviour
     public GameObject area;
 
     private List<GameObject> arbustos;
+    private Vector3 centerPoint = new Vector3(-33.0f, -0.5f, -8.8f);
+    private int maxNumBushes = 50;
 
     public void InstanciateBushes() {
 
@@ -29,9 +35,9 @@ public class BushesController : MonoBehaviour
             {
                 float noiseValue = Mathf.PerlinNoise((float)x / scaleX * 15 * Random.Range(0.5f, 1.5f), (float)z / scaleZ * 15 * Random.Range(0.5f, 1.5f));
 
-                if(noiseValue > 0.75 && instanciatedBushes < 50)
+                if(noiseValue > 0.75 && instanciatedBushes < maxNumBushes)
                 {
-                    Vector3 pos = new Vector3(x, 0.3f, z);
+                    Vector3 pos = new Vector3(x , 0.5f, z);
                     GameObject bush = Instantiate(arbusto, pos, Quaternion.identity);
                     arbustos.Add(bush);
                     bush.transform.SetParent(parent);
@@ -47,7 +53,6 @@ public class BushesController : MonoBehaviour
             arbustos.RemoveAt(index);
         }
 
-        Vector3 position = new Vector3(-33.2f, -0.48f, -10.3f);
-        parent.SetPositionAndRotation(position, Quaternion.identity);
+        parent.SetPositionAndRotation(centerPoint, Quaternion.identity);
     }
 }

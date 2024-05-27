@@ -1,53 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class RabitController : AnimalController
 {
-    enum States
+    [SerializeField]
+    public GameObject rabbit = null;
+
+    public void InstanciateRabbits()
     {
-       WANDER = 0, DEAD = 1
-    }
+        Vector3 randomPoint;
+        NavMeshHit hit;
+        Transform parent = new GameObject("Rabbits").transform;
 
-    Animator animator;
-    States currentState;
-    Wander wanderComponent;
-
-
-    private void Start()
-    {
-        wanderComponent = gameObject.GetComponent<Wander>();
-        animator = gameObject.GetComponent<Animator>();
-        currentState = States.WANDER;
-        StartAction(currentState);
-    }
-
-    private void StartAction(States state)
-    {
-        if(currentState == States.WANDER)
+        for (int i = currRabitsNum; i < rabitsNum; i++)
         {
-            animator.Play("Run");
-            wanderComponent.StartWander();
-        }
-        else
-        {
-            animator.Play("Death");
-            wanderComponent.StopWander();
+
+            randomPoint = transform.position + Random.insideUnitSphere * 20;
+            if (NavMesh.SamplePosition(randomPoint, out hit, 20, NavMesh.AllAreas))
+            {
+                randomPoint = hit.position;
+            }
+            else
+            {
+                randomPoint = transform.position + Random.insideUnitSphere * Random.Range(-5.0f, 5.0f);
+            }
+            randomPoint.y = 0.0f;
+            GameObject newRabbit = Instantiate(rabbit, randomPoint, Quaternion.identity);
+            newRabbit.transform.SetParent(parent);
+            rabbits.Add(newRabbit);
+            currRabitsNum++;
+
         }
     }
+
     public void RabbitDied(GameObject obj)
     {
         currRabitsNum--;
         rabbits.Remove(obj);
-        GameManager.Instance.InstanciateRabbits();
+        InstanciateRabbits();
     }
 
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            currentState = States.DEAD;
-            StartAction(currentState);
-        }
-    }
 }

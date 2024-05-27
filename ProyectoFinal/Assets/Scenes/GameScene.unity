@@ -816,8 +816,8 @@ Transform:
   m_GameObject: {fileID: 53579614}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -180.0216, y: -409.86124, z: -209.74432}
-  m_LocalScale: {x: 37.75881, y: 1, z: 21.071983}
+  m_LocalPosition: {x: -180.0216, y: -409.86124, z: -209.57}
+  m_LocalScale: {x: 37.75881, y: 1, z: 18.474075}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 166842922}
@@ -3196,6 +3196,53 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1279437348525638701, guid: e2e682b966e3f644392ffbfab511e0e2, type: 3}
   m_PrefabInstance: {fileID: 544072796}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &559852242
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 559852244}
+  - component: {fileID: 559852243}
+  m_Layer: 0
+  m_Name: RabbitInstanciator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &559852243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559852242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3313e2ef8ea4a3d45b939696935dbbbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currRabitsNum: 0
+  rabbits: []
+  rabbit: {fileID: 2902405853457148759, guid: e40dd3d75cd878e48ac4582ee266a370, type: 3}
+--- !u!4 &559852244
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559852242}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -13.942533, y: -2.5579255, z: 2.7427466}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &565133385 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8783306491909106419, guid: f02116c209ecd9e488fc4d2cd8996133, type: 3}
@@ -3303,8 +3350,7 @@ MonoBehaviour:
   individualCameras:
   - {fileID: 964638454}
   ground: {fileID: 1572337781}
-  rabbit: {fileID: 2902405853457148759, guid: e40dd3d75cd878e48ac4582ee266a370, type: 3}
-  rabbitController: {fileID: 348571030}
+  rabbitController: {fileID: 559852243}
   bushesController: {fileID: 1145253465}
 --- !u!4 &568043597
 Transform:
@@ -6317,7 +6363,7 @@ GameObject:
   - component: {fileID: 1145253466}
   - component: {fileID: 1145253465}
   m_Layer: 0
-  m_Name: Instanciator
+  m_Name: BushInstanciator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12424,3 +12470,4 @@ SceneRoots:
   - {fileID: 568043597}
   - {fileID: 348571029}
   - {fileID: 1145253466}
+  - {fileID: 559852244}

@@ -37,17 +37,17 @@ MonoBehaviour:
     <elem>\r\n          <SequenceNode id=\"5\" />\r\n        </elem>\r\n      </_rootList>\r\n     
     <_nodes>\r\n        <nodes>\r\n          <SequenceNode id=\"5\" />\r\n         
     <SubbehaviorNode id=\"4\" />\r\n        </nodes>\r\n      </_nodes>\r\n    </BehaviorTree>\r\n   
-    <SequenceNode id=\"5\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"118.2223 174.2223\" name=\"Sequence\" description=\"Executes all its
+    <SequenceNode id=\"5\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"True\"
+    position=\"753.9973 239.0724\" name=\"Sequence\" description=\"Executes all its
     children in sequence until all of them are successful\" cardinality=\"-1\" hasParent=\"False\">\r\n         
     <BehaviorTree id=\"0\" />\r\n          <SequenceNode id=\"5\" />\r\n        </data>\r\n     
     </_data>\r\n    </SequenceNode>\r\n    <SubbehaviorNode id=\"4\">\r\n      <_data>\r\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"159.111 282.667\" name=\"AnimalWander\"
+    <data breakpoint=\"0\" selected=\"False\" position=\"829.886 463.5169\" name=\"AnimalWander\"
     description=\"\" cardinality=\"-1\" hasParent=\"True\">\r\n          <BehaviorTree
     id=\"0\" />\r\n          <SubbehaviorNode id=\"4\" />\r\n          <SequenceNode
     id=\"5\" />\r\n        </data>\r\n      </_data>\r\n    </SubbehaviorNode>\r\n 
     </editorInfo>\r\n</BehaviorBricks>"
-  zoom: 0.9
+  zoom: 0.8
   subslist:
   - {fileID: 11400000, guid: 5cd7c72c092d86a40974c269f363c67b, type: 2}
   _guid: c9be1a4ef7aab0c44a630f17c002d224
