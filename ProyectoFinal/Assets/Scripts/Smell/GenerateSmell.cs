@@ -22,8 +22,11 @@ public class GenerateSmell : MonoBehaviour
         if (elapsedTime >= timeToSpawn)
         {
             elapsedTime = 0;
-            GameObject scentParticle = Instantiate(scent, new Vector3(gameObject.transform.position.x, 0.02f, gameObject.transform.position.z), Quaternion.identity);
-            scentParticle.transform.SetParent(parent);
+            Scent newScent = Instantiate(scent, new Vector3(gameObject.transform.position.x, 0.02f, gameObject.transform.position.z),
+                             Quaternion.identity).GetComponent<Scent>();
+            newScent.transform.SetParent(parent);
+            newScent.SetOriginator(this.gameObject);
+
         }
         else elapsedTime += Time.deltaTime;
     }
