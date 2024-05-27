@@ -3302,8 +3302,10 @@ MonoBehaviour:
   mainCamera: {fileID: 669648415}
   individualCameras:
   - {fileID: 964638454}
+  ground: {fileID: 1572337781}
   rabbit: {fileID: 2902405853457148759, guid: e40dd3d75cd878e48ac4582ee266a370, type: 3}
   rabbitController: {fileID: 348571030}
+  bushesController: {fileID: 1145253465}
 --- !u!4 &568043597
 Transform:
   m_ObjectHideFlags: 0
@@ -5419,6 +5421,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wolf_0
       objectReference: {fileID: 0}
+    - target: {fileID: 7354718885394307745, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8521631983079456520, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
       propertyPath: blackboard.floatParams.Array.size
       value: 1
@@ -6329,7 +6335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47bb32121e25ae343ac794fe41a703a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arbusto: {fileID: 919132149155446097, guid: 2f388229de11d9446a7448b48da91fff, type: 3}
+  arbusto: {fileID: 7476515633199285746, guid: 63202abe2b8c768489ca8bdf28dd944b, type: 3}
   area: {fileID: 53579614}
 --- !u!4 &1145253466
 Transform:
@@ -11752,6 +11758,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1128174513898283286, guid: 3e4eadbabd11e0c4185329b5e2b8ae84, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3920717070382737081, guid: 3e4eadbabd11e0c4185329b5e2b8ae84, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4072448683388083086, guid: 3e4eadbabd11e0c4185329b5e2b8ae84, type: 3}
