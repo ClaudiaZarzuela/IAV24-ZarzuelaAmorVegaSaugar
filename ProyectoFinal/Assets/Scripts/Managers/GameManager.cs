@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
     {
         Vector3 randomPoint;
         NavMeshHit hit;
+        Transform parent = new GameObject("Rabbits").transform;
 
         for (int i = rabbitController.currRabitsNum; i < AnimalController.rabitsNum; i++)
         {
@@ -70,6 +71,7 @@ public class GameManager : MonoBehaviour
             }
             randomPoint.y = 0.0f;
             GameObject newRabbit = Instantiate(rabbit, randomPoint, Quaternion.identity);
+            newRabbit.transform.SetParent(parent);
             rabbitController.rabbits.Add(newRabbit);
             rabbitController.currRabitsNum++;
 
