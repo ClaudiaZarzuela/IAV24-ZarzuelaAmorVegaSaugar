@@ -7,6 +7,7 @@ public class SmellArea : MonoBehaviour
     private float maxTime = 2.0f;
     private float elapsedTime;
 
+    public bool HasDetectedSmell() { return listScent.Count > 0;}
     private void OnTriggerEnter(Collider other)
     {
         Scent otherScent = other.gameObject.GetComponent<Scent>();

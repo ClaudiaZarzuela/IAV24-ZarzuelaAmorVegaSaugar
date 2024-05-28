@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class RabitController : AnimalController
+public class RabitController : MonoBehaviour 
 {
     [SerializeField]
     public GameObject rabbit = null;
@@ -14,7 +14,7 @@ public class RabitController : AnimalController
         NavMeshHit hit;
         Transform parent = new GameObject("Rabbits").transform;
 
-        for (int i = currRabitsNum; i < rabitsNum; i++)
+        for (int i = AnimalController.Instance.GetRabitsNum(); i < AnimalController.rabitsNum; i++)
         {
 
             randomPoint = transform.position + Random.insideUnitSphere * 20;
@@ -29,16 +29,13 @@ public class RabitController : AnimalController
             randomPoint.y = 0.0f;
             GameObject newRabbit = Instantiate(rabbit, randomPoint, Quaternion.identity);
             newRabbit.transform.SetParent(parent);
-            rabbits.Add(newRabbit);
-            currRabitsNum++;
-
+            AnimalController.Instance.RegisterRabbits(newRabbit);
         }
     }
 
     public void RabbitDied(GameObject obj)
     {
-        currRabitsNum--;
-        rabbits.Remove(obj);
+        AnimalController.Instance.RemoveRabbit(obj);
         InstanciateRabbits();
     }
 

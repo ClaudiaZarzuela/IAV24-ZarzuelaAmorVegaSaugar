@@ -961,6 +961,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f1aa80defded74c419f77fa51c7ff91c, type: 3}
       insertIndex: -1
       addedObject: {fileID: -5277540898437461522}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f1aa80defded74c419f77fa51c7ff91c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4101837537308595145}
   m_SourcePrefab: {fileID: 100100000, guid: f1aa80defded74c419f77fa51c7ff91c, type: 3}
 --- !u!4 &3565624732048365348 stripped
 Transform:
@@ -1129,6 +1132,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4101837537308595145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4192979217314958750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef69ef05dd3d4eb43aac16d1c21679a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currRabitsNum: 0
+  rabbits: []
+  typeOfAnimal: Wolf
 --- !u!1001 &4592251045390094319
 PrefabInstance:
   m_ObjectHideFlags: 0

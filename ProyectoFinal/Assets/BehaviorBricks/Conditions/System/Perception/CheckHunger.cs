@@ -5,7 +5,7 @@ namespace BBUnity.Conditions
 {
     [Condition("Perception/HasDetectedSmell")]
     [Help("Checks if the wolf has detected a scent of an animal")]
-    public class HasDetectedSmell : GOCondition
+    public class CheckHunger : GOCondition
     {
         SmellArea area;
 
@@ -15,7 +15,7 @@ namespace BBUnity.Conditions
         }
         public override bool Check()
         {
-            if(area == null) return false;
+            if (area == null) return false;
             return area.HasDetectedSmell();
         }
     }

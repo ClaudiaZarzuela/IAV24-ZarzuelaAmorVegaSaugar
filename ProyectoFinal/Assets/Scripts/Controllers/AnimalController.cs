@@ -4,16 +4,28 @@ using UnityEngine;
 
 public class AnimalController : MonoBehaviour
 {
+
+    #region references
+    static private AnimalController _instance;
+    static public AnimalController Instance
+    {
+        get
+        {
+            return _instance;
+        }
+    }
+    #endregion
+    #region methods
+    private void Awake()
+    {
+        _instance = this;
+    }
+    #endregion
+
     public static int rabitsNum = 10;
-    public int currRabitsNum = 0;
-    public List<GameObject> rabbits = new List<GameObject>();
+    private List<GameObject> rabbits = new List<GameObject>();
     private List<GameObject> stags = new List<GameObject>();
     private List<GameObject> wolfs = new List<GameObject>();
-    protected enum States
-    {
-        RESTING = 0, WALKING = 1, RUNNING = 2, DEAD = 3, EAT = 4
-    }
-  
     public void RegisterWolf(GameObject wolf)
     {
         wolfs.Add(wolf);
@@ -24,9 +36,15 @@ public class AnimalController : MonoBehaviour
         stags.Add(stag);
     }
 
-    protected void Rest(GameObject animal)
+    public void RegisterRabbits(GameObject rabbit)
     {
-
+        rabbits.Add(rabbit);
     }
-    
+
+    public void RemoveRabbit(GameObject rabbit)
+    {
+        rabbits.Remove(rabbit);
+    }
+
+    public int GetRabitsNum() { return rabbits.Count; }
 }

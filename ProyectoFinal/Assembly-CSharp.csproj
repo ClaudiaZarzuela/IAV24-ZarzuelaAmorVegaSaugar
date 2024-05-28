@@ -61,7 +61,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Agent\Behaviour\Separacion.cs" />
-    <Compile Include="Assets\Scripts\Agent\Behaviour\Health\Health.cs" />
     <Compile Include="Assets\Scripts\Agent\Animations\SeguimientoCamara.cs" />
     <Compile Include="Assets\Scripts\Agent\Behaviour\Seek.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\Navigation\MoveToPosition.cs" />
@@ -124,7 +123,6 @@
     <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\ClosestGameObjectFromList.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\Basic\SetVector3.cs" />
     <Compile Include="Assets\BehaviorBricks\Conditions\System\Basic\CheckBool.cs" />
-    <Compile Include="Assets\Scripts\Controllers\StagController.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\FindGameObjectByName.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\Animation\PlayAnimation.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
@@ -149,6 +147,7 @@
     <Compile Include="Assets\BehaviorBricks\Conditions\System\Perception\IsTargetClose.cs" />
     <Compile Include="Assets\BehaviorBricks\Conditions\System\Basic\CheckButton.cs" />
     <Compile Include="Assets\Scripts\Agent\Behaviour\LookWhereYoureGoing.cs" />
+    <Compile Include="Assets\Scripts\Controllers\EnergyController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\AddComponent.cs" />
     <Compile Include="Assets\BehaviorBricks\Samples\ProgrammersQuickStartGuide\Done\DoneBulletScript.cs" />
@@ -162,6 +161,7 @@
     <Compile Include="Assets\Scripts\Smell\SmellArea.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\Navigation\MoveToGameObject.cs" />
     <Compile Include="Assets\BehaviorBricks\Conditions\System\Basic\CheckMouseButton.cs" />
+    <Compile Include="Assets\BehaviorBricks\Conditions\System\Perception\CheckHunger.cs" />
     <Compile Include="Assets\BehaviorBricks\Samples\ProgrammersQuickStartGuide\Done\DoneShoot.cs" />
     <Compile Include="Assets\BehaviorBricks\BrickAsset.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\Basic\WaitForSeconds.cs" />
