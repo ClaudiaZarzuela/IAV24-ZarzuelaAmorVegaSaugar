@@ -3,20 +3,21 @@ using UnityEngine;
 
 namespace BBUnity.Conditions
 {
-    [Condition("Perception/HasDetectedSmell")]
-    [Help("Checks if the wolf has detected a scent of an animal")]
+    [Condition("Perception/CheckHunger")]
     public class CheckHunger : GOCondition
     {
-        SmellArea area;
+        EnergyController hunger;
+        [InParam("minHunger")]
+        public float minHunger;
 
         public void OnStart()
         {
-            area = gameObject.GetComponent<SmellArea>();
+            hunger = gameObject.GetComponent<EnergyController>();
         }
         public override bool Check()
         {
-            if (area == null) return false;
-            return area.HasDetectedSmell();
+            if (hunger == null) return false;
+            return hunger.GetHunger() <= minHunger;
         }
     }
 }

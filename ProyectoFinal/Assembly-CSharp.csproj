@@ -117,6 +117,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
     <Compile Include="Assets\Scripts\Agent\Animations\AnimadorAvatar.cs" />
     <Compile Include="Assets\BehaviorBricks\Samples\QuickStartGuide\Done\Resources\MassSpawner.cs" />
+    <Compile Include="Assets\BehaviorBricks\Conditions\System\Perception\CheckEnergy.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\Physics\FromMouseToWorld.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\Destroy.cs" />
