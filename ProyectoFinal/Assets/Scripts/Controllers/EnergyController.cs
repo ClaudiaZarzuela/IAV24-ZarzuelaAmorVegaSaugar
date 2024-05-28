@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,6 +22,7 @@ public class EnergyController : MonoBehaviour
 
     private float elapsedTime = 0;
     private float timeToDecrease = 1;
+
     public void Start()
     {
         if(typeOfAnimal == "Stag")
@@ -33,6 +35,15 @@ public class EnergyController : MonoBehaviour
     public float GetEnergy() { return currentEnergy; }
     public bool IsAlive() {  return stillAlive; }
 
+    public void DecreaseHunger()
+    {
+        currentHunger-=2;
+    }
+
+    public void DecreaseEnergy()
+    {
+        currentEnergy--;
+    }
 
     public void Update()
     {
@@ -41,14 +52,15 @@ public class EnergyController : MonoBehaviour
             if (elapsedTime >= timeToDecrease)
             {
                 elapsedTime = 0;
-                currentHunger--;
-                currentEnergy--;
+                DecreaseHunger();
+                DecreaseEnergy();
             }
             else elapsedTime += Time.deltaTime;
 
             if(currentHunger <= 0 || currentEnergy <= 0)
             {
                 stillAlive = false;
+                Debug.Log("Me he muerto");
             }
         }
     }

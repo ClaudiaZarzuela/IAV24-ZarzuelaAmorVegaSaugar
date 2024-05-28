@@ -1144,9 +1144,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef69ef05dd3d4eb43aac16d1c21679a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currRabitsNum: 0
-  rabbits: []
   typeOfAnimal: Wolf
+  currentHunger: 100
+  maxHunger: 100
+  currentEnergy: 100
+  maxEnergy: 100
 --- !u!1001 &4592251045390094319
 PrefabInstance:
   m_ObjectHideFlags: 0

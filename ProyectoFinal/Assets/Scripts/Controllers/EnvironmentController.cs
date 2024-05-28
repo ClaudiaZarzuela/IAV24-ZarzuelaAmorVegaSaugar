@@ -41,6 +41,8 @@ public class EnvironmentController : MonoBehaviour
     public void RegisterStag(GameObject stag)
     {
         stags.Add(stag);
+
+        Debug.Log(stag);
     }
 
     public void RegisterRabbits(GameObject rabbit)
