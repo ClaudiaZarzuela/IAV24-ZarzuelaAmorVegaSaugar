@@ -14,7 +14,7 @@ public class RabitController : MonoBehaviour
         NavMeshHit hit;
         Transform parent = new GameObject("Rabbits").transform;
 
-        for (int i = AnimalController.Instance.GetRabitsNum(); i < AnimalController.rabitsNum; i++)
+        for (int i = EnvironmentController.Instance.GetRabitsNum(); i < EnvironmentController.rabitsNum; i++)
         {
 
             randomPoint = transform.position + Random.insideUnitSphere * 20;
@@ -29,13 +29,13 @@ public class RabitController : MonoBehaviour
             randomPoint.y = 0.0f;
             GameObject newRabbit = Instantiate(rabbit, randomPoint, Quaternion.identity);
             newRabbit.transform.SetParent(parent);
-            AnimalController.Instance.RegisterRabbits(newRabbit);
+            EnvironmentController.Instance.RegisterRabbits(newRabbit);
         }
     }
 
     public void RabbitDied(GameObject obj)
     {
-        AnimalController.Instance.RemoveRabbit(obj);
+        EnvironmentController.Instance.RemoveRabbit(obj);
         InstanciateRabbits();
     }
 

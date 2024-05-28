@@ -6,8 +6,8 @@ public class EnvironmentController : MonoBehaviour
 {
 
     #region references
-    static private AnimalController _instance;
-    static public AnimalController Instance
+    static private EnvironmentController _instance;
+    static public EnvironmentController Instance
     {
         get
         {
@@ -56,6 +56,12 @@ public class EnvironmentController : MonoBehaviour
     public void RegisterBush(GameObject bush)
     {
         bushes.Add(bush);
+    }
+
+    public void RemoveBush(int bush)
+    {
+        Destroy(bushes[bush]);
+        bushes.RemoveAt(bush);
     }
 
     public int GetRabitsNum() { return rabbits.Count; }

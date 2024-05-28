@@ -24,9 +24,9 @@ public class EnergyController : MonoBehaviour
     public void Start()
     {
         if(typeOfAnimal == "Stag")
-            AnimalController.Instance.RegisterStag(this.gameObject);
+            EnvironmentController.Instance.RegisterStag(this.gameObject);
         else
-            AnimalController.Instance.RegisterWolf(this.gameObject);
+            EnvironmentController.Instance.RegisterWolf(this.gameObject);
     }
 
     public float GetHunger() { return currentHunger; }

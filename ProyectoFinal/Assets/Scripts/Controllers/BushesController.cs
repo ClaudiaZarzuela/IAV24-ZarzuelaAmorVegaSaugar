@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 using UnityEngine.AI;
 using UnityEditor;
 
-public class BushesController : EnvironmentController
+public class BushesController : MonoBehaviour
 {
     public static int bushesNum = 10;
     
@@ -37,18 +37,17 @@ public class BushesController : EnvironmentController
                 {
                     Vector3 pos = new Vector3(x , 0.5f, z);
                     GameObject bush = Instantiate(arbusto, pos, Quaternion.identity);
-                    bushes.Add(bush);
+                    EnvironmentController.Instance.RegisterBush(bush);
                     bush.transform.SetParent(parent);
                     instanciatedBushes++;
                 }
             }
         }
 
-        while (bushes.Count > bushesNum)
+        while (EnvironmentController.Instance.GetBushesNum() > bushesNum)
         {
-            int index = Random.Range(0, bushes.Count);
-            Destroy(bushes[index]);
-            bushes.RemoveAt(index);
+            int index = Random.Range(0, EnvironmentController.Instance.GetBushesNum());
+            EnvironmentController.Instance.RemoveBush(index);
         }
 
         parent.SetPositionAndRotation(centerPoint, Quaternion.identity);
