@@ -32,7 +32,13 @@ public class EnvironmentController : MonoBehaviour
     {
         RESTING = 0, WALKING = 1, RUNNING = 2, DEAD = 3, EAT = 4
     }
-    
+
+    public void RemoveWolf(GameObject wolf)
+    {
+        wolfs.Remove(wolf);
+        Destroy(wolf);
+        GameManager.Instance.ChangeToMainCamera();
+    }
     public void RegisterWolf(GameObject wolf)
     {
         wolfs.Add(wolf);
@@ -41,6 +47,12 @@ public class EnvironmentController : MonoBehaviour
     public void RegisterStag(GameObject stag)
     {
         stags.Add(stag);
+    }
+    public void RemoveStag(GameObject stag)
+    {
+        stags.Remove(stag);
+        Destroy(stag);
+        GameManager.Instance.ChangeToMainCamera();
     }
 
     public void RegisterRabbits(GameObject rabbit)

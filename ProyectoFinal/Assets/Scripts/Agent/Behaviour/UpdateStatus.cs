@@ -10,9 +10,12 @@ public class UpdateStatus : MonoBehaviour
     private Image fillImageHunger;
     [SerializeField]
     private Image fillImageEnergy;
-    
+    [SerializeField]
+    private Button button = null;
     [SerializeField]
     private EnergyController energyController;
+
+    private bool active = true;
 
     public void Start()
     {
@@ -30,12 +33,28 @@ public class UpdateStatus : MonoBehaviour
         fillImageEnergy.fillAmount = energyController.GetEnergy() / 100;
     }
 
+    public void DeactivateButton()
+    {
+        if (button != null)
+        {
+            button.GetComponent<Image>().color = Color.white;
+            button.interactable = false;
+        }
+    }
     public void Update()
     {
-        if (energyController != null)
+        if (active)
         {
-            DecreaseEnergy();
-            DecreaseHunger();
+            if (energyController != null && energyController.IsAlive())
+            {
+                DecreaseEnergy();
+                DecreaseHunger();
+            }
+            else if(energyController == null || !energyController.IsAlive()) 
+            {
+                DeactivateButton();
+                active = false;
+            }
         }
     }
 }

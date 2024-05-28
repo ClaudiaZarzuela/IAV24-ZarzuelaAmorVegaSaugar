@@ -50,11 +50,14 @@ public class GameManager : MonoBehaviour
 
     public void SelectAnimal(GameObject obj)
     {
-        if (currentSelectedAnimal != null)
-            currentSelectedAnimal.SetActive(false);
+        if(obj != null)
+        {
+            if (currentSelectedAnimal != null)
+                currentSelectedAnimal.SetActive(false);
 
-        obj.SetActive(true);
-        currentSelectedAnimal = obj;
+            obj.SetActive(true);
+            currentSelectedAnimal = obj;
+        }
     }
 
     public void SelectButton(Button button)
@@ -73,8 +76,11 @@ public class GameManager : MonoBehaviour
         {
             string name = currentSelectedAnimal.transform.parent.name;
             string[] splitArray = name.Split('_'); 
-            individualCameras[int.Parse(splitArray[1])].SetActive(true);
-            mainCamera.SetActive(false);
+            if (individualCameras[int.Parse(splitArray[1])] != null)
+            {
+                individualCameras[int.Parse(splitArray[1])].SetActive(true);
+                mainCamera.SetActive(false);
+            }
         }
     }
 

@@ -21,6 +21,7 @@ public class EnergyController : MonoBehaviour
     private float maxEnergy = 100;
 
     private float elapsedTime = 0;
+    [SerializeField]
     private float timeToDecrease = 1;
 
     public void Start()
@@ -34,7 +35,13 @@ public class EnergyController : MonoBehaviour
     public float GetHunger() { return currentHunger; }
     public float GetEnergy() { return currentEnergy; }
     public bool IsAlive() {  return stillAlive; }
-
+    public void AnimalDied()
+    {
+        if (typeOfAnimal == "Stag")
+            EnvironmentController.Instance.RemoveStag(this.gameObject);
+        else
+            EnvironmentController.Instance.RemoveWolf(this.gameObject);
+    }
     public void DecreaseHunger()
     {
         currentHunger-=2;
@@ -60,7 +67,7 @@ public class EnergyController : MonoBehaviour
             if(currentHunger <= 0 || currentEnergy <= 0)
             {
                 stillAlive = false;
-                Debug.Log("Me he muerto");
+                AnimalDied();
             }
         }
     }

@@ -8378,6 +8378,10 @@ PrefabInstance:
       propertyPath: blackboard.floatParamsNames.Array.data[0]
       value: speed
       objectReference: {fileID: 0}
+    - target: {fileID: 6793608667195289035, guid: 3e4eadbabd11e0c4185329b5e2b8ae84, type: 3}
+      propertyPath: timeToDecrease
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
