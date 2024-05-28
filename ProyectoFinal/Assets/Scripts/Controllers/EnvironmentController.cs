@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimalController : MonoBehaviour
+public class EnvironmentController : MonoBehaviour
 {
 
     #region references
@@ -26,6 +26,13 @@ public class AnimalController : MonoBehaviour
     private List<GameObject> rabbits = new List<GameObject>();
     private List<GameObject> stags = new List<GameObject>();
     private List<GameObject> wolfs = new List<GameObject>();
+    private List<GameObject> bushes = new List<GameObject>();
+
+    protected enum States
+    {
+        RESTING = 0, WALKING = 1, RUNNING = 2, DEAD = 3, EAT = 4
+    }
+    
     public void RegisterWolf(GameObject wolf)
     {
         wolfs.Add(wolf);
@@ -46,5 +53,12 @@ public class AnimalController : MonoBehaviour
         rabbits.Remove(rabbit);
     }
 
+    public void RegisterBush(GameObject bush)
+    {
+        bushes.Add(bush);
+    }
+
     public int GetRabitsNum() { return rabbits.Count; }
+
+    public int GetBushesNum() { return bushes.Count; }
 }

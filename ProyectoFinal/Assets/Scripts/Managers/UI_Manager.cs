@@ -33,7 +33,7 @@ public class UI_Manager : MonoBehaviour
     public void SetRabits()
     {
         rabitsNum.text = rabitsNumber.ToString();
-        AnimalController.rabitsNum = rabitsNumber;
+        EnvironmentController.rabitsNum = rabitsNumber;
     }
 
     public void AddBushes()

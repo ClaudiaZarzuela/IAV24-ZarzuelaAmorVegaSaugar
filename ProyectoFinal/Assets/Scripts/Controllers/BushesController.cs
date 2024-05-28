@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 using UnityEngine.AI;
 using UnityEditor;
 
-public class BushesController : MonoBehaviour
+public class BushesController : EnvironmentController
 {
     public static int bushesNum = 10;
     
@@ -17,14 +17,12 @@ public class BushesController : MonoBehaviour
     [SerializeField]
     public GameObject area;
 
-    private List<GameObject> arbustos;
     private Vector3 centerPoint = new Vector3(-33.0f, -0.5f, -8.8f);
     private int maxNumBushes = 50;
 
     public void InstanciateBushes() {
 
         Transform parent = new GameObject("Arbustos").transform;
-        arbustos = new List<GameObject>();
         float scaleX = area.transform.localScale.x;
         float scaleZ = area.transform.localScale.z;
         int instanciatedBushes = 0;
@@ -39,18 +37,18 @@ public class BushesController : MonoBehaviour
                 {
                     Vector3 pos = new Vector3(x , 0.5f, z);
                     GameObject bush = Instantiate(arbusto, pos, Quaternion.identity);
-                    arbustos.Add(bush);
+                    bushes.Add(bush);
                     bush.transform.SetParent(parent);
                     instanciatedBushes++;
                 }
             }
         }
 
-        while (arbustos.Count > bushesNum)
+        while (bushes.Count > bushesNum)
         {
-            int index = Random.Range(0, arbustos.Count);
-            Destroy(arbustos[index]);
-            arbustos.RemoveAt(index);
+            int index = Random.Range(0, bushes.Count);
+            Destroy(bushes[index]);
+            bushes.RemoveAt(index);
         }
 
         parent.SetPositionAndRotation(centerPoint, Quaternion.identity);
