@@ -78,7 +78,7 @@ MonoBehaviour:
     until all of them are successful\" cardinality=\"-1\" hasParent=\"True\">\r\n         
     <BehaviorTree id=\"0\" />\r\n          <SequenceNode id=\"17\" />\r\n         
     <RepeatUntilFailed id=\"16\" />\r\n        </data>\r\n      </_data>\r\n    </SequenceNode>\r\n   
-    <ActionNode id=\"8\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"True\"
+    <ActionNode id=\"8\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
     position=\"35.60002 389.3332\" name=\"GameObject/CheckVision\" description=\"\"
     cardinality=\"0\" hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n         
     <ActionNode id=\"8\" />\r\n          <SequenceNode id=\"17\" />\r\n        </data>\r\n     

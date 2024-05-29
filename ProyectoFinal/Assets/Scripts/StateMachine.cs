@@ -7,7 +7,7 @@ using Pada1.BBCore;
 public class StateMachine : MonoBehaviour
 {
     public Blackboard blackboard = null;
-    protected enum States { WANDER, RECHARGE, DIE, GO_HOME, EAT};
+    protected enum States { WANDER, RECHARGE, DIE, GO_HOME, EAT };
 
     private EnergyController energyController = null;
 
@@ -16,81 +16,88 @@ public class StateMachine : MonoBehaviour
     [SerializeField]
     private List<BehaviorExecutor> behaviorExecutorList = null;
 
+    public bool CheckIfRunningAction(int action)
+    {
+        return action == (int)currentState;
+    }
+
+    public void ChangeAction()
+    {
+        behaviorExecutorList[(int)currentState].enabled = true;
+    }
+    public void DeactivateAction(int action)
+    {
+        behaviorExecutorList[action].enabled = false;
+    }
     private void Awake()
     {
-        energyController = GetComponent<EnergyController>();
+        energyController = gameObject.GetComponent<EnergyController>();
         blackboard = new Blackboard(null);
+
+        blackboard.Set("minHunger",typeof(float), 75.0f);
+        blackboard.Set("minEnergy",typeof(float), 25.0f);
     }
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
-        DeactivateAllBehaviours();
     }
-
-    protected void DeactivateAllBehaviours()
+    protected States Wander()
     {
-        foreach (BehaviorExecutor executor in behaviorExecutorList) {
-            executor.enabled = false;
+        if(energyController.GetHunger() <= (float)blackboard.Get("minHunger", typeof(float)))
+        {
+            currentState = States.EAT;
+            //ChangeAction();
+            return States.EAT;
         }
-    }
-
-    private void ChangeState()
-    {
-        DeactivateAllBehaviours();
-        behaviorExecutorList[(int)currentState].enabled = true;
-
-    }
-
-    protected States Wander(float dt)
-    {
-        //DeactivateAllBehaviours();
-        //behaviorExecutorList[(int)currentState].enabled = true;
+        else if (energyController.GetEnergy() <= (float)blackboard.Get("minEnergy", typeof(float)))
+        {
+            currentState = States.GO_HOME;
+            //ChangeAction();
+            return States.GO_HOME;
+        }
         return States.WANDER;
     }
-    protected States Recharge(float dt)
+    protected States Recharge()
     {
     
         return States.RECHARGE;
     }
-    protected States Die(float dt)
+    protected States Die()
+    {
+
+        return States.DIE;
+    }
+    protected States GoHome()
     {
 
         return States.WANDER;
     }
-    protected States GoHome(float dt)
+    protected virtual States Eat()
     {
-
-        return States.WANDER;
-    }
-    protected States Eat(float dt)
-    {
-
         return States.WANDER;
     }
 
-    // Update is called once per frame
-    void Update()
+    protected void Update()
     {
-        switch(currentState)
+        switch (currentState)
         {
             case States.WANDER:
-                currentState = Wander(Time.deltaTime);
+                currentState = Wander();
                 break;
             case States.RECHARGE:
-                currentState = Recharge(Time.deltaTime);
+                currentState = Recharge();
+                break;
+            case States.EAT:
+                currentState = Eat();
+                break;
+            case States.GO_HOME:
+                currentState = GoHome();
+                break;
+            case States.DIE:
+                currentState = Die();
                 break;
 
-        }
-
-        if(Input.GetKeyDown(KeyCode.Alpha1)) { 
-            currentState = States.RECHARGE; 
-            ChangeState(); 
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            currentState = States.WANDER;
-            ChangeState();
         }
 
     }

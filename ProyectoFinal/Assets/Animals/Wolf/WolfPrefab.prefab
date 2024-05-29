@@ -933,6 +933,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1aa80defded74c419f77fa51c7ff91c, type: 3}
+      propertyPath: m_TagString
+      value: Wolf
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -964,6 +968,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f1aa80defded74c419f77fa51c7ff91c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4101837537308595145}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f1aa80defded74c419f77fa51c7ff91c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2472167633384593794}
   m_SourcePrefab: {fileID: 100100000, guid: f1aa80defded74c419f77fa51c7ff91c, type: 3}
 --- !u!4 &3565624732048365348 stripped
 Transform:
@@ -1031,15 +1038,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTasksPerTick: 500
-  behavior: {fileID: 11400000, guid: 968ce1f4bf79a67418c912aec017bd2c, type: 2}
+  behavior: {fileID: 11400000, guid: 5cd7c72c092d86a40974c269f363c67b, type: 2}
   paused: 0
   restartWhenFinished: 0
   blackboard:
     intParams: 
     intParamsNames: []
     intParamsLostDefaultValue: 
-    boolParams: 
-    boolParamsNames: []
+    boolParams: 00
+    boolParamsNames:
+    - finished
     boolParamsLostDefaultValue: 
     floatParams:
     - 2
@@ -1063,8 +1071,10 @@ MonoBehaviour:
     vector2Params: []
     vector2ParamsNames: []
     vector2ParamsLostDefaultValue: 
-    vector3Params: []
-    vector3ParamsNames: []
+    vector3Params:
+    - {x: 0, y: 0, z: 0}
+    vector3ParamsNames:
+    - target
     vector3ParamsLostDefaultValue: 
     vector4Params: []
     vector4ParamsNames: []
@@ -1149,6 +1159,21 @@ MonoBehaviour:
   maxHunger: 100
   currentEnergy: 100
   maxEnergy: 100
+  timeToDecrease: 1
+--- !u!114 &2472167633384593794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4192979217314958750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69a4f37a307950649b7159f2890c9d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviorExecutorList:
+  - {fileID: 8521631983079456520}
 --- !u!1001 &4592251045390094319
 PrefabInstance:
   m_ObjectHideFlags: 0

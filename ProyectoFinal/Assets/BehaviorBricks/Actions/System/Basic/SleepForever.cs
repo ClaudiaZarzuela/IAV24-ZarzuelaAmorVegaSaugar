@@ -1,19 +1,18 @@
-﻿using Pada1.BBCore;           // Code attributes
-using Pada1.BBCore.Tasks;     // TaskStatus
+﻿using Pada1.BBCore;          
+using Pada1.BBCore.Tasks;    
 using Pada1.BBCore.Framework;
-using System.Diagnostics; // BasePrimitiveAction
+using UnityEngine;
 
-namespace BBSamples.PQSG // Programmers Quick Start Guide
+namespace BBUnity.Actions
 {
     /// <summary>
     /// It is an action that inherits from a primitive base action that updates the status of the behavior to suspended, in this case
     /// is suspended by changing the brightness.
     /// </summary>
-    [Action("Samples/ProgQuickStartGuide/SleepForever")]
+    [Action("Basic/SleepForever")]
     [Help("Low-cost infinite action that never ends. It does not consume CPU at all.")]
-
   
-    public class DoneSleepForever : BasePrimitiveAction
+    public class SleepForever : BasePrimitiveAction
     {
 
         // Main class method, invoked by the execution engine.
@@ -22,7 +21,6 @@ namespace BBSamples.PQSG // Programmers Quick Start Guide
         ///<return>Value of the status of the suspended task.</return>
         public override TaskStatus OnUpdate()
         {
-           
             return TaskStatus.SUSPENDED;
         } // OnUpdate
 

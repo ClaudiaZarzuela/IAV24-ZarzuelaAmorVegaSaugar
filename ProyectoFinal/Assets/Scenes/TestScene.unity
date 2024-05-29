@@ -254,7 +254,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4101837537308595145, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
       propertyPath: timeToDecrease
-      value: 100
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4192979217314958750, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
       propertyPath: m_Name
@@ -281,8 +281,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8521631983079456520, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
+      propertyPath: restartWhenFinished
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8521631983079456520, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
       propertyPath: blackboard.floatParams.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8521631983079456520, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
       propertyPath: blackboard.floatParams.Array.data[0]
@@ -294,7 +298,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8521631983079456520, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
       propertyPath: blackboard.floatParamsNames.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8521631983079456520, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
       propertyPath: blackboard.floatParamsNames.Array.data[0]
