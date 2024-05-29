@@ -9,20 +9,18 @@ namespace BBCore.Conditions
     [Condition("Basic/CheckFinished")]
     public class CheckFinished : GOCondition
     {
+        [InParam("Action")]
+        private int action;
         StateMachine stateMachine = null;
         public override bool Check()
         {
-            if (gameObject.tag == "Wolf")
-            {
-                stateMachine = gameObject.GetComponent<WolfSM>();
-            }
-            else
-                Debug.Log("Habra que hacerlo");
+            Debug.Log(action);
+            stateMachine = gameObject.GetComponent<StateMachine>();
 
             bool finished = !stateMachine.CheckIfRunningAction(0);
             if (finished)
             {
-                stateMachine.DeactivateAction(0);
+                stateMachine.DeactivateAction(action);
             }
             return finished;
         }

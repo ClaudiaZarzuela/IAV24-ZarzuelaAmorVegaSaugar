@@ -18,12 +18,16 @@ public class StateMachine : MonoBehaviour
 
     public bool CheckIfRunningAction(int action)
     {
+        //Debug.Log((States)action);
         return action == (int)currentState;
     }
 
     public void ChangeAction()
     {
+        Debug.Log(currentState);
+        Debug.Log(behaviorExecutorList[(int)currentState].behavior.name);
         behaviorExecutorList[(int)currentState].enabled = true;
+        Debug.Log(behaviorExecutorList[(int)currentState].enabled);
     }
     public void DeactivateAction(int action)
     {
@@ -35,7 +39,7 @@ public class StateMachine : MonoBehaviour
         blackboard = new Blackboard(null);
 
         blackboard.Set("minHunger",typeof(float), 75.0f);
-        blackboard.Set("minEnergy",typeof(float), 25.0f);
+        blackboard.Set("minEnergy",typeof(float), 95.0f);
     }
 
     // Start is called before the first frame update
@@ -52,8 +56,9 @@ public class StateMachine : MonoBehaviour
         }
         else if (energyController.GetEnergy() <= (float)blackboard.Get("minEnergy", typeof(float)))
         {
+            Debug.Log("Buenas");
             currentState = States.GO_HOME;
-            //ChangeAction();
+            ChangeAction();
             return States.GO_HOME;
         }
         return States.WANDER;
@@ -68,10 +73,8 @@ public class StateMachine : MonoBehaviour
 
         return States.DIE;
     }
-    protected States GoHome()
+    protected void GoHome()
     {
-
-        return States.WANDER;
     }
     protected virtual States Eat()
     {
@@ -92,7 +95,7 @@ public class StateMachine : MonoBehaviour
                 currentState = Eat();
                 break;
             case States.GO_HOME:
-                currentState = GoHome();
+                GoHome();
                 break;
             case States.DIE:
                 currentState = Die();

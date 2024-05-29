@@ -80,7 +80,7 @@ public class EnergyController : MonoBehaviour
             if (elapsedTime >= timeToDecrease)
             {
                 elapsedTime = 0;
-                DecreaseHunger();
+                //DecreaseHunger();
                 DecreaseEnergy();
             }
             else elapsedTime += Time.deltaTime;
