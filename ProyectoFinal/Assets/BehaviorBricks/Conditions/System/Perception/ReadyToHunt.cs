@@ -15,6 +15,7 @@ namespace BBUnity.Conditions
             EnergyController hunger = gameObject.GetComponent<EnergyController>();
 
             if (hunger == null || area == null) return false;
+
             return area.HasDetectedSmell() && hunger.GetHunger() <= minHunger;
         }
     }

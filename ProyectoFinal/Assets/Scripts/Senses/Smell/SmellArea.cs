@@ -8,6 +8,10 @@ public class SmellArea : MonoBehaviour
     private float elapsedTime;
 
     public bool HasDetectedSmell() { return listScent.Count > 0; }
+    public GameObject GetPray() {
+        if (listScent.Count > 0) return listScent[0].GetOriginator();
+        else return null;
+    }
     private void OnTriggerEnter(Collider other)
     {
         Scent otherScent = other.gameObject.GetComponent<Scent>();
