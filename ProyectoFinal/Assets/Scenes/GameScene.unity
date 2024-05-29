@@ -11115,7 +11115,19 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4072448683388083086, guid: 3e4eadbabd11e0c4185329b5e2b8ae84, type: 3}
+      propertyPath: behavior
+      value: 
+      objectReference: {fileID: 11400000, guid: 5cd7c72c092d86a40974c269f363c67b, type: 2}
+    - target: {fileID: 4072448683388083086, guid: 3e4eadbabd11e0c4185329b5e2b8ae84, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4072448683388083086, guid: 3e4eadbabd11e0c4185329b5e2b8ae84, type: 3}
       propertyPath: blackboard.floatParams.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4072448683388083086, guid: 3e4eadbabd11e0c4185329b5e2b8ae84, type: 3}
+      propertyPath: blackboard.vector3Params.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4072448683388083086, guid: 3e4eadbabd11e0c4185329b5e2b8ae84, type: 3}
@@ -11127,16 +11139,30 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4072448683388083086, guid: 3e4eadbabd11e0c4185329b5e2b8ae84, type: 3}
+      propertyPath: blackboard.vector3ParamsNames.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4072448683388083086, guid: 3e4eadbabd11e0c4185329b5e2b8ae84, type: 3}
       propertyPath: blackboard.floatParamsNames.Array.data[0]
       value: speed
+      objectReference: {fileID: 0}
+    - target: {fileID: 4072448683388083086, guid: 3e4eadbabd11e0c4185329b5e2b8ae84, type: 3}
+      propertyPath: blackboard.vector3ParamsNames.Array.data[0]
+      value: target
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 352340780192250796, guid: 3e4eadbabd11e0c4185329b5e2b8ae84, type: 3}
+      insertIndex: 6
+      addedObject: {fileID: 2069212737}
+    - targetCorrespondingSourceObject: {fileID: 352340780192250796, guid: 3e4eadbabd11e0c4185329b5e2b8ae84, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1305407893}
+    - targetCorrespondingSourceObject: {fileID: 352340780192250796, guid: 3e4eadbabd11e0c4185329b5e2b8ae84, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2069212731}
   m_SourcePrefab: {fileID: 100100000, guid: 3e4eadbabd11e0c4185329b5e2b8ae84, type: 3}
 --- !u!114 &2069212730 stripped
 MonoBehaviour:
@@ -11149,6 +11175,96 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef69ef05dd3d4eb43aac16d1c21679a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2069212731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906824096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4616f0a5b1c3ec4d8aabd55bb0e1685, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviorExecutorList:
+  - {fileID: 2069212732}
+  - {fileID: 2069212737}
+--- !u!114 &2069212732 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4072448683388083086, guid: 3e4eadbabd11e0c4185329b5e2b8ae84, type: 3}
+  m_PrefabInstance: {fileID: 2069212729}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906824096}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 422fb6956201c7944ae2113a1a53b0b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2069212737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906824096}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 422fb6956201c7944ae2113a1a53b0b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxTasksPerTick: 500
+  behavior: {fileID: 11400000, guid: 6767ad97359211242a68e573e676b3a9, type: 2}
+  paused: 0
+  restartWhenFinished: 0
+  blackboard:
+    intParams: 
+    intParamsNames: []
+    intParamsLostDefaultValue: 
+    boolParams: 
+    boolParamsNames: []
+    boolParamsLostDefaultValue: 
+    floatParams: []
+    floatParamsNames: []
+    floatParamsLostDefaultValue: 
+    stringParams: []
+    stringParamsNames: []
+    stringParamsLostDefaultValue: 
+    colorParams: []
+    colorParamsNames: []
+    colorParamsLostDefaultValue: 
+    objectParams: []
+    objectParamsNames: []
+    objectParamsLostDefaultValue: 
+    layerMaskParams: []
+    layerMaskParamsNames: []
+    layerMaskParamsLostDefaultValue: 
+    enumParamsNames: []
+    enumParamsLostDefaultValue: 
+    vector2Params: []
+    vector2ParamsNames: []
+    vector2ParamsLostDefaultValue: 
+    vector3Params: []
+    vector3ParamsNames: []
+    vector3ParamsLostDefaultValue: 
+    vector4Params: []
+    vector4ParamsNames: []
+    vector4ParamsLostDefaultValue: 
+    rectParams: []
+    rectParamsNames: []
+    rectParamsLostDefaultValue: 
+    animationCurveParams: []
+    animationCurveParamsNames: []
+    animationCurveParamsLostDefaultValue: 
+    boundsParams: []
+    boundsParamsNames: []
+    boundsParamsLostDefaultValue: 
+    gradientParams: []
+    gradientParamsNames: []
+    gradientParamsLostDefaultValue: 
+    quaternionParams: []
+    quaternionParamsNames: []
+    quaternionParamsLostDefaultValue: 
 --- !u!1 &2097380214
 GameObject:
   m_ObjectHideFlags: 0
