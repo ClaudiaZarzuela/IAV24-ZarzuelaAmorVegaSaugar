@@ -232,7 +232,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fad8d5f1fda903408f3f374d50a4af8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eatingPoint: {fileID: 7172725265773102153}
   bushMesh: {fileID: 2711007634474702403}
   bushBerriesMesh: {fileID: 1894925532418342187}
 --- !u!135 &1548592114539308887

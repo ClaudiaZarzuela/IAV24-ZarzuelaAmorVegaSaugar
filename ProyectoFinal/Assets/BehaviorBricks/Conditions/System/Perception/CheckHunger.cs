@@ -10,12 +10,9 @@ namespace BBUnity.Conditions
         [InParam("minHunger")]
         public float minHunger;
 
-        public void OnStart()
-        {
-            hunger = gameObject.GetComponent<EnergyController>();
-        }
         public override bool Check()
         {
+            hunger = gameObject.GetComponent<EnergyController>();
             if (hunger == null) return false;
             return hunger.GetHunger() <= minHunger;
         }

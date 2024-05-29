@@ -76,6 +76,11 @@ public class EnvironmentController : MonoBehaviour
         bushes.RemoveAt(bush);
     }
 
+    public List<GameObject> GetBushesList()
+    {
+        return bushes;
+    }
+
     public int GetRabitsNum() { return rabbits.Count; }
 
     public int GetBushesNum() { return bushes.Count; }

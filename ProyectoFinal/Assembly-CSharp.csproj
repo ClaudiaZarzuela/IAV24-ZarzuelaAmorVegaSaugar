@@ -89,6 +89,7 @@
     <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\GetComponent.cs" />
     <Compile Include="Assets\Scripts\Agent\Behaviour\Wander.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
+    <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\EatBush.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
@@ -123,7 +124,6 @@
     <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\Destroy.cs" />
     <Compile Include="Assets\Scripts\Agent\Behaviour\Pursue.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
-    <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\ClosestGameObjectFromList.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\Basic\SetVector3.cs" />
     <Compile Include="Assets\BehaviorBricks\Conditions\System\Basic\CheckBool.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\FindGameObjectByName.cs" />
@@ -138,6 +138,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
     <Compile Include="Assets\Scripts\Managers\Scene_Manager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
+    <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\FindClosestBush.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\LookAt.cs" />
     <Compile Include="Assets\BehaviorBricks\BehaviorExecutor.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\Instantiate.cs" />
