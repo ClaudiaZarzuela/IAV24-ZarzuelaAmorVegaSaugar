@@ -26,6 +26,7 @@ public class VisionSensor : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(sightOrigin, dir, out hit, Mathf.Infinity))
             {
+                //Hola
                 //Debug.DrawRay(sightOrigin, hit.transform.position - sightOrigin, Color.green, 10.0f);
                 if (hit.collider.gameObject == target)
                 {
