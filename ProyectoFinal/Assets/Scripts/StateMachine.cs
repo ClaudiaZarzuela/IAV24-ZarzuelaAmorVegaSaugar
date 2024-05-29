@@ -18,16 +18,12 @@ public class StateMachine : MonoBehaviour
 
     public bool CheckIfRunningAction(int action)
     {
-        //Debug.Log((States)action);
         return action == (int)currentState;
     }
 
     public void ChangeAction()
     {
-        Debug.Log(currentState);
-        Debug.Log(behaviorExecutorList[(int)currentState].behavior.name);
         behaviorExecutorList[(int)currentState].enabled = true;
-        Debug.Log(behaviorExecutorList[(int)currentState].enabled);
     }
     public void DeactivateAction(int action)
     {

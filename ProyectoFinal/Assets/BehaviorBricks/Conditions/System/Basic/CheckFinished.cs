@@ -14,10 +14,9 @@ namespace BBCore.Conditions
         StateMachine stateMachine = null;
         public override bool Check()
         {
-            Debug.Log(action);
             stateMachine = gameObject.GetComponent<StateMachine>();
 
-            bool finished = !stateMachine.CheckIfRunningAction(0);
+            bool finished = !stateMachine.CheckIfRunningAction(action);
             if (finished)
             {
                 stateMachine.DeactivateAction(action);
