@@ -1,49 +1,46 @@
-﻿using Pada1.BBCore.Tasks;
+using Pada1.BBCore.Tasks;
 using Pada1.BBCore;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace BBUnity.Actions
 {
-    /// <summary>
-    /// It is an action to move towards the given goal using a NavMeshAgent.
-    /// </summary>
-    [Action("Navigation/MoveToGameObject")]
-    [Help("Moves the game object towards a given target by using a NavMeshAgent")]
-    public class MoveToGameObject : GOAction
+
+    [Action("GameObject/Track")]
+    public class Track : GOAction
     {
-        ///<value>Input target game object towards this game object will be moved Parameter.</value>
-        [InParam("target")]
-        [Help("Target game object towards this game object will be moved")]
         public GameObject target;
-
         private UnityEngine.AI.NavMeshAgent navAgent;
-
         private Transform targetTransform;
+        SmellArea area;
 
         /// <summary>Initialization Method of MoveToGameObject.</summary>
         /// <remarks>Check if GameObject object exists and NavMeshAgent, if there is no NavMeshAgent, the default one is added.</remarks>
         public override void OnStart()
         {
-            Debug.Log("Estoy atacando");
-            if (target == null)
+            Debug.Log("Estoy trackeando");
+            area = gameObject.GetComponent<SmellArea>();
+            if(area == null)
             {
-                Debug.LogError("The movement target of this game object is null", gameObject);
+                Debug.LogError("No hay SmellArea");
                 return;
-            }
-            targetTransform = target.transform;
 
+            }
+            target = area.GetScent();
+            targetTransform = target.transform;
             navAgent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
             if (navAgent == null)
             {
                 Debug.LogWarning("The " + gameObject.name + " game object does not have a Nav Mesh Agent component to navigate. One with default values has been added", gameObject);
                 navAgent = gameObject.AddComponent<UnityEngine.AI.NavMeshAgent>();
             }
-			navAgent.SetDestination(targetTransform.position);
-            
+            navAgent.SetDestination(targetTransform.position);
+
             #if UNITY_5_6_OR_NEWER
-                navAgent.isStopped = false;
+               navAgent.isStopped = false;
             #else
-                navAgent.Resume();
+               navAgent.Resume();
             #endif
         }
 
@@ -65,13 +62,13 @@ namespace BBUnity.Actions
         public override void OnAbort()
         {
 
-        #if UNITY_5_6_OR_NEWER
-            if(navAgent!=null)
+#if UNITY_5_6_OR_NEWER
+            if (navAgent != null)
                 navAgent.isStopped = true;
-        #else
+#else
             if (navAgent!=null)
                 navAgent.Stop();
-        #endif
+#endif
 
         }
     }

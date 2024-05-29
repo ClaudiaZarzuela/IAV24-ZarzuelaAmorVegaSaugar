@@ -4,12 +4,17 @@ using System.Collections.Generic;
 public class SmellArea : MonoBehaviour
 {
     private List<Scent> listScent = new List<Scent>();
-    private float maxTime = 2.0f;
+    private float maxTime = 1.0f;
     private float elapsedTime;
 
     public bool HasDetectedSmell() { return listScent.Count > 0; }
     public GameObject GetPray() {
         if (listScent.Count > 0) return listScent[0].GetOriginator();
+        else return null;
+    }
+    public GameObject GetScent()
+    {
+        if (listScent.Count > 0) return listScent[0].gameObject;
         else return null;
     }
     private void OnTriggerEnter(Collider other)
