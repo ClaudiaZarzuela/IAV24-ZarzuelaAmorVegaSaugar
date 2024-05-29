@@ -43,8 +43,8 @@ MonoBehaviour:
     id=\"4\" />\r\n        </data>\r\n      </_data>\r\n    </ConditionNode>\r\n   
     <ConditionEvalNode id=\"0\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
     selected=\"False\" position=\"0 0\" name=\"AlwaysTrue\" description=\"Eval\"
-    cardinality=\"1\" hasParent=\"False\">\r\n          <ConditionEvalNode id=\"0\"
-    />\r\n        </data>\r\n      </_data>\r\n    </ConditionEvalNode>\r\n  </editorInfo>\r\n</BehaviorBricks>"
+    cardinality=\"1\" hasParent=\"False\">\r\n          <BehaviorTree id=\"0\" />\r\n       
+    </data>\r\n      </_data>\r\n    </ConditionEvalNode>\r\n  </editorInfo>\r\n</BehaviorBricks>"
   zoom: 0.6
   subslist: []
   _guid: 71390df0f2d07b04599b7d0ec5fddc5b
