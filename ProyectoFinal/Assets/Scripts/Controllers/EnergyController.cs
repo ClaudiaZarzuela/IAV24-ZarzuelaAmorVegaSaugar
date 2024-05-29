@@ -52,6 +52,27 @@ public class EnergyController : MonoBehaviour
         currentEnergy--;
     }
 
+    public void RestoreMaxHunger()
+    {
+        currentHunger = maxHunger;
+    }
+    public void RestoreHunger(int h)
+    {
+        currentHunger += h;
+        if (currentHunger > maxHunger) currentHunger = maxHunger;
+    }
+
+    public void RestoreMaxEnergy()
+    {
+        currentEnergy = maxEnergy;
+    }
+
+    public void RestoreEnergy(int e)
+    {
+        currentEnergy += e;
+        if (currentEnergy > maxEnergy) currentEnergy = maxEnergy;
+    }
+
     public void Update()
     {
         if (stillAlive)

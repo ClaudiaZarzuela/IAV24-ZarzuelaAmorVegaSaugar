@@ -38,10 +38,16 @@ namespace BBUnity.Actions
                 Debug.LogWarning("The " + gameObject.name + " game object does not have a Nav Mesh Agent component to navigate. One with default values has been added", gameObject);
                 navAgent = gameObject.AddComponent<UnityEngine.AI.NavMeshAgent>();
             }
-			navAgent.SetDestination(targetTransform.position);
-            
-            #if UNITY_5_6_OR_NEWER
-                navAgent.isStopped = false;
+
+            if (target.GetComponent<BushBehaviour>() != null)
+            {
+                navAgent.stoppingDistance = 1;
+            }
+            else navAgent.SetDestination(targetTransform.position);
+
+
+#if UNITY_5_6_OR_NEWER
+            navAgent.isStopped = false;
             #else
                 navAgent.Resume();
             #endif
