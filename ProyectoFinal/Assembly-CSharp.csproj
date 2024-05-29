@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Agent\Behaviour\Separacion.cs" />
+    <Compile Include="Assets\BehaviorBricks\Conditions\System\Perception\ReadyToHunt.cs" />
     <Compile Include="Assets\Scripts\Agent\Animations\SeguimientoCamara.cs" />
     <Compile Include="Assets\Scripts\Agent\Behaviour\Seek.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\Navigation\MoveToPosition.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\ClosestGameObjectWithTag.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
+    <Compile Include="Assets\BehaviorBricks\Conditions\System\Perception\CheckVision.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\Vector3\GetRandomInArea.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\Basic\SetFloat.cs" />
@@ -85,13 +87,13 @@
     <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\SendMessage.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
     <Compile Include="Assets\Scripts\Smell\Scent.cs" />
-    <Compile Include="Assets\BehaviorBricks\Conditions\System\Perception\HasDetectedSmell.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\GetComponent.cs" />
     <Compile Include="Assets\Scripts\Agent\Behaviour\Wander.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\EatBush.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
+    <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\ClosestBushFromList.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
     <Compile Include="Assets\BehaviorBricks\Conditions\System\Perception\IsTargetCloseAndInSight.cs" />
     <Compile Include="Assets\Scripts\Managers\UI_Manager.cs" />

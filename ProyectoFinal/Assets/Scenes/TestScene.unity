@@ -278,7 +278,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8521631983079456520, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
       propertyPath: blackboard.floatParams.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8521631983079456520, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
       propertyPath: blackboard.floatParams.Array.data[0]
@@ -286,14 +286,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8521631983079456520, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
       propertyPath: blackboard.floatParamsNames.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8521631983079456520, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
       propertyPath: blackboard.floatParamsNames.Array.data[0]
       value: speed
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4101837537308595145, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

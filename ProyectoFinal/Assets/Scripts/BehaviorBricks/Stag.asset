@@ -91,7 +91,7 @@ MonoBehaviour:
     </runtimeInfo>\r\n  <editorInfo>\r\n    <BehaviorTree id=\"4\" _removeIfClosed=\"False\">\r\n     
     <_rootList />\r\n      <_nodes>\r\n        <nodes />\r\n      </_nodes>\r\n   
     </BehaviorTree>\r\n  </editorInfo>\r\n</BehaviorBricks>"
-  zoom: 0.9
+  zoom: 0.5
   subslist:
   - {fileID: 11400000, guid: 5cd7c72c092d86a40974c269f363c67b, type: 2}
   - {fileID: 11400000, guid: 6767ad97359211242a68e573e676b3a9, type: 2}

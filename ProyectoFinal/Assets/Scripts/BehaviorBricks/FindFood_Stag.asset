@@ -67,6 +67,6 @@ MonoBehaviour:
     description=\"Plays an animation in the game object\" cardinality=\"0\" hasParent=\"True\">\r\n         
     <BehaviorTree id=\"0\" />\r\n          <ActionNode id=\"5\" />\r\n          <SequenceNode
     id=\"1\" />\r\n        </data>\r\n      </_data>\r\n    </ActionNode>\r\n  </editorInfo>\r\n</BehaviorBricks>"
-  zoom: 0.8
+  zoom: 0.5
   subslist: []
   _guid: 6767ad97359211242a68e573e676b3a9
