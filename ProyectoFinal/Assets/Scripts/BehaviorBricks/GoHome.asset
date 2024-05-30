@@ -15,7 +15,7 @@ MonoBehaviour:
   brickName: Assets/Scripts/BehaviorBricks/GoHome.asset
   xml: "\uFEFF<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<BehaviorBricks xmlns:ref=\"urn:padaone\"
     version=\"1.0\">\r\n  <BehaviorTree id=\"0\" />\r\n  <runtimeInfo>\r\n    <BehaviorTree
-    id=\"0\" guid=\"76279084e05c690439b386092f50b83b\" nextId=\"11\">\r\n      <root>\r\n       
+    id=\"0\" guid=\"76279084e05c690439b386092f50b83b\" nextId=\"12\">\r\n      <root>\r\n       
     <PrioritySelectorNode id=\"1\" />\r\n      </root>\r\n      <inputParams>\r\n       
     <inputValues>\r\n          <entry name=\"target\" type=\"UnityEngine.GameObject\"
     isBlackboard=\"False\" />\r\n          <entry name=\"Action\" type=\"System.Int32\"
@@ -38,12 +38,18 @@ MonoBehaviour:
     id=\"7\" policy=\"WAIT_UNTIL_FALSE_AND_FAIL\" name=\"AlwaysTrue\">\r\n      <inputParams
     />\r\n      <outputParams />\r\n      <localParams />\r\n    </ConditionEvalNode>\r\n   
     <SequenceNode id=\"6\">\r\n      <children>\r\n        <elem>\r\n          <ActionNode
-    id=\"10\" />\r\n        </elem>\r\n      </children>\r\n      <inputParams />\r\n     
+    id=\"10\" />\r\n        </elem>\r\n        <elem>\r\n          <ConditionNode
+    id=\"11\" />\r\n        </elem>\r\n      </children>\r\n      <inputParams />\r\n     
     <outputParams />\r\n      <localParams />\r\n    </SequenceNode>\r\n    <ActionNode
     id=\"10\" action=\"Navigation/MoveToGameObject\">\r\n      <inputParams>\r\n       
     <inputValues>\r\n          <entry name=\"target\" type=\"UnityEngine.GameObject\"
     isBlackboard=\"True\" blackboard=\"target\" />\r\n        </inputValues>\r\n     
-    </inputParams>\r\n      <outputParams />\r\n      <localParams />\r\n    </ActionNode>\r\n 
+    </inputParams>\r\n      <outputParams />\r\n      <localParams />\r\n    </ActionNode>\r\n   
+    <ConditionNode id=\"11\">\r\n      <condition>\r\n        <ConditionEvalNode
+    id=\"0\" />\r\n      </condition>\r\n      <inputParams />\r\n      <outputParams
+    />\r\n      <localParams />\r\n    </ConditionNode>\r\n    <ConditionEvalNode
+    id=\"0\" policy=\"ATOMIC_CHECK\" name=\"Perception/CheckEnergy\">\r\n      <inputParams
+    />\r\n      <outputParams />\r\n      <localParams />\r\n    </ConditionEvalNode>\r\n 
     </runtimeInfo>\r\n  <editorInfo>\r\n    <BehaviorTree id=\"0\" _name=\"GoHome\"
     _description=\"\" _removeIfClosed=\"False\">\r\n      <_rootList>\r\n       
     <elem>\r\n          <PrioritySelectorNode id=\"1\" />\r\n        </elem>\r\n       
@@ -51,40 +57,49 @@ MonoBehaviour:
     <ConditionEvalNode id=\"3\" />\r\n        </elem>\r\n        <elem>\r\n         
     <SequenceNode id=\"6\" />\r\n        </elem>\r\n        <elem>\r\n          <ConditionEvalNode
     id=\"7\" />\r\n        </elem>\r\n        <elem>\r\n          <ActionNode id=\"10\"
+    />\r\n        </elem>\r\n        <elem>\r\n          <ConditionNode id=\"11\"
     />\r\n        </elem>\r\n      </_rootList>\r\n      <_nodes>\r\n        <nodes>\r\n         
     <PrioritySelectorNode id=\"1\" />\r\n          <ActionNode id=\"2\" />\r\n         
     <ConditionEvalNode id=\"3\" />\r\n          <SequenceNode id=\"6\" />\r\n         
-    <ConditionEvalNode id=\"7\" />\r\n          <ActionNode id=\"10\" />\r\n       
-    </nodes>\r\n      </_nodes>\r\n    </BehaviorTree>\r\n    <PrioritySelectorNode
-    id=\"1\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"151.2672 117.7334\" name=\"Priority Selector\" description=\"\" cardinality=\"1\"
-    hasParent=\"False\">\r\n          <BehaviorTree id=\"0\" />\r\n          <PrioritySelectorNode
-    id=\"1\" />\r\n        </data>\r\n      </_data>\r\n    </PrioritySelectorNode>\r\n   
-    <ConditionEvalNode id=\"3\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
-    selected=\"False\" position=\"-30.59946 283.5999\" name=\"Basic/CheckFinished\"
+    <ConditionEvalNode id=\"7\" />\r\n          <ActionNode id=\"10\" />\r\n         
+    <ConditionNode id=\"11\" />\r\n        </nodes>\r\n      </_nodes>\r\n    </BehaviorTree>\r\n   
+    <PrioritySelectorNode id=\"1\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
+    selected=\"True\" position=\"-21.53279 119.3334\" name=\"Priority Selector\"
+    description=\"\" cardinality=\"1\" hasParent=\"False\">\r\n          <BehaviorTree
+    id=\"0\" />\r\n          <PrioritySelectorNode id=\"1\" />\r\n        </data>\r\n     
+    </_data>\r\n    </PrioritySelectorNode>\r\n    <ConditionEvalNode id=\"3\">\r\n     
+    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"-203.3994
+    285.2\" name=\"Basic/CheckFinished\" description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\r\n         
+    <BehaviorTree id=\"0\" />\r\n          <ConditionEvalNode id=\"3\" />\r\n         
+    <PrioritySelectorNode id=\"1\" />\r\n        </data>\r\n      </_data>\r\n   
+    </ConditionEvalNode>\r\n    <ActionNode id=\"2\">\r\n      <_data>\r\n       
+    <data breakpoint=\"0\" selected=\"False\" position=\"-203.3994 285.2\" name=\"Basic/SleepForever\"
+    description=\"Low-cost infinite action that never ends. It does not consume CPU
+    at all.\" cardinality=\"0\" hasParent=\"False\">\r\n          <BehaviorTree id=\"0\"
+    />\r\n          <ActionNode id=\"2\" />\r\n        </data>\r\n      </_data>\r\n   
+    </ActionNode>\r\n    <ConditionEvalNode id=\"7\">\r\n      <_data>\r\n       
+    <data breakpoint=\"0\" selected=\"False\" position=\"222.4675 283.3333\" name=\"AlwaysTrue\"
     description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\r\n          <BehaviorTree
-    id=\"0\" />\r\n          <ConditionEvalNode id=\"3\" />\r\n          <PrioritySelectorNode
+    id=\"0\" />\r\n          <ConditionEvalNode id=\"7\" />\r\n          <PrioritySelectorNode
     id=\"1\" />\r\n        </data>\r\n      </_data>\r\n    </ConditionEvalNode>\r\n   
-    <ActionNode id=\"2\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"-30.59946 283.5999\" name=\"Basic/SleepForever\" description=\"Low-cost
-    infinite action that never ends. It does not consume CPU at all.\" cardinality=\"0\"
-    hasParent=\"False\">\r\n          <BehaviorTree id=\"0\" />\r\n          <ActionNode
-    id=\"2\" />\r\n        </data>\r\n      </_data>\r\n    </ActionNode>\r\n   
-    <ConditionEvalNode id=\"7\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
-    selected=\"False\" position=\"395.2675 281.7333\" name=\"AlwaysTrue\" description=\"Eval\"
-    cardinality=\"1\" hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n         
-    <ConditionEvalNode id=\"7\" />\r\n          <PrioritySelectorNode id=\"1\" />\r\n       
-    </data>\r\n      </_data>\r\n    </ConditionEvalNode>\r\n    <SequenceNode id=\"6\">\r\n     
-    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"395.2675
-    281.7333\" name=\"Sequence\" description=\"Executes all its children in sequence
-    until all of them are successful\" cardinality=\"-1\" hasParent=\"False\">\r\n         
+    <SequenceNode id=\"6\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
+    position=\"222.4675 283.3333\" name=\"Sequence\" description=\"Executes all its
+    children in sequence until all of them are successful\" cardinality=\"-1\" hasParent=\"False\">\r\n         
     <BehaviorTree id=\"0\" />\r\n          <SequenceNode id=\"6\" />\r\n        </data>\r\n     
     </_data>\r\n    </SequenceNode>\r\n    <ActionNode id=\"10\">\r\n      <_data>\r\n       
-    <data breakpoint=\"0\" selected=\"True\" position=\"361.6 491.2\" name=\"Navigation/MoveToGameObject\"
+    <data breakpoint=\"0\" selected=\"False\" position=\"12.80002 486.4\" name=\"Navigation/MoveToGameObject\"
     description=\"Moves the game object towards a given target by using a NavMeshAgent\"
     cardinality=\"0\" hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n         
     <ActionNode id=\"10\" />\r\n          <SequenceNode id=\"6\" />\r\n        </data>\r\n     
-    </_data>\r\n    </ActionNode>\r\n  </editorInfo>\r\n</BehaviorBricks>"
+    </_data>\r\n    </ActionNode>\r\n    <ConditionNode id=\"11\">\r\n      <_data>\r\n       
+    <data breakpoint=\"0\" selected=\"False\" position=\"324.8 483.2\" name=\"Perception/CheckEnergy\"
+    description=\"\" cardinality=\"0\" hasParent=\"True\">\r\n          <BehaviorTree
+    id=\"0\" />\r\n          <ConditionNode id=\"11\" />\r\n          <SequenceNode
+    id=\"6\" />\r\n        </data>\r\n      </_data>\r\n    </ConditionNode>\r\n   
+    <ConditionEvalNode id=\"0\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
+    selected=\"False\" position=\"0 0\" name=\"AlwaysTrue\" description=\"Eval\"
+    cardinality=\"1\" hasParent=\"False\">\r\n          <ConditionEvalNode id=\"0\"
+    />\r\n        </data>\r\n      </_data>\r\n    </ConditionEvalNode>\r\n  </editorInfo>\r\n</BehaviorBricks>"
   zoom: 0.5
   subslist: []
   _guid: 76279084e05c690439b386092f50b83b

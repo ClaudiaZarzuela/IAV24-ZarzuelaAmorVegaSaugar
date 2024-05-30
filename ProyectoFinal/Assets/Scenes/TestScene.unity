@@ -213,6 +213,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 430092054}
     m_Modifications:
     - target: {fileID: 2472167633384593794, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
+      propertyPath: wolfHouse
+      value: 
+      objectReference: {fileID: 665957682}
+    - target: {fileID: 2472167633384593794, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
       propertyPath: behaviorExecutorList.Array.size
       value: 5
       objectReference: {fileID: 0}
@@ -9026,10 +9030,8 @@ MonoBehaviour:
     vector2Params: []
     vector2ParamsNames: []
     vector2ParamsLostDefaultValue: 
-    vector3Params:
-    - {x: 0, y: 0, z: 0}
-    vector3ParamsNames:
-    - target
+    vector3Params: []
+    vector3ParamsNames: []
     vector3ParamsLostDefaultValue: 
     vector4Params: []
     vector4ParamsNames: []

@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class WolfSM : StateMachine
 {
+    [SerializeField]
+    private GameObject wolfHouse = null;
+
+    private bool assignHouse = false;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -20,5 +25,16 @@ public class WolfSM : StateMachine
     {
         Debug.Log("Comiendo");
         return States.DIE;
+    }
+
+    protected override void GoHome()
+    {
+        if (!assignHouse)
+        {
+            assignHouse = true;
+            behaviorExecutorList[(int)currentState].SetBehaviorParam("target", wolfHouse);
+        }
+
+
     }
 }

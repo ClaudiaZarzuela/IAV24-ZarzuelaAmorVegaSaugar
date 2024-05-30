@@ -14,7 +14,7 @@ public class StateMachine : MonoBehaviour
     protected States currentState = States.WANDER;
 
     [SerializeField]
-    private List<BehaviorExecutor> behaviorExecutorList = null;
+    protected List<BehaviorExecutor> behaviorExecutorList = null;
 
     public bool CheckIfRunningAction(int action)
     {
@@ -69,7 +69,7 @@ public class StateMachine : MonoBehaviour
 
         return States.DIE;
     }
-    protected void GoHome()
+    protected virtual void GoHome()
     {
     }
     protected virtual States Eat()
