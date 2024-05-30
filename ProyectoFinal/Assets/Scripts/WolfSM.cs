@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WolfSM : StateMachine
 {
+    private Eat eatComponent = null;
     [SerializeField]
     private GameObject wolfHouse = null;
 
@@ -12,6 +13,7 @@ public class WolfSM : StateMachine
     // Start is called before the first frame update
     private void Start()
     {
+        eatComponent = gameObject.GetComponent<Eat>();
         base.Start();
     }
 
@@ -21,10 +23,21 @@ public class WolfSM : StateMachine
         base.Update();   
     }
 
-    protected override States Eat()
+    protected override void Eat()
     {
-        Debug.Log("Comiendo");
-        return States.DIE;
+        Debug.Log("Empezamos");
+        if (eatComponent.DetectedTrace())
+        {
+            Debug.Log("Primero");
+            eatComponent.StartBehavior();
+            eatComponent.active = true;
+        }
+        else if (eatComponent.IsEatingPrey())
+        {
+            Debug.Log("Segundo");
+            currentState = States.RECHARGE;
+        }
+        else behaviorExecutorList[(int)States.WANDER].enabled = true;
     }
 
     protected override void GoHome()
@@ -34,7 +47,6 @@ public class WolfSM : StateMachine
             assignHouse = true;
             behaviorExecutorList[(int)currentState].SetBehaviorParam("target", wolfHouse);
         }
-
 
     }
 }

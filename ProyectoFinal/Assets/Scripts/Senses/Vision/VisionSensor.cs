@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class VisionSensor : MonoBehaviour
 {
@@ -8,36 +9,29 @@ public class VisionSensor : MonoBehaviour
     private float sightAngle = 90.0f;
     [SerializeField]
     private float sightDistance = 8.0f;
-
     public bool DetectClosestTarget(GameObject target)
     {
-        bool wasDetected = false;
+        Vector3 targetPos = (target.transform.position - transform.position).normalized;
 
-        Vector3 sightOrigin = transform.position + Vector3.up * 0.5f;
-
-        Vector3 targetPos = target.GetComponent<Collider>().bounds.center;
-        Vector3 dir = targetPos - sightOrigin;
-        Vector3 planarDir = new Vector3(dir.x, 0f, dir.z);
-
-        if (planarDir.sqrMagnitude > sightDistance * sightDistance) return wasDetected;
-
-        if (Mathf.Abs(Vector3.Angle(-target.transform.forward, planarDir)) < sightAngle / 2)
+        if (Vector3.Angle(transform.forward, targetPos) <= sightAngle / 2)
         {
-            RaycastHit hit;
-            if (Physics.Raycast(sightOrigin, dir, out hit, Mathf.Infinity))
+            float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
+
+            if (distanceToTarget <= sightDistance)
             {
-                //Hola
-                //Debug.DrawRay(sightOrigin, hit.transform.position - sightOrigin, Color.green, 10.0f);
-                if (hit.collider.gameObject == target)
+                Debug.DrawRay(transform.position, target.transform.position - transform.position, UnityEngine.Color.green, 2.0f, true);
+                RaycastHit hit;
+
+                Physics.Raycast(transform.position, target.transform.position - transform.position, out hit, sightDistance);
+
+                if (hit.collider.gameObject.tag == "Prey")
                 {
-                    float d = dir.sqrMagnitude;
-                    if (d < sightDistance)
-                    {
-                        wasDetected = true;
-                    }
+                    Debug.DrawRay(transform.position, target.transform.position - transform.position, UnityEngine.Color.red, 10.0f, true);
+                    return true;
                 }
             }
         }
-        return wasDetected;
+        return false;
     }
+   
 }

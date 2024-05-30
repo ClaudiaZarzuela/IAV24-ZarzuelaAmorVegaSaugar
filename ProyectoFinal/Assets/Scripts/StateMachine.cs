@@ -34,47 +34,42 @@ public class StateMachine : MonoBehaviour
         energyController = gameObject.GetComponent<EnergyController>();
         blackboard = new Blackboard(null);
 
-        blackboard.Set("minHunger",typeof(float), 75.0f);
-        blackboard.Set("minEnergy",typeof(float), 95.0f);
+        blackboard.Set("minHunger",typeof(float), 95.0f);
+        blackboard.Set("minEnergy",typeof(float), 25.0f);
     }
 
     // Start is called before the first frame update
     protected void Start()
     {
     }
-    protected States Wander()
+    protected void Wander()
     {
         if(energyController.GetHunger() <= (float)blackboard.Get("minHunger", typeof(float)))
         {
             currentState = States.EAT;
             //ChangeAction();
-            return States.EAT;
         }
         else if (energyController.GetEnergy() <= (float)blackboard.Get("minEnergy", typeof(float)))
         {
-            Debug.Log("Buenas");
             currentState = States.GO_HOME;
             ChangeAction();
-            return States.GO_HOME;
         }
-        return States.WANDER;
+        else
+            currentState = States.WANDER;
     }
-    protected States Recharge()
+    protected void Recharge()
     {
-    
-        return States.RECHARGE;
+        Debug.Log("Recharging");
     }
-    protected States Die()
+    protected void Die()
     {
 
-        return States.DIE;
     }
     protected virtual void GoHome()
     {
     }
-    protected virtual States Eat()
+    protected virtual void Eat()
     {
-        return States.WANDER;
     }
 
     protected void Update()
@@ -82,19 +77,19 @@ public class StateMachine : MonoBehaviour
         switch (currentState)
         {
             case States.WANDER:
-                currentState = Wander();
+                Wander();
                 break;
             case States.RECHARGE:
-                currentState = Recharge();
+                Recharge();
                 break;
             case States.EAT:
-                currentState = Eat();
+                Eat();
                 break;
             case States.GO_HOME:
                 GoHome();
                 break;
             case States.DIE:
-                currentState = Die();
+                Die();
                 break;
 
         }

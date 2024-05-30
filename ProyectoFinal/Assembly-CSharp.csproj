@@ -82,6 +82,7 @@
     <Compile Include="Assets\BehaviorBricks\Conditions\System\Basic\CheckNull.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\GetComponent.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\Basic\SleepForever.cs" />
+    <Compile Include="Assets\Scripts\Behaviour\Eat.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\EatBush.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
@@ -148,6 +149,7 @@
     <Compile Include="Assets\BehaviorBricks\Conditions\System\Basic\CheckButton.cs" />
     <Compile Include="Assets\Scripts\Controllers\EnergyController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
+    <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\Eating.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\AddComponent.cs" />
     <Compile Include="Assets\BehaviorBricks\Samples\ProgrammersQuickStartGuide\Done\DoneBulletScript.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\Track.cs" />
