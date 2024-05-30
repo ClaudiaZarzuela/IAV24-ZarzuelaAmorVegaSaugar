@@ -7,7 +7,7 @@ using Pada1.BBCore;
 public class StateMachine : MonoBehaviour
 {
     public Blackboard blackboard = null;
-    protected enum States { WANDER, RECHARGE, DIE, GO_HOME, EAT };
+    protected enum States { WANDER, DIE, RECHARGE, GO_HOME, EAT };
 
     private EnergyController energyController = null;
 
@@ -47,7 +47,6 @@ public class StateMachine : MonoBehaviour
         if(energyController.GetHunger() <= (float)blackboard.Get("minHunger", typeof(float)))
         {
             currentState = States.EAT;
-            ChangeAction();
         }
         else if (energyController.GetEnergy() <= (float)blackboard.Get("minEnergy", typeof(float)))
         {

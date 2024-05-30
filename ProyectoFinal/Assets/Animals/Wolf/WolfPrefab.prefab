@@ -971,6 +971,18 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f1aa80defded74c419f77fa51c7ff91c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2472167633384593794}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f1aa80defded74c419f77fa51c7ff91c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 866582348918090128}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f1aa80defded74c419f77fa51c7ff91c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1357515903045706550}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f1aa80defded74c419f77fa51c7ff91c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4612990929428442422}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f1aa80defded74c419f77fa51c7ff91c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6931227650886617072}
   m_SourcePrefab: {fileID: 100100000, guid: f1aa80defded74c419f77fa51c7ff91c, type: 3}
 --- !u!4 &3565624732048365348 stripped
 Transform:
@@ -1045,9 +1057,8 @@ MonoBehaviour:
     intParams: 
     intParamsNames: []
     intParamsLostDefaultValue: 
-    boolParams: 00
-    boolParamsNames:
-    - finished
+    boolParams: 
+    boolParamsNames: []
     boolParamsLostDefaultValue: 
     floatParams:
     - 2
@@ -1159,7 +1170,7 @@ MonoBehaviour:
   maxHunger: 100
   currentEnergy: 100
   maxEnergy: 100
-  timeToDecrease: 1
+  timeToDecrease: 0.5
 --- !u!114 &2472167633384593794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1174,6 +1185,173 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   behaviorExecutorList:
   - {fileID: 8521631983079456520}
+  - {fileID: 8521631983079456520}
+  - {fileID: 8521631983079456520}
+  - {fileID: 0}
+  wolfHouse: {fileID: 0}
+  smelling: {fileID: 8521631983079456520}
+  trace: {fileID: 0}
+--- !u!114 &866582348918090128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4192979217314958750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c0939edb4f8c38499e59252607bf0ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1357515903045706550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4192979217314958750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c624b51e63acf5f47a241c2169f0e8a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sightAngle: 90
+  sightDistance: 10
+--- !u!114 &4612990929428442422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4192979217314958750}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 422fb6956201c7944ae2113a1a53b0b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxTasksPerTick: 500
+  behavior: {fileID: 11400000, guid: 76279084e05c690439b386092f50b83b, type: 2}
+  paused: 0
+  restartWhenFinished: 0
+  blackboard:
+    intParams: 03000000
+    intParamsNames:
+    - Action
+    intParamsLostDefaultValue: 
+    boolParams: 
+    boolParamsNames: []
+    boolParamsLostDefaultValue: 
+    floatParams: []
+    floatParamsNames: []
+    floatParamsLostDefaultValue: 
+    stringParams: []
+    stringParamsNames: []
+    stringParamsLostDefaultValue: 
+    colorParams: []
+    colorParamsNames: []
+    colorParamsLostDefaultValue: 
+    objectParams:
+    - {fileID: 0}
+    objectParamsNames:
+    - target
+    objectParamsLostDefaultValue: 
+    layerMaskParams: []
+    layerMaskParamsNames: []
+    layerMaskParamsLostDefaultValue: 
+    enumParamsNames: []
+    enumParamsLostDefaultValue: 
+    vector2Params: []
+    vector2ParamsNames: []
+    vector2ParamsLostDefaultValue: 
+    vector3Params: []
+    vector3ParamsNames: []
+    vector3ParamsLostDefaultValue: 
+    vector4Params: []
+    vector4ParamsNames: []
+    vector4ParamsLostDefaultValue: 
+    rectParams: []
+    rectParamsNames: []
+    rectParamsLostDefaultValue: 
+    animationCurveParams: []
+    animationCurveParamsNames: []
+    animationCurveParamsLostDefaultValue: 
+    boundsParams: []
+    boundsParamsNames: []
+    boundsParamsLostDefaultValue: 
+    gradientParams: []
+    gradientParamsNames: []
+    gradientParamsLostDefaultValue: 
+    quaternionParams: []
+    quaternionParamsNames: []
+    quaternionParamsLostDefaultValue: 
+--- !u!114 &6931227650886617072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4192979217314958750}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 422fb6956201c7944ae2113a1a53b0b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxTasksPerTick: 500
+  behavior: {fileID: 11400000, guid: 909ac384e4d843a4a885d20892b45575, type: 2}
+  paused: 0
+  restartWhenFinished: 0
+  blackboard:
+    intParams: 
+    intParamsNames: []
+    intParamsLostDefaultValue: 
+    boolParams: 
+    boolParamsNames: []
+    boolParamsLostDefaultValue: 
+    floatParams: []
+    floatParamsNames: []
+    floatParamsLostDefaultValue: 
+    stringParams: []
+    stringParamsNames: []
+    stringParamsLostDefaultValue: 
+    colorParams: []
+    colorParamsNames: []
+    colorParamsLostDefaultValue: 
+    objectParams:
+    - {fileID: 0}
+    objectParamsNames:
+    - target
+    objectParamsLostDefaultValue: 
+    layerMaskParams: []
+    layerMaskParamsNames: []
+    layerMaskParamsLostDefaultValue: 
+    enumParamsNames: []
+    enumParamsLostDefaultValue: 
+    vector2Params: []
+    vector2ParamsNames: []
+    vector2ParamsLostDefaultValue: 
+    vector3Params:
+    - {x: 0, y: 0, z: 0}
+    vector3ParamsNames:
+    - target
+    vector3ParamsLostDefaultValue: 
+    vector4Params: []
+    vector4ParamsNames: []
+    vector4ParamsLostDefaultValue: 
+    rectParams: []
+    rectParamsNames: []
+    rectParamsLostDefaultValue: 
+    animationCurveParams: []
+    animationCurveParamsNames: []
+    animationCurveParamsLostDefaultValue: 
+    boundsParams: []
+    boundsParamsNames: []
+    boundsParamsLostDefaultValue: 
+    gradientParams: []
+    gradientParamsNames: []
+    gradientParamsLostDefaultValue: 
+    quaternionParams: []
+    quaternionParamsNames: []
+    quaternionParamsLostDefaultValue: 
 --- !u!1001 &4592251045390094319
 PrefabInstance:
   m_ObjectHideFlags: 0

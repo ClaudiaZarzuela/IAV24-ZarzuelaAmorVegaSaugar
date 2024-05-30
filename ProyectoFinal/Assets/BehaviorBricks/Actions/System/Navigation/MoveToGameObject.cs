@@ -25,8 +25,11 @@ namespace BBUnity.Actions
         public override void OnStart()
         {
             WolfSM wolf = gameObject.GetComponent<WolfSM>();
-            if (wolf != null)
+            if (wolf != null && wolf.IsTracking())
+            {
                 target = wolf.GetTarget();
+                gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().stoppingDistance = 1.2f;
+            }
 
             if (target == null)
             {

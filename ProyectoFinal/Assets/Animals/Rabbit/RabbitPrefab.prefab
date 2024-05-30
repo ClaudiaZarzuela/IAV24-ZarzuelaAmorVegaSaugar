@@ -164,7 +164,7 @@ MonoBehaviour:
     boolParamsNames: []
     boolParamsLostDefaultValue: 
     floatParams:
-    - 3
+    - 2
     floatParamsNames:
     - speed
     floatParamsLostDefaultValue: 

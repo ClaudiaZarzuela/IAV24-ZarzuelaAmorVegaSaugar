@@ -102,6 +102,6 @@ MonoBehaviour:
     cardinality=\"0\" hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n         
     <ActionNode id=\"12\" />\r\n          <SequenceNode id=\"10\" />\r\n        </data>\r\n     
     </_data>\r\n    </ActionNode>\r\n  </editorInfo>\r\n</BehaviorBricks>"
-  zoom: 0.5
+  zoom: 0.7
   subslist: []
   _guid: 52183270424241748ad9150810aa441f

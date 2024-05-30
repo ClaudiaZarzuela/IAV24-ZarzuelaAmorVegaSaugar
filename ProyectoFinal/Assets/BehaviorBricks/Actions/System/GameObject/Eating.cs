@@ -13,7 +13,8 @@ namespace BBUnity.Actions
         public override void OnStart()
         {
             WolfSM eatComponent = gameObject.GetComponent<WolfSM>();
-            if(!eatComponent.CheckActiveAction(2))
+            Debug.Log("Eating" + eatComponent.CheckIfHunting());
+            if(eatComponent.CheckIfHunting())
                 eatComponent.WolfHasPrey();
         }
 

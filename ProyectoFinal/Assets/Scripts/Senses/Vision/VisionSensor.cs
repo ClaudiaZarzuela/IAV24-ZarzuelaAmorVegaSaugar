@@ -8,10 +8,10 @@ public class VisionSensor : MonoBehaviour
     [SerializeField]
     private float sightAngle = 90.0f;
     [SerializeField]
-    private float sightDistance = 8.0f;
- 
+    private float sightDistance = 4.0f;
     public bool DetectClosestTarget(GameObject target)
     {
+        if (target == null) Debug.Log("FUCK");
         Vector3 targetPos = (target.transform.position - transform.position).normalized;
 
         if (Vector3.Angle(transform.forward, targetPos) <= sightAngle / 2)
@@ -22,8 +22,9 @@ public class VisionSensor : MonoBehaviour
             {
                 RaycastHit hit;
 
-                Physics.Raycast(transform.position, target.transform.position - transform.position, out hit, sightDistance);
+                Physics.Raycast(transform.position - (transform.forward * 2), target.transform.position - transform.position, out hit, sightDistance);
 
+                if (target == null) Debug.Log(hit.collider.gameObject.tag);
                 if (hit.collider.gameObject.tag == "Stag" || hit.collider.gameObject.tag == "Rabbit")
                 {
                     Debug.Log("Detectado");
@@ -33,5 +34,4 @@ public class VisionSensor : MonoBehaviour
         }
         return false;
     }
-
 }

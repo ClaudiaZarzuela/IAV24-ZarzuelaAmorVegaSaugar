@@ -6,12 +6,11 @@ using static UnityEngine.GraphicsBuffer;
 
 public class WolfSM : StateMachine
 {
-    private enum WolfStates { SMELLING, TRACK_TRACE, HUNT, EAT, NONE };
+    private enum WolfStates { SMELLING, HUNT, EAT, NONE };
     private WolfStates m_State = WolfStates.NONE;
 
     [SerializeField]
     private GameObject wolfHouse = null;
-    GameObject target = null;
 
     [SerializeField]
     BehaviorExecutor smelling = null;
@@ -19,13 +18,27 @@ public class WolfSM : StateMachine
     BehaviorExecutor trace = null;
 
     SmellArea area = null;
-    VisionSensor vision = null;
 
-    // Start is called before the first frame update
+    public bool IsTracking()
+    {
+        return m_State != WolfStates.SMELLING && m_State != WolfStates.EAT && m_State != WolfStates.NONE;
+    }
+
+    private void Awake()
+    {
+        base.Awake();
+        blackboard.Set("target", typeof(GameObject), null);
+        blackboard.Set("hasEat", typeof(bool), false);
+    }
+
+    public bool CheckIfHunting() {
+        GameObject aux = (GameObject)blackboard.Get("target", typeof(GameObject));
+        return aux.GetComponent<GenerateSmell>() != null;
+    
+    }
     private new void Start()
     {
         area = gameObject.GetComponent<SmellArea>();
-        vision = gameObject.GetComponent<VisionSensor>();
         base.Start();
     }
 
@@ -33,8 +46,13 @@ public class WolfSM : StateMachine
     {
         if (m_State != WolfStates.NONE)
         {
-            Debug.Log("Lobo Action " + (WolfStates)action);
             return action == (int)m_State;
+        }
+        else if ((bool)blackboard.Get("hasEat", typeof(bool)))
+        {
+            blackboard.Set("hasEat", typeof(bool), false);
+            trace.enabled = false;
+            return false;
         }
         else return base.CheckActiveAction(action);
     }
@@ -45,7 +63,10 @@ public class WolfSM : StateMachine
         {
             smelling.enabled = true;
         }
-        else trace.enabled = true;
+        else
+        {
+            trace.enabled = true;
+        }
     }
     public override void DeactivateAction(int action)
     {
@@ -61,12 +82,11 @@ public class WolfSM : StateMachine
 
     private new void Update()
     {
-        switch (m_State)
+        if(m_State != WolfStates.NONE)
         {
-            case WolfStates.SMELLING: WolfSmelling(); break;
-            case WolfStates.TRACK_TRACE: WolfTrace(); break;
-            case WolfStates.HUNT: WolfHunt(); break;
-            case WolfStates.EAT: WolfEat(); break;
+            //Debug.Log(m_State);
+            WolfSmelling();
+            if (m_State == WolfStates.HUNT) WolfHunt();
         }
 
         base.Update();   
@@ -76,45 +96,40 @@ public class WolfSM : StateMachine
     {
         if (area.HasDetectedSmell())
         {
-            m_State = WolfStates.TRACK_TRACE;
+            m_State = WolfStates.HUNT;
+        }
+        else
+        {
+            m_State = WolfStates.SMELLING;
+            SwitchAction();
         }
     }
-
     public GameObject GetTarget()
     {
-        Debug.Log(target);
-        return target;
+        return (GameObject)blackboard.Get("target", typeof(GameObject));
     }
-    private void WolfTrace()
+    private void WolfHunt()
     {
-        target = area.GetPray();
-        if(target != null)
+        GameObject target = area.GetScent();
+        if (target != null)
         {
-            if (vision.DetectClosestTarget(target))
+            if (target.GetComponent<Scent>().GetIntensity() >= 0.70 && area.GetPray() != null)
             {
-                m_State = WolfStates.HUNT;
+                blackboard.Set("target", typeof(GameObject), area.GetPray());
             }
             else
             {
-                target = area.GetScent();
+                blackboard.Set("target", typeof(GameObject), area.GetScent());
             }
             SwitchAction();
         }
     }
 
-    private void WolfHunt()
-    {
-        target = area.GetPray();
-    }
-
-    private void WolfEat()
-    {
-        m_State = WolfStates.NONE;
-        currentState = States.RECHARGE;
-    }
     public void WolfHasPrey()
     {
-        m_State = WolfStates.EAT;
+        m_State = WolfStates.NONE;
+        blackboard.Set("hasEat", typeof(bool), true);
+        currentState = States.RECHARGE;
     }
     protected override void Eat()
     {

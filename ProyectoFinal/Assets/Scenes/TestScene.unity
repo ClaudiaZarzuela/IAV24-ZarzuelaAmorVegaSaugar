@@ -212,14 +212,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 430092054}
     m_Modifications:
+    - target: {fileID: 866582348918090128, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1357515903045706550, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
+      propertyPath: rabbit
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1357515903045706550, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
+      propertyPath: sightDistance
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2472167633384593794, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
       propertyPath: trace
       value: 
       objectReference: {fileID: 1571793034}
-    - target: {fileID: 2472167633384593794, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
-      propertyPath: smelling
-      value: 
-      objectReference: {fileID: 1571793030}
     - target: {fileID: 2472167633384593794, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -248,18 +256,6 @@ PrefabInstance:
       propertyPath: wolfExecutorList.Array.data[3]
       value: 
       objectReference: {fileID: 1571793034}
-    - target: {fileID: 2472167633384593794, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
-      propertyPath: behaviorExecutorList.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2472167633384593794, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
-      propertyPath: behaviorExecutorList.Array.data[1]
-      value: 
-      objectReference: {fileID: 1571793030}
-    - target: {fileID: 2472167633384593794, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
-      propertyPath: behaviorExecutorList.Array.data[2]
-      value: 
-      objectReference: {fileID: 1571793030}
     - target: {fileID: 2472167633384593794, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
       propertyPath: behaviorExecutorList.Array.data[3]
       value: 
@@ -313,13 +309,21 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4101837537308595145, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
+      propertyPath: currentHunger
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101837537308595145, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
       propertyPath: timeToDecrease
-      value: 0.5
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4192979217314958750, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
       propertyPath: m_Name
       value: Wolf_0
       objectReference: {fileID: 0}
+    - target: {fileID: 4612990929428442422, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
+      propertyPath: blackboard.objectParams.Array.data[0]
+      value: 
+      objectReference: {fileID: 665957682}
     - target: {fileID: 7354718885394307745, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
       propertyPath: m_Radius
       value: 5.0164695
@@ -341,45 +345,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8521631983079456520, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
-      propertyPath: restartWhenFinished
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8521631983079456520, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
-      propertyPath: blackboard.floatParams.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8521631983079456520, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
       propertyPath: blackboard.floatParams.Array.data[0]
-      value: 2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 8521631983079456520, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
       propertyPath: blackboard.floatParams.Array.data[1]
       value: 100
       objectReference: {fileID: 0}
-    - target: {fileID: 8521631983079456520, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
-      propertyPath: blackboard.floatParamsNames.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8521631983079456520, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
-      propertyPath: blackboard.floatParamsNames.Array.data[0]
-      value: speed
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4192979217314958750, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1571793018}
-    - targetCorrespondingSourceObject: {fileID: 4192979217314958750, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1571793025}
-    - targetCorrespondingSourceObject: {fileID: 4192979217314958750, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1571793033}
-    - targetCorrespondingSourceObject: {fileID: 4192979217314958750, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1571793034}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
 --- !u!4 &14802018 stripped
 Transform:
@@ -8981,183 +8957,39 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1279437348525638701, guid: e2e682b966e3f644392ffbfab511e0e2, type: 3}
   m_PrefabInstance: {fileID: 1565564136}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1571793017 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4192979217314958750, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
-  m_PrefabInstance: {fileID: 14802017}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1571793018
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1571793017}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c0939edb4f8c38499e59252607bf0ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1571793025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1571793017}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c624b51e63acf5f47a241c2169f0e8a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sightAngle: 90
-  sightDistance: 10
 --- !u!114 &1571793030 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8521631983079456520, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
   m_PrefabInstance: {fileID: 14802017}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1571793017}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 422fb6956201c7944ae2113a1a53b0b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1571793033
+--- !u!114 &1571793033 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4612990929428442422, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
+  m_PrefabInstance: {fileID: 14802017}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1571793017}
+  m_GameObject: {fileID: 0}
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 422fb6956201c7944ae2113a1a53b0b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTasksPerTick: 500
-  behavior: {fileID: 11400000, guid: 76279084e05c690439b386092f50b83b, type: 2}
-  paused: 0
-  restartWhenFinished: 0
-  blackboard:
-    intParams: 03000000
-    intParamsNames:
-    - Action
-    intParamsLostDefaultValue: 
-    boolParams: 
-    boolParamsNames: []
-    boolParamsLostDefaultValue: 
-    floatParams: []
-    floatParamsNames: []
-    floatParamsLostDefaultValue: 
-    stringParams: []
-    stringParamsNames: []
-    stringParamsLostDefaultValue: 
-    colorParams: []
-    colorParamsNames: []
-    colorParamsLostDefaultValue: 
-    objectParams:
-    - {fileID: 665957682}
-    objectParamsNames:
-    - target
-    objectParamsLostDefaultValue: 
-    layerMaskParams: []
-    layerMaskParamsNames: []
-    layerMaskParamsLostDefaultValue: 
-    enumParamsNames: []
-    enumParamsLostDefaultValue: 
-    vector2Params: []
-    vector2ParamsNames: []
-    vector2ParamsLostDefaultValue: 
-    vector3Params: []
-    vector3ParamsNames: []
-    vector3ParamsLostDefaultValue: 
-    vector4Params: []
-    vector4ParamsNames: []
-    vector4ParamsLostDefaultValue: 
-    rectParams: []
-    rectParamsNames: []
-    rectParamsLostDefaultValue: 
-    animationCurveParams: []
-    animationCurveParamsNames: []
-    animationCurveParamsLostDefaultValue: 
-    boundsParams: []
-    boundsParamsNames: []
-    boundsParamsLostDefaultValue: 
-    gradientParams: []
-    gradientParamsNames: []
-    gradientParamsLostDefaultValue: 
-    quaternionParams: []
-    quaternionParamsNames: []
-    quaternionParamsLostDefaultValue: 
---- !u!114 &1571793034
+--- !u!114 &1571793034 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 6931227650886617072, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
+  m_PrefabInstance: {fileID: 14802017}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1571793017}
+  m_GameObject: {fileID: 0}
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 422fb6956201c7944ae2113a1a53b0b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTasksPerTick: 500
-  behavior: {fileID: 11400000, guid: 909ac384e4d843a4a885d20892b45575, type: 2}
-  paused: 0
-  restartWhenFinished: 0
-  blackboard:
-    intParams: 
-    intParamsNames: []
-    intParamsLostDefaultValue: 
-    boolParams: 
-    boolParamsNames: []
-    boolParamsLostDefaultValue: 
-    floatParams: []
-    floatParamsNames: []
-    floatParamsLostDefaultValue: 
-    stringParams: []
-    stringParamsNames: []
-    stringParamsLostDefaultValue: 
-    colorParams: []
-    colorParamsNames: []
-    colorParamsLostDefaultValue: 
-    objectParams:
-    - {fileID: 0}
-    objectParamsNames:
-    - target
-    objectParamsLostDefaultValue: 
-    layerMaskParams: []
-    layerMaskParamsNames: []
-    layerMaskParamsLostDefaultValue: 
-    enumParamsNames: []
-    enumParamsLostDefaultValue: 
-    vector2Params: []
-    vector2ParamsNames: []
-    vector2ParamsLostDefaultValue: 
-    vector3Params:
-    - {x: 0, y: 0, z: 0}
-    vector3ParamsNames:
-    - target
-    vector3ParamsLostDefaultValue: 
-    vector4Params: []
-    vector4ParamsNames: []
-    vector4ParamsLostDefaultValue: 
-    rectParams: []
-    rectParamsNames: []
-    rectParamsLostDefaultValue: 
-    animationCurveParams: []
-    animationCurveParamsNames: []
-    animationCurveParamsLostDefaultValue: 
-    boundsParams: []
-    boundsParamsNames: []
-    boundsParamsLostDefaultValue: 
-    gradientParams: []
-    gradientParamsNames: []
-    gradientParamsLostDefaultValue: 
-    quaternionParams: []
-    quaternionParamsNames: []
-    quaternionParamsLostDefaultValue: 
 --- !u!1001 &1576172584
 PrefabInstance:
   m_ObjectHideFlags: 0
