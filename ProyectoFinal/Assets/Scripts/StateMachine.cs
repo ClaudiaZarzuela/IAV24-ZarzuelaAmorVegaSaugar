@@ -16,7 +16,7 @@ public class StateMachine : MonoBehaviour
     [SerializeField]
     protected List<BehaviorExecutor> behaviorExecutorList = null;
 
-    public bool CheckIfRunningAction(int action)
+    public virtual bool CheckActiveAction(int action)
     {
         return action == (int)currentState;
     }
@@ -25,7 +25,7 @@ public class StateMachine : MonoBehaviour
     {
         behaviorExecutorList[(int)currentState].enabled = true;
     }
-    public void DeactivateAction(int action)
+    public virtual void DeactivateAction(int action)
     {
         behaviorExecutorList[action].enabled = false;
     }
@@ -34,7 +34,7 @@ public class StateMachine : MonoBehaviour
         energyController = gameObject.GetComponent<EnergyController>();
         blackboard = new Blackboard(null);
 
-        blackboard.Set("minHunger",typeof(float), 95.0f);
+        blackboard.Set("minHunger",typeof(float), 75.0f);
         blackboard.Set("minEnergy",typeof(float), 25.0f);
     }
 
@@ -47,7 +47,6 @@ public class StateMachine : MonoBehaviour
         if(energyController.GetHunger() <= (float)blackboard.Get("minHunger", typeof(float)))
         {
             currentState = States.EAT;
-            //ChangeAction();
         }
         else if (energyController.GetEnergy() <= (float)blackboard.Get("minEnergy", typeof(float)))
         {

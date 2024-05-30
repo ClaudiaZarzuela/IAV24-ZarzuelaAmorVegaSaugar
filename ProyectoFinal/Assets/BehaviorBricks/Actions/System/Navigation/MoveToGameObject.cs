@@ -24,8 +24,13 @@ namespace BBUnity.Actions
         /// <remarks>Check if GameObject object exists and NavMeshAgent, if there is no NavMeshAgent, the default one is added.</remarks>
         public override void OnStart()
         {
+            WolfSM wolf = gameObject.GetComponent<WolfSM>();
+            if (wolf != null)
+                target = wolf.GetTarget();
+
             if (target == null)
             {
+                
                 Debug.LogError("The movement target of this game object is null", gameObject);
                 return;
             }

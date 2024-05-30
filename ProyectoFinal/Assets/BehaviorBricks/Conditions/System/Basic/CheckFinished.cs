@@ -12,15 +12,26 @@ namespace BBCore.Conditions
         [InParam("Action")]
         private int action;
         StateMachine stateMachine = null;
+        bool finished = false;
         public override bool Check()
         {
-            stateMachine = gameObject.GetComponent<StateMachine>();
+            if (gameObject.tag == "Wolf")
+            {
+                stateMachine = gameObject.GetComponent<WolfSM>();
+                finished = !stateMachine.CheckActiveAction(action);
+            }
+            else if (gameObject.tag == "Stag")
+            {
+                stateMachine = gameObject.GetComponent<StateMachine>();
+                finished = !stateMachine.CheckActiveAction(action);
+            }
+            else return false;
 
-            bool finished = !stateMachine.CheckIfRunningAction(action);
             if (finished)
             {
                 stateMachine.DeactivateAction(action);
             }
+
             return finished;
         }
     }

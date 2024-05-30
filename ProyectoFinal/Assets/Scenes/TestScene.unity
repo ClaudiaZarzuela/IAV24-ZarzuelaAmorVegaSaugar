@@ -213,12 +213,44 @@ PrefabInstance:
     m_TransformParent: {fileID: 430092054}
     m_Modifications:
     - target: {fileID: 2472167633384593794, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
+      propertyPath: trace
+      value: 
+      objectReference: {fileID: 1571793034}
+    - target: {fileID: 2472167633384593794, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
+      propertyPath: smelling
+      value: 
+      objectReference: {fileID: 1571793030}
+    - target: {fileID: 2472167633384593794, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2472167633384593794, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
       propertyPath: wolfHouse
       value: 
       objectReference: {fileID: 665957682}
     - target: {fileID: 2472167633384593794, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
+      propertyPath: wolfExecutorList.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2472167633384593794, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
+      propertyPath: wolfExecutorList.Array.data[0]
+      value: 
+      objectReference: {fileID: 1571793030}
+    - target: {fileID: 2472167633384593794, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
+      propertyPath: wolfExecutorList.Array.data[1]
+      value: 
+      objectReference: {fileID: 1571793034}
+    - target: {fileID: 2472167633384593794, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
+      propertyPath: wolfExecutorList.Array.data[2]
+      value: 
+      objectReference: {fileID: 1571793034}
+    - target: {fileID: 2472167633384593794, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
+      propertyPath: wolfExecutorList.Array.data[3]
+      value: 
+      objectReference: {fileID: 1571793034}
+    - target: {fileID: 2472167633384593794, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
       propertyPath: behaviorExecutorList.Array.size
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2472167633384593794, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
       propertyPath: behaviorExecutorList.Array.data[1]
@@ -275,6 +307,10 @@ PrefabInstance:
     - target: {fileID: 3565624732048365348, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101837537308595145, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4101837537308595145, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
       propertyPath: timeToDecrease
@@ -344,9 +380,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4192979217314958750, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1571793034}
-    - targetCorrespondingSourceObject: {fileID: 4192979217314958750, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1571793035}
   m_SourcePrefab: {fileID: 100100000, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
 --- !u!4 &14802018 stripped
 Transform:
@@ -9125,22 +9158,6 @@ MonoBehaviour:
     quaternionParams: []
     quaternionParamsNames: []
     quaternionParamsLostDefaultValue: 
---- !u!114 &1571793035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1571793017}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5c2782855841b743b31b101ab5d7356, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  active: 0
-  tracing: 1
-  eating: 0
-  hunt: {fileID: 1571793034}
 --- !u!1001 &1576172584
 PrefabInstance:
   m_ObjectHideFlags: 0

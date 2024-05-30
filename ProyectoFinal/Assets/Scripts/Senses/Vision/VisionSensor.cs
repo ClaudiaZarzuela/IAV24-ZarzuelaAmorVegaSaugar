@@ -9,6 +9,7 @@ public class VisionSensor : MonoBehaviour
     private float sightAngle = 90.0f;
     [SerializeField]
     private float sightDistance = 8.0f;
+ 
     public bool DetectClosestTarget(GameObject target)
     {
         Vector3 targetPos = (target.transform.position - transform.position).normalized;
@@ -19,19 +20,18 @@ public class VisionSensor : MonoBehaviour
 
             if (distanceToTarget <= sightDistance)
             {
-                Debug.DrawRay(transform.position, target.transform.position - transform.position, UnityEngine.Color.green, 2.0f, true);
                 RaycastHit hit;
 
                 Physics.Raycast(transform.position, target.transform.position - transform.position, out hit, sightDistance);
 
-                if (hit.collider.gameObject.tag == "Prey")
+                if (hit.collider.gameObject.tag == "Stag" || hit.collider.gameObject.tag == "Rabbit")
                 {
-                    Debug.DrawRay(transform.position, target.transform.position - transform.position, UnityEngine.Color.red, 10.0f, true);
+                    Debug.Log("Detectado");
                     return true;
                 }
             }
         }
         return false;
     }
-   
+
 }

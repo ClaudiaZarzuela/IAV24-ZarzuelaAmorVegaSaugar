@@ -38,16 +38,16 @@ MonoBehaviour:
     </_rootList>\r\n      <_nodes>\r\n        <nodes>\r\n          <SubbehaviorNode
     id=\"4\" />\r\n          <RepeatDecorator id=\"6\" />\r\n        </nodes>\r\n     
     </_nodes>\r\n    </BehaviorTree>\r\n    <RepeatDecorator id=\"6\">\r\n      <_data>\r\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"790.9201 223.3572\" name=\"Repeat\"
+    <data breakpoint=\"0\" selected=\"False\" position=\"536.9777 343.8571\" name=\"Repeat\"
     description=\"Repeats the execution of its child node\" cardinality=\"1\" hasParent=\"False\">\r\n         
     <BehaviorTree id=\"0\" />\r\n          <RepeatDecorator id=\"6\" />\r\n       
     </data>\r\n      </_data>\r\n    </RepeatDecorator>\r\n    <SubbehaviorNode id=\"4\">\r\n     
-    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"785.5201
-    375.4456\" name=\"AnimalWander\" description=\"\" cardinality=\"-1\" hasParent=\"True\">\r\n         
+    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"531.5776
+    495.9456\" name=\"AnimalWander\" description=\"\" cardinality=\"-1\" hasParent=\"True\">\r\n         
     <BehaviorTree id=\"0\" />\r\n          <RepeatDecorator id=\"6\" />\r\n         
     <RepeatDecorator id=\"6\" />\r\n        </data>\r\n      </_data>\r\n    </SubbehaviorNode>\r\n 
     </editorInfo>\r\n</BehaviorBricks>"
-  zoom: 0.7
+  zoom: 0.5
   subslist:
   - {fileID: 11400000, guid: 5cd7c72c092d86a40974c269f363c67b, type: 2}
   - {fileID: 11400000, guid: 6767ad97359211242a68e573e676b3a9, type: 2}
