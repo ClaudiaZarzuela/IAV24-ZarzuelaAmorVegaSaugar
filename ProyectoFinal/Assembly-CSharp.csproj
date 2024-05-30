@@ -67,6 +67,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
     <Compile Include="Assets\Scripts\Controllers\BushesController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
+    <Compile Include="Assets\Scripts\DeerSM.cs" />
     <Compile Include="Assets\Scripts\StateMachine.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\ClosestGameObjectWithTag.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />

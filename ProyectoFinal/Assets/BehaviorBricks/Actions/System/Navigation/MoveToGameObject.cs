@@ -47,7 +47,8 @@ namespace BBUnity.Actions
             {
                 navAgent.stoppingDistance = 1;
             }
-            else navAgent.SetDestination(targetTransform.position);
+            
+            navAgent.SetDestination(targetTransform.position);
 
 
 #if UNITY_5_6_OR_NEWER

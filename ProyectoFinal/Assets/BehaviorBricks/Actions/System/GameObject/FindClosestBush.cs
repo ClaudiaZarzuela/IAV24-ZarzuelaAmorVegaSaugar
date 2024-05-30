@@ -3,6 +3,7 @@ using Pada1.BBCore;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 
 namespace BBUnity.Actions
 {
@@ -14,8 +15,11 @@ namespace BBUnity.Actions
         [OutParam("target")]
         public GameObject foundGameObject;
 
+        private DeerSM dSM;
+
         public override void OnStart()
         {
+            dSM = gameObject.GetComponent<DeerSM>();
             list = EnvironmentController.Instance.GetBushesList();
 
             float dist = float.MaxValue;
@@ -32,6 +36,9 @@ namespace BBUnity.Actions
                     }
                 }
             }
+
+            dSM.blackboard.Set("searchedBush", typeof(bool), true);
+            dSM.blackboard.Set("bush", typeof(GameObject), foundGameObject);
         }
 
         public override TaskStatus OnUpdate()

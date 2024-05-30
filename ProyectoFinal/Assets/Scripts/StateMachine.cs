@@ -29,7 +29,7 @@ public class StateMachine : MonoBehaviour
     {
         behaviorExecutorList[action].enabled = false;
     }
-    private void Awake()
+    protected void Awake()
     {
         energyController = gameObject.GetComponent<EnergyController>();
         blackboard = new Blackboard(null);
@@ -47,6 +47,7 @@ public class StateMachine : MonoBehaviour
         if(energyController.GetHunger() <= (float)blackboard.Get("minHunger", typeof(float)))
         {
             currentState = States.EAT;
+            ChangeAction();
         }
         else if (energyController.GetEnergy() <= (float)blackboard.Get("minEnergy", typeof(float)))
         {

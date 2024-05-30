@@ -3,6 +3,7 @@ using Pada1.BBCore;
 using UnityEngine;
 using BBUnity.Conditions;
 using Unity.VisualScripting;
+using static UnityEditor.VersionControl.Asset;
 
 namespace BBCore.Conditions
 {
