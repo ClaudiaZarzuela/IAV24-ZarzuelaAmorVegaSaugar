@@ -46,12 +46,12 @@ public class DeerSM : StateMachine
     }
 
     protected override void GoHome()
-    {
-        if (!assignHouse)
-        {
-            assignHouse = true;
-            behaviorExecutorList[(int)currentState].SetBehaviorParam("target", deerHouse);
-        }
+    {  
+        behaviorExecutorList[(int)currentState].SetBehaviorParam("target", deerHouse);
+    }
 
+    public GameObject getHouse()
+    {
+        return deerHouse;
     }
 }

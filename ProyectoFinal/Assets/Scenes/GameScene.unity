@@ -4540,7 +4540,7 @@ MonoBehaviour:
   - {fileID: 711047343}
   - {fileID: 711047347}
   - {fileID: 711047346}
-  deerHouse: {fileID: 0}
+  deerHouse: {fileID: 1041714784}
 --- !u!114 &711047345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9539,7 +9539,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1128174513898283286, guid: 3e4eadbabd11e0c4185329b5e2b8ae84, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -190.6
+      value: -190.9
       objectReference: {fileID: 0}
     - target: {fileID: 1128174513898283286, guid: 3e4eadbabd11e0c4185329b5e2b8ae84, type: 3}
       propertyPath: m_LocalPosition.y
@@ -9547,7 +9547,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1128174513898283286, guid: 3e4eadbabd11e0c4185329b5e2b8ae84, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -210.82
+      value: -210.59
       objectReference: {fileID: 0}
     - target: {fileID: 1128174513898283286, guid: 3e4eadbabd11e0c4185329b5e2b8ae84, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9691,7 +9691,7 @@ MonoBehaviour:
   - {fileID: 1802890872}
   - {fileID: 1802890876}
   - {fileID: 1802890875}
-  deerHouse: {fileID: 0}
+  deerHouse: {fileID: 1041714784}
 --- !u!114 &1802890874
 MonoBehaviour:
   m_ObjectHideFlags: 0

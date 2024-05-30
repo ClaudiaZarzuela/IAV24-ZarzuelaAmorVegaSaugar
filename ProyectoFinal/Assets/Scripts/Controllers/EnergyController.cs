@@ -22,14 +22,14 @@ public class EnergyController : MonoBehaviour
 
     private float elapsedTime = 0;
     [SerializeField]
-    private float timeToDecrease = 1;
+    private float timeToDecrease = 0.1f;
 
     public void Start()
     {
         if(typeOfAnimal == "Stag")
-            EnvironmentController.Instance.RegisterStag(this.gameObject);
+            EnvironmentController.Instance.RegisterStag(gameObject);
         else
-            EnvironmentController.Instance.RegisterWolf(this.gameObject);
+            EnvironmentController.Instance.RegisterWolf(gameObject);
     }
 
     public float GetHunger() { return currentHunger; }
@@ -38,9 +38,9 @@ public class EnergyController : MonoBehaviour
     public void AnimalDied()
     {
         if (typeOfAnimal == "Stag")
-            EnvironmentController.Instance.RemoveStag(this.gameObject);
+            EnvironmentController.Instance.RemoveStag(gameObject);
         else
-            EnvironmentController.Instance.RemoveWolf(this.gameObject);
+            EnvironmentController.Instance.RemoveWolf(gameObject);
     }
     public void DecreaseHunger()
     {
@@ -49,7 +49,7 @@ public class EnergyController : MonoBehaviour
 
     public void DecreaseEnergy()
     {
-        currentEnergy--;
+        currentEnergy-=3;
     }
 
     public void RestoreMaxHunger()
@@ -80,7 +80,7 @@ public class EnergyController : MonoBehaviour
             if (elapsedTime >= timeToDecrease)
             {
                 elapsedTime = 0;
-                DecreaseHunger();
+                //DecreaseHunger();
                 DecreaseEnergy();
             }
             else elapsedTime += Time.deltaTime;

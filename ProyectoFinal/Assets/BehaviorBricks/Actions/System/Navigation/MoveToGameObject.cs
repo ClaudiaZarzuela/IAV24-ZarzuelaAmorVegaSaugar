@@ -1,6 +1,7 @@
 ﻿using Pada1.BBCore.Tasks;
 using Pada1.BBCore;
 using UnityEngine;
+using UnityEditorInternal;
 
 namespace BBUnity.Actions
 {
@@ -30,6 +31,12 @@ namespace BBUnity.Actions
                 target = wolf.GetTarget();
                 gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().stoppingDistance = 1.2f;
             }
+
+            DeerSM deer = gameObject.GetComponent<DeerSM>();
+            if(deer != null && deer.CheckActiveAction(3))
+                target = deer.getHouse();
+
+
 
             if (target == null)
             {
