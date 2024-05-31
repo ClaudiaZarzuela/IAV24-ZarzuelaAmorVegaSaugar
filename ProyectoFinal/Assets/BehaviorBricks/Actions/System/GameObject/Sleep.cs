@@ -3,9 +3,7 @@ using Pada1.BBCore;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine.AI;
-using static UnityEngine.GraphicsBuffer;
 
 namespace BBUnity.Actions
 {
