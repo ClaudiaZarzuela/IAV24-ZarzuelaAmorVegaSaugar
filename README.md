@@ -386,6 +386,148 @@ class WolfSM extends StateMachine:
 ```
 ### Pseudocódigo de componentes usados en los BTs individuales de comer
 
+#### Class CheckFinised
+```
+class CheckFinished extends GOCondition
+
+    // parametro de entrada 
+    action : int
+
+    // Referencia a la stateMachine
+    StateMachine stateMachine = null
+
+    // Booleano que indica si la accion ha terminado
+    bool finished = false
+
+    // Metodo que comprueba si la accion ha terminado
+    function Check -> bool
+        if (tag del gameobject == "Wolf")
+            stateMachine = stateMachine de los lobos del gameObject
+            finished = !stateMachine.(metodo que devuelve si la action es igual a la accion que se esta ejecutando)
+        else if (tag del gameobject == "Stag")
+            stateMachine = stateMachine de los ciervos del gameObject
+            finished = !stateMachine.(metodo que devuelve si la action es igual a la accion que se esta ejecutando)
+        else return false
+        if (finished)
+            stateMachine.(metodo que desactiva la action)
+        return finished
+```
+
+#### class StartAnimation
+
+```
+class StartAnimation extends GOAction
+
+    // Nombre del clip de animacion que debe reproducirse
+    animationClip : string
+
+    // Metodo que le envia al animator del gameobject el clip que tiene que reproducir
+    function OnStart -> void
+        animator :Animator -> componente Animator del gameObject
+        animator.Play(animationClip)
+
+```
+
+#### class Sleep
+
+```
+class Sleep extends GOAction
+    
+    // Referencia a la guarida del animal
+    house : GameObject
+    // Referencia a la tateMachine del gameobject
+    sM : StateMachine
+
+    // Metodo que desactiva todo el movimiento del animaly lo mete a la casa
+    public override void OnStart
+        desactiva el navMesh del gameobject
+        setea su rigid body a kinemático
+        detiene la bajada de energia del gameObject
+        if (sM != null)
+            gameObject position = house position
+```
+
+#### class WakeUp
+
+```
+class WakeUp extends GOAction
+    
+    // Referencia a la guarida del animal
+    public GameObject house
+    // Referencia a la stateMAchine del gameobject
+    private StateMachine sM
+
+    // Funcion que devuelve al animal al terreno y le sube la energia
+    function OnStart -> void
+        reactiva el navMesh del gameObject
+        setea el rigidbody del gameobject como no kinematico
+        vuelve a activar la bajada de la energia del gameobject
+        if (sM != null)
+            gameObject position = house position
+            setea un bool de la blackboar que indica si ha dormido a true
+        gameObject.RestoreMaxEnergy()
+```
+
+#### class FindClosestBush
+
+```
+class FindClosestBush extends GOAction
+    
+    // Referencia a la lista de arbustos
+    list : List<GameObject>
+    
+    // Parametro de salida (el arbusto escogido)
+    foundGameObject : GameObject -> null
+    
+    // Referencia a la StateMachine del ciervo
+    dSM : DeerSM
+    
+    // Funcion que encuentra el arbusto disponible mas cercano y lo marca como ocupado
+    function OnStart -> void
+        float dist = float.MaxValue
+        foreach(GameObject go in list)
+            bush : BushBehaviour -> go.componente BushBehaviour
+            if (bush.GetIsAvailable())
+                newdist : float -> distancia entre gameObject position y bush position
+                if(newdist < dist)
+                    dist = newdist
+                    foundGameObject = go
+        if(foundGameObject != null) 
+            foundGameObject.marca el arbusto como ocupado
+
+        setea booleanos de la blackboard que indican que ha encontrado un arbusto 
+```
+
+#### class EatBush
+
+```
+class EatBush extends GOAction
+
+    // parametro de entrada que representa el arbusto 
+    target : GameObject 
+    
+    // referencia a la maquina de estados del ciervo
+    dSM : DeerSM
+
+    function OnStart -> void
+        setea un booleano de la blacboard que indica que se ha comido el arbusto
+        gameObject LookAt(target);
+```
+
+#### class Eating
+
+```
+class Eating extends GOAction
+
+    public override void OnStart()
+    
+         eatComponent : WolfSM -> componente WolfSM del gameobject
+        if (eatComponent.CheckIfHunting())
+            eatComponent.WolfHasPrey()
+            animator : Animator -> componente animator del gameobject
+            animator.Play("Eat")
+```
+
 ## Sentido del olfato
 El sentido del olfato se rige por tres clases principales : **GenerateSmell**, **Scent** y **SmellArea**.
 
