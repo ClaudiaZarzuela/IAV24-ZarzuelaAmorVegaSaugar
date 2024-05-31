@@ -23,22 +23,16 @@ public class EnvironmentController : MonoBehaviour
     }
     #endregion
 
-    public static int rabitsNum = 5;
+    public static int rabitsNum = 0;
     private List<GameObject> rabbits = new List<GameObject>();
     private List<GameObject> stags = new List<GameObject>();
     private List<GameObject> wolfs = new List<GameObject>();
     private List<GameObject> bushes = new List<GameObject>();
 
-    protected enum States
-    {
-        RESTING = 0, WALKING = 1, RUNNING = 2, DEAD = 3, EAT = 4
-    }
-
     public void RemoveWolf(GameObject wolf)
     {
         wolfs.Remove(wolf);
         Destroy(wolf);
-        GameManager.Instance.ChangeToMainCamera();
     }
     public void RegisterWolf(GameObject wolf)
     {
@@ -53,7 +47,6 @@ public class EnvironmentController : MonoBehaviour
     {
         stags.Remove(stag);
         Destroy(stag);
-        GameManager.Instance.ChangeToMainCamera();
     }
 
     public void RegisterRabbits(GameObject rabbit)

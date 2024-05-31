@@ -8,18 +8,26 @@ using JetBrains.Annotations;
 public class StateMachine : MonoBehaviour
 {
     public Blackboard blackboard = null;
-    protected enum States { WANDER, GO_HOME, RECHARGE, EAT };
+    protected enum States { WANDER, GO_HOME, RECHARGE, EAT, NONE };
 
     private EnergyController energyController = null;
 
     protected States currentState = States.WANDER;
 
     private float elapsedTime = 0;
-    private float rechargeTime = 3;
+    private float rechargeTime = 2;
 
     [SerializeField]
     protected List<BehaviorExecutor> behaviorExecutorList = null;
 
+    public virtual void AnimalDied()
+    {
+        for(int i = 0; i < behaviorExecutorList.Count; i++)
+        {
+            Destroy(behaviorExecutorList[i]);
+        }
+        currentState = States.NONE;
+    }
     public virtual bool CheckActiveAction(int action)
     {
         return action == (int)currentState;
@@ -42,7 +50,6 @@ public class StateMachine : MonoBehaviour
         blackboard.Set("minEnergy",typeof(float), 25.0f);
     }
 
-    // Start is called before the first frame update
     protected void Start()
     {
     }

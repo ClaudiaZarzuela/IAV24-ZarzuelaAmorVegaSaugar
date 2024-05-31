@@ -19,6 +19,12 @@ public class WolfSM : StateMachine
 
     SmellArea area = null;
 
+    public override void AnimalDied()
+    {
+        Destroy(smelling);
+        Destroy(trace);
+        base.AnimalDied();
+    }
     public bool IsTracking()
     {
         return m_State == WolfStates.HUNT;
@@ -82,7 +88,6 @@ public class WolfSM : StateMachine
 
     private new void Update()
     {
-        Debug.Log(m_State);
         if(m_State != WolfStates.NONE)
         {
             WolfSmelling();
@@ -113,7 +118,9 @@ public class WolfSM : StateMachine
         GameObject target = area.GetScent();
         if (target != null)
         {
-            if (target.GetComponent<Scent>().GetIntensity() >= 0.70 && area.GetPrey() != null)
+            float maxIntensity = 0.7f;
+            if (target.GetComponent<Scent>().GetOriginator().tag == "Stag") maxIntensity = 0.9f;
+            if (target.GetComponent<Scent>().GetIntensity() >= maxIntensity && area.GetPrey() != null)
             {
                 blackboard.Set("target", typeof(GameObject), area.GetPrey());
             }

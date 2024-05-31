@@ -36,7 +36,6 @@ namespace BBUnity.Actions
             if (wolf != null && wolf.IsTracking())
             {
                 target = wolf.GetTarget();
-                Debug.Log(target);
                 gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().stoppingDistance = 0.5f;
             }
 

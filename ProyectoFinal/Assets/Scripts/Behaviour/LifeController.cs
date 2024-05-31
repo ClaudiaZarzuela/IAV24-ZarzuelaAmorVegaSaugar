@@ -9,12 +9,22 @@ public class LifeController : MonoBehaviour
     private float timeToDie = 3;
 
     public bool alive = true;
-   
+    private Animator animator = null;
+
+    private void Start()
+    {
+        animator = gameObject.GetComponent<Animator>();
+    }
     public void Die()
     {
-        Debug.Log("Muerto");
-        Animator animator = gameObject.GetComponent<Animator>();
         animator.Play("Death");
+
+        if (gameObject.tag == "Stag")
+            gameObject.GetComponent<DeerSM>().AnimalDied();
+        else if (gameObject.tag == "Wolf")
+            gameObject.GetComponent<WolfSM>().AnimalDied();
+
+
         NavMeshAgent agent = gameObject.GetComponent<NavMeshAgent>();
         agent.speed = 0;
         agent.isStopped = true;
@@ -22,14 +32,23 @@ public class LifeController : MonoBehaviour
     }
     public void RemoveAnimal()
     {
-        if (gameObject.tag == "Stag")
-            EnvironmentController.Instance.RemoveStag(this.gameObject);
-        else if(gameObject.tag == "Wolf")
-            EnvironmentController.Instance.RemoveWolf(this.gameObject);
-        else 
-            EnvironmentController.Instance.RemoveRabbit(this.gameObject);
-        alive = true;
+        if(gameObject != null)
+        {
+            if(gameObject == GameManager.Instance.GetAnimal())
+            {
+                GameManager.Instance.ChangeToMainCamera();
+            }
 
+            if (gameObject.tag == "Stag")
+                EnvironmentController.Instance.RemoveStag(this.gameObject);
+            else if(gameObject.tag == "Wolf")
+                EnvironmentController.Instance.RemoveWolf(this.gameObject);
+            else 
+                EnvironmentController.Instance.RemoveRabbit(this.gameObject);
+
+
+        }
+        alive = true;
     }
     // Update is called once per frame
     void Update()
