@@ -3,7 +3,7 @@
 ## Autores
 - Claudia Zarzuela Amor: Claudia Zarzuela - https://github.com/ClaudiaZarzuela
 - Andrea Vega Saugar: AndreaVegaSaugar - https://github.com/AndreaVegaSaugar
-
+ 
 ## Propuesta
 Este documento refleja la propuesta de proyecto final para la asignatura de Inteligencia Artificial para Videojuegos del Grado en Desarrollo de Videojuegos de la UCM.
 ![portada](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/c11f77eb-25d6-45cf-862f-99abc7fde9f9)
