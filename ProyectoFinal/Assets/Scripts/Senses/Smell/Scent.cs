@@ -29,7 +29,7 @@ public class Scent : MonoBehaviour, IComparable<Scent>
     }
     public float GetIntensity()
     {
-        return gameObject.transform.localScale.magnitude;
+        return gameObject.transform.localScale.x*10;
     }
 
     public string GetTypeScent()

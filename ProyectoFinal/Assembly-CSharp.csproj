@@ -67,6 +67,8 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
     <Compile Include="Assets\Scripts\Controllers\BushesController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
+    <Compile Include="Assets\Scripts\DeerSM.cs" />
+    <Compile Include="Assets\Scripts\StateMachine.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\ClosestGameObjectWithTag.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
@@ -80,6 +82,8 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
     <Compile Include="Assets\BehaviorBricks\Conditions\System\Basic\CheckNull.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\GetComponent.cs" />
+    <Compile Include="Assets\BehaviorBricks\Actions\System\Basic\SleepForever.cs" />
+    <Compile Include="Assets\Scripts\Behaviour\Eat.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\EatBush.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
@@ -96,9 +100,11 @@
     <Compile Include="Assets\BehaviorBricks\Actions\System\Basic\toggleBool.cs" />
     <Compile Include="Assets\BehaviorBricks\Conditions\System\Perception\IsTargetInSight.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\Physics\SetVelocity.cs" />
+    <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\CheckEnergy.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
     <Compile Include="Assets\Scripts\Senses\Smell\GenerateSmell.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
+    <Compile Include="Assets\BehaviorBricks\Conditions\System\Basic\CheckFinished.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
     <Compile Include="Assets\Scripts\Senses\Smell\Scent.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextConsoleSimulator.cs" />
@@ -111,7 +117,6 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
     <Compile Include="Assets\BehaviorBricks\Samples\QuickStartGuide\Done\Resources\MassSpawner.cs" />
-    <Compile Include="Assets\BehaviorBricks\Conditions\System\Perception\CheckEnergy.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\Physics\FromMouseToWorld.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\Destroy.cs" />
@@ -121,8 +126,10 @@
     <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\FindGameObjectByName.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\Animation\PlayAnimation.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
+    <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\WakeUp.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\FindGameObjectByTag.cs" />
     <Compile Include="Assets\Scripts\Behaviour\UpdateStatus.cs" />
+    <Compile Include="Assets\Scripts\WolfSM.cs" />
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
     <Compile Include="Assets\Scripts\Behaviour\Wander.cs" />
     <Compile Include="Assets\Scripts\Behaviour\BushBehaviour.cs" />
@@ -144,10 +151,12 @@
     <Compile Include="Assets\BehaviorBricks\Conditions\System\Basic\CheckButton.cs" />
     <Compile Include="Assets\Scripts\Controllers\EnergyController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
+    <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\Eating.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\AddComponent.cs" />
     <Compile Include="Assets\BehaviorBricks\Samples\ProgrammersQuickStartGuide\Done\DoneBulletScript.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\Track.cs" />
     <Compile Include="Assets\BehaviorBricks\Samples\ProgrammersQuickStartGuide\Done\DoneDayNightCycle.cs" />
+    <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\Sleep.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\SetActive.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\GetRandomPoint.cs" />
     <Compile Include="Assets\Scripts\Controllers\RabitController.cs" />
@@ -161,6 +170,7 @@
     <Compile Include="Assets\BehaviorBricks\Actions\System\Basic\WaitForSeconds.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\Basic\SetBool.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
+    <Compile Include="Assets\Scripts\Behaviour\LifeController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

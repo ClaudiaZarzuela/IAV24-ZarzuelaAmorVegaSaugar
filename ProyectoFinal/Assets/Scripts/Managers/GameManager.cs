@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.AI.Navigation;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using static UnityEditor.PlayerSettings;
 
 
 public class GameManager : MonoBehaviour
@@ -41,6 +42,11 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     BushesController bushesController = null;
 
+    public GameObject GetAnimal()
+    {
+        if (currentSelectedAnimal == null || currentSelectedAnimal.transform.parent.gameObject == null) return null;
+        else return currentSelectedAnimal.transform.parent.gameObject;
+    }
     private void Start()
     {
         rabbitController.InstanciateRabbits();
@@ -94,8 +100,8 @@ public class GameManager : MonoBehaviour
     {
         for(int i = 0; i < individualCameras.Length; i++)
         {
-            individualCameras[i].SetActive(false);
+            if(individualCameras[i] != null)
+                individualCameras[i].SetActive(false);
         }
     }
-
 }

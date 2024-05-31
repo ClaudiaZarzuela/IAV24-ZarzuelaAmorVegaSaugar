@@ -316,6 +316,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fillImageHunger: {fileID: 7310322270423028212}
   fillImageEnergy: {fileID: 306451525799081767}
+  button: {fileID: 354701636690980000}
   energyController: {fileID: 0}
 --- !u!114 &7310322270423028212 stripped
 MonoBehaviour:

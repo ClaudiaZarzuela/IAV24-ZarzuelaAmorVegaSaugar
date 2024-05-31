@@ -12,9 +12,13 @@ namespace BBUnity.Actions
     {
         [InParam("target")]
         public GameObject target;
+        private DeerSM dSM;
 
         public override void OnStart()
-        {   
+        {
+            dSM = gameObject.GetComponent<DeerSM>();
+            dSM.blackboard.Set("arrivedAtBush", typeof(bool), true);
+            gameObject.transform.LookAt(target.transform.position);
             //BushBehaviour bush = target.GetComponent<BushBehaviour>();
             //bush.StartEating();
             //gameObject.GetComponent<EnergyController>().RestoreMaxEnergy();

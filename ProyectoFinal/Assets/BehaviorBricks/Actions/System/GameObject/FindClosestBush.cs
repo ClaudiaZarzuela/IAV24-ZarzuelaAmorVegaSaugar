@@ -12,10 +12,13 @@ namespace BBUnity.Actions
     {
         public List<GameObject> list;
         [OutParam("target")]
-        public GameObject foundGameObject;
+        public GameObject foundGameObject = null;
+
+        private DeerSM dSM;
 
         public override void OnStart()
         {
+            dSM = gameObject.GetComponent<DeerSM>();
             list = EnvironmentController.Instance.GetBushesList();
 
             float dist = float.MaxValue;
@@ -32,6 +35,11 @@ namespace BBUnity.Actions
                     }
                 }
             }
+
+            if(foundGameObject != null) foundGameObject.GetComponent<BushBehaviour>().SetFocus();
+
+            dSM.blackboard.Set("searchedBush", typeof(bool), true);
+            dSM.blackboard.Set("bush", typeof(GameObject), foundGameObject);
         }
 
         public override TaskStatus OnUpdate()

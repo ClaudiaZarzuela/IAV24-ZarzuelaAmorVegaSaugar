@@ -1,42 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class VisionSensor : MonoBehaviour
 {
     [SerializeField]
     private float sightAngle = 90.0f;
     [SerializeField]
-    private float sightDistance = 8.0f;
-
+    private float sightDistance = 4.0f;
     public bool DetectClosestTarget(GameObject target)
     {
-        bool wasDetected = false;
+        if (target == null) Debug.Log("FUCK");
+        Vector3 targetPos = (target.transform.position - transform.position).normalized;
 
-        Vector3 sightOrigin = transform.position + Vector3.up * 0.5f;
-
-        Vector3 targetPos = target.GetComponent<Collider>().bounds.center;
-        Vector3 dir = targetPos - sightOrigin;
-        Vector3 planarDir = new Vector3(dir.x, 0f, dir.z);
-
-        if (planarDir.sqrMagnitude > sightDistance * sightDistance) return wasDetected;
-
-        if (Mathf.Abs(Vector3.Angle(-target.transform.forward, planarDir)) < sightAngle / 2)
+        if (Vector3.Angle(transform.forward, targetPos) <= sightAngle / 2)
         {
-            RaycastHit hit;
-            if (Physics.Raycast(sightOrigin, dir, out hit, Mathf.Infinity))
+            float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
+
+            if (distanceToTarget <= sightDistance)
             {
-                //Debug.DrawRay(sightOrigin, hit.transform.position - sightOrigin, Color.green, 10.0f);
-                if (hit.collider.gameObject == target)
+                RaycastHit hit;
+
+                Physics.Raycast(transform.position - (transform.forward * 2), target.transform.position - transform.position, out hit, sightDistance);
+
+                if (target == null) Debug.Log(hit.collider.gameObject.tag);
+                if (hit.collider.gameObject.tag == "Stag" || hit.collider.gameObject.tag == "Rabbit")
                 {
-                    float d = dir.sqrMagnitude;
-                    if (d < sightDistance)
-                    {
-                        wasDetected = true;
-                    }
+                    Debug.Log("Detectado");
+                    return true;
                 }
             }
         }
-        return wasDetected;
+        return false;
     }
 }

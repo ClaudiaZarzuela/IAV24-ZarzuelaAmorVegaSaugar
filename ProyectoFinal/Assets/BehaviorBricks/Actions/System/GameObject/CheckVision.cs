@@ -17,7 +17,7 @@ namespace BBUnity.Actions
         {
             sensor = gameObject.GetComponent<VisionSensor>();
             area = gameObject.GetComponent<SmellArea>();
-            GameObject _target = area.GetPray();
+            GameObject _target = area.GetPrey();
             if (sensor.DetectClosestTarget(_target)) target = _target;
             else target = null;
         }

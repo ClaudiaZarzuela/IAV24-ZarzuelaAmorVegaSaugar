@@ -4,11 +4,9 @@ using System.Collections.Generic;
 public class SmellArea : MonoBehaviour
 {
     private List<Scent> listScent = new List<Scent>();
-    private float maxTime = 1.0f;
-    private float elapsedTime;
 
     public bool HasDetectedSmell() { return listScent.Count > 0; }
-    public GameObject GetPray() {
+    public GameObject GetPrey() {
         if (listScent.Count > 0) return listScent[0].GetOriginator();
         else return null;
     }
@@ -44,18 +42,12 @@ public class SmellArea : MonoBehaviour
 
     public void Update()
     {
-        if (elapsedTime >= maxTime)
+        if(listScent.Count > 0)
         {
-            if(listScent.Count > 0)
-            {
-                if (listScent[0] == null || listScent[0].gameObject == null)
-                    listScent.Remove(listScent[0]);
-                //LogScentOrder();
-            }
-
-            elapsedTime = 0;
+            if (listScent[0] == null || listScent[0].gameObject == null)
+                listScent.Remove(listScent[0]);
+            //LogScentOrder();
         }
-        else elapsedTime += Time.deltaTime;
     }
 
     public bool CheckIfAlreadyInList(Scent newScent)
