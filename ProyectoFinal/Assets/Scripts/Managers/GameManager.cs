@@ -4,6 +4,7 @@ using Unity.AI.Navigation;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static UnityEditor.PlayerSettings;
 
@@ -104,5 +105,4 @@ public class GameManager : MonoBehaviour
                 individualCameras[i].SetActive(false);
         }
     }
-
 }

@@ -23,7 +23,7 @@ public class EnvironmentController : MonoBehaviour
     }
     #endregion
 
-    public static int rabitsNum = 0;
+    public static int rabitsNum = 5;
     private List<GameObject> rabbits = new List<GameObject>();
     private List<GameObject> stags = new List<GameObject>();
     private List<GameObject> wolfs = new List<GameObject>();
