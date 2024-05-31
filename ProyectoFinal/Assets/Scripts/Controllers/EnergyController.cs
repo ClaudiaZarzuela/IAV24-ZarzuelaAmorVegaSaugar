@@ -8,7 +8,7 @@ public class EnergyController : MonoBehaviour
     [SerializeField]
     public string typeOfAnimal;
 
-    private bool stillAlive = true;
+    private bool decrease = true;
 
     [SerializeField]
     private float currentHunger = 100;
@@ -34,9 +34,12 @@ public class EnergyController : MonoBehaviour
 
     public float GetHunger() { return currentHunger; }
     public float GetEnergy() { return currentEnergy; }
-    public bool IsAlive() {  return stillAlive; }
+    public bool IsAlive() { return currentEnergy > 0 && currentHunger > 0; }
+    public void Stop(bool active) {  decrease = active; }
     public void AnimalDied()
     {
+        LifeController life = gameObject.GetComponent<LifeController>();
+
         if (typeOfAnimal == "Stag")
             EnvironmentController.Instance.RemoveStag(gameObject);
         else
@@ -56,26 +59,14 @@ public class EnergyController : MonoBehaviour
     {
         currentHunger = maxHunger;
     }
-    public void RestoreHunger(int h)
-    {
-        currentHunger += h;
-        if (currentHunger > maxHunger) currentHunger = maxHunger;
-    }
-
     public void RestoreMaxEnergy()
     {
         currentEnergy = maxEnergy;
     }
 
-    public void RestoreEnergy(int e)
-    {
-        currentEnergy += e;
-        if (currentEnergy > maxEnergy) currentEnergy = maxEnergy;
-    }
-
     public void Update()
     {
-        if (stillAlive)
+        if (decrease)
         {
             if (elapsedTime >= timeToDecrease)
             {
@@ -87,7 +78,7 @@ public class EnergyController : MonoBehaviour
 
             if(currentHunger <= 0 || currentEnergy <= 0)
             {
-                stillAlive = false;
+                decrease = false;
                 AnimalDied();
             }
         }

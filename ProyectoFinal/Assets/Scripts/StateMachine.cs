@@ -7,11 +7,14 @@ using Pada1.BBCore;
 public class StateMachine : MonoBehaviour
 {
     public Blackboard blackboard = null;
-    protected enum States { WANDER, DIE, RECHARGE, GO_HOME, EAT };
+    protected enum States { WANDER, GO_HOME, RECHARGE, EAT };
 
     private EnergyController energyController = null;
 
     protected States currentState = States.WANDER;
+
+    private float elapsedTime = 0;
+    private float rechargeTime = 4;
 
     [SerializeField]
     protected List<BehaviorExecutor> behaviorExecutorList = null;
@@ -58,18 +61,25 @@ public class StateMachine : MonoBehaviour
     }
     protected void Recharge()
     {
-        Debug.Log("Recharging");
+        if (elapsedTime >= rechargeTime)
+        {
+            elapsedTime = 0;
+            energyController.Stop(true);
+            currentState = States.WANDER;
+            ChangeAction();
+        }
+        else
+        {
+            elapsedTime += Time.deltaTime;
+            energyController.RestoreMaxHunger();
+            energyController.Stop(false);
+        }
     }
-    protected void Die()
-    {
-
-    }
+   
     protected virtual void GoHome()
     {
     }
-    protected virtual void Eat()
-    {
-    }
+    protected virtual void Eat() {}
 
     protected void Update()
     {
@@ -87,10 +97,6 @@ public class StateMachine : MonoBehaviour
             case States.GO_HOME:
                 GoHome();
                 break;
-            case States.DIE:
-                Die();
-                break;
-
         }
 
     }

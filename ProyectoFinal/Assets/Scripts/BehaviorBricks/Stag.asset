@@ -20,33 +20,17 @@ MonoBehaviour:
     <inputValues>\r\n          <entry name=\"speed\" type=\"System.Single\" isBlackboard=\"False\"
     value=\"0\" />\r\n        </inputValues>\r\n      </inputParams>\r\n      <outputParams
     />\r\n      <localParams />\r\n    </BehaviorTree>\r\n    <RepeatDecorator id=\"6\"
-    loops=\"-1\" policy=\"ContinueWhenChildFails\">\r\n      <child>\r\n        <SubbehaviorNode
-    id=\"4\" />\r\n      </child>\r\n      <inputParams />\r\n      <outputParams
-    />\r\n      <localParams />\r\n    </RepeatDecorator>\r\n    <SubbehaviorNode
-    id=\"4\">\r\n      <_guid>5cd7c72c092d86a40974c269f363c67b</_guid>\r\n      <inputParams>\r\n       
-    <inputValues>\r\n          <entry name=\"target\" type=\"UnityEngine.Vector3\"
-    isBlackboard=\"False\" value=\"0 0 0\" />\r\n          <entry name=\"speed\"
-    type=\"System.Single\" isBlackboard=\"True\" blackboard=\"speed\" />\r\n         
-    <entry name=\"animation\" type=\"System.String\" isBlackboard=\"False\" />\r\n       
-    </inputValues>\r\n      </inputParams>\r\n      <outputParams>\r\n        <outputValues>\r\n         
-    <entry name=\"target\" type=\"UnityEngine.Vector3\" isBlackboard=\"True\" />\r\n       
-    </outputValues>\r\n      </outputParams>\r\n      <localParams />\r\n    </SubbehaviorNode>\r\n 
-    </runtimeInfo>\r\n  <editorInfo>\r\n    <BehaviorTree id=\"0\" _name=\"Stag\"
-    _description=\"\" _removeIfClosed=\"False\">\r\n      <_rootList>\r\n       
-    <elem>\r\n          <SubbehaviorNode id=\"4\" />\r\n        </elem>\r\n       
-    <elem>\r\n          <RepeatDecorator id=\"6\" />\r\n        </elem>\r\n     
-    </_rootList>\r\n      <_nodes>\r\n        <nodes>\r\n          <SubbehaviorNode
-    id=\"4\" />\r\n          <RepeatDecorator id=\"6\" />\r\n        </nodes>\r\n     
-    </_nodes>\r\n    </BehaviorTree>\r\n    <RepeatDecorator id=\"6\">\r\n      <_data>\r\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"536.9777 343.8571\" name=\"Repeat\"
-    description=\"Repeats the execution of its child node\" cardinality=\"1\" hasParent=\"False\">\r\n         
+    loops=\"-1\" policy=\"ContinueWhenChildFails\">\r\n      <inputParams />\r\n     
+    <outputParams />\r\n      <localParams />\r\n    </RepeatDecorator>\r\n  </runtimeInfo>\r\n 
+    <editorInfo>\r\n    <BehaviorTree id=\"0\" _name=\"Stag\" _description=\"\" _removeIfClosed=\"False\">\r\n     
+    <_rootList>\r\n        <elem>\r\n          <RepeatDecorator id=\"6\" />\r\n       
+    </elem>\r\n      </_rootList>\r\n      <_nodes>\r\n        <nodes>\r\n         
+    <RepeatDecorator id=\"6\" />\r\n        </nodes>\r\n      </_nodes>\r\n    </BehaviorTree>\r\n   
+    <RepeatDecorator id=\"6\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
+    selected=\"False\" position=\"594.5778 172.6571\" name=\"Repeat\" description=\"Repeats
+    the execution of its child node\" cardinality=\"1\" hasParent=\"False\">\r\n         
     <BehaviorTree id=\"0\" />\r\n          <RepeatDecorator id=\"6\" />\r\n       
-    </data>\r\n      </_data>\r\n    </RepeatDecorator>\r\n    <SubbehaviorNode id=\"4\">\r\n     
-    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"531.5776
-    495.9456\" name=\"AnimalWander\" description=\"\" cardinality=\"-1\" hasParent=\"True\">\r\n         
-    <BehaviorTree id=\"0\" />\r\n          <RepeatDecorator id=\"6\" />\r\n         
-    <RepeatDecorator id=\"6\" />\r\n        </data>\r\n      </_data>\r\n    </SubbehaviorNode>\r\n 
-    </editorInfo>\r\n</BehaviorBricks>"
+    </data>\r\n      </_data>\r\n    </RepeatDecorator>\r\n  </editorInfo>\r\n</BehaviorBricks>"
   zoom: 0.5
   subslist:
   - {fileID: 11400000, guid: 5cd7c72c092d86a40974c269f363c67b, type: 2}

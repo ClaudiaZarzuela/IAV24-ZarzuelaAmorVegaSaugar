@@ -6,7 +6,7 @@ public class SmellArea : MonoBehaviour
     private List<Scent> listScent = new List<Scent>();
 
     public bool HasDetectedSmell() { return listScent.Count > 0; }
-    public GameObject GetPray() {
+    public GameObject GetPrey() {
         if (listScent.Count > 0) return listScent[0].GetOriginator();
         else return null;
     }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class EnvironmentController : MonoBehaviour
@@ -63,6 +64,7 @@ public class EnvironmentController : MonoBehaviour
     public void RemoveRabbit(GameObject rabbit)
     {
         rabbits.Remove(rabbit);
+        Destroy(rabbit);
     }
 
     public void RegisterBush(GameObject bush)

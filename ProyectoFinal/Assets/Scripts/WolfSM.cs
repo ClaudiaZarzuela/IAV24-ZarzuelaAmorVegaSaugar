@@ -72,7 +72,6 @@ public class WolfSM : StateMachine
     {
         if(m_State != WolfStates.NONE)
         {
-            Debug.Log("Lobo Deactivate " + (WolfStates)action);
             if (action == 0)
                 smelling.enabled = false;
             else trace.enabled = false;
@@ -113,9 +112,9 @@ public class WolfSM : StateMachine
         GameObject target = area.GetScent();
         if (target != null)
         {
-            if (target.GetComponent<Scent>().GetIntensity() >= 0.70 && area.GetPray() != null)
+            if (target.GetComponent<Scent>().GetIntensity() >= 0.70 && area.GetPrey() != null)
             {
-                blackboard.Set("target", typeof(GameObject), area.GetPray());
+                blackboard.Set("target", typeof(GameObject), area.GetPrey());
             }
             else
             {
@@ -127,6 +126,13 @@ public class WolfSM : StateMachine
 
     public void WolfHasPrey()
     {
+        Vector3 lookPos = area.GetPrey().transform.position;
+        gameObject.transform.LookAt(lookPos);
+        gameObject.transform.position = lookPos - Vector3.forward *gameObject.transform.localScale.z;
+        LifeController life = area.GetPrey().GetComponent<LifeController>();
+        life.Die();
+
+
         m_State = WolfStates.NONE;
         blackboard.Set("hasEat", typeof(bool), true);
         currentState = States.RECHARGE;

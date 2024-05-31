@@ -29,7 +29,7 @@ namespace BBUnity.Actions
             if (wolf != null && wolf.IsTracking())
             {
                 target = wolf.GetTarget();
-                gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().stoppingDistance = 1.2f;
+                gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().stoppingDistance = 0.5f;
             }
 
             DeerSM deer = gameObject.GetComponent<DeerSM>();

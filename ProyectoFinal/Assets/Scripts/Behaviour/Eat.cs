@@ -50,7 +50,7 @@ public class Eat : MonoBehaviour
     {
         if(active)
         {
-            GameObject _target = area.GetPray();
+            GameObject _target = area.GetPrey();
             if (vision.DetectClosestTarget(_target))
             {
                 tracing = false;

@@ -13,9 +13,12 @@ namespace BBUnity.Actions
         public override void OnStart()
         {
             WolfSM eatComponent = gameObject.GetComponent<WolfSM>();
-            Debug.Log("Eating" + eatComponent.CheckIfHunting());
-            if(eatComponent.CheckIfHunting())
+            if (eatComponent.CheckIfHunting())
+            {
                 eatComponent.WolfHasPrey();
+                Animator animator = gameObject.GetComponent<Animator>();
+                animator.Play("Eat");
+            }
         }
 
         public override TaskStatus OnUpdate()
