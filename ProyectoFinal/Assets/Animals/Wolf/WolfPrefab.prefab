@@ -229,8 +229,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 5
-  m_Center: {x: 0, y: 1.1091893, z: -0.010899134}
+  m_Radius: 5.0164695
+  m_Center: {x: 0.10448863, y: 1.1091893, z: -0.010899134}
 --- !u!195 &6791222167080395162
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -382,11 +382,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeOfAnimal: Wolf
-  currentHunger: 70
+  currentHunger: 100
   maxHunger: 100
   currentEnergy: 100
   maxEnergy: 100
-  timeToDecrease: 100
+  timeToDecrease: 1
 --- !u!114 &2472167633384593794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -448,9 +448,8 @@ MonoBehaviour:
   paused: 0
   restartWhenFinished: 0
   blackboard:
-    intParams: 03000000
-    intParamsNames:
-    - Action
+    intParams: 
+    intParamsNames: []
     intParamsLostDefaultValue: 
     boolParams: 
     boolParamsNames: []

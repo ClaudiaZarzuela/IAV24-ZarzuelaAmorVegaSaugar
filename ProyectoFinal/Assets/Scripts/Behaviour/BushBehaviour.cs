@@ -11,7 +11,7 @@ public class BushBehaviour : MonoBehaviour
     [SerializeField]
     private GameObject bushBerriesMesh;
 
-    private float berrieTimer = 10.0f;
+    private float berrieTimer = 20.0f;
     private float auxTimer = 0;
     private bool isAvailable = true;
     private bool hasBerries = true;

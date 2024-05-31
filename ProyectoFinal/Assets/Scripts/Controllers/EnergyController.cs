@@ -39,6 +39,7 @@ public class EnergyController : MonoBehaviour
     public void AnimalDied()
     {
         LifeController life = gameObject.GetComponent<LifeController>();
+        life.Die();
 
         if (typeOfAnimal == "Stag")
             EnvironmentController.Instance.RemoveStag(gameObject);

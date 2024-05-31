@@ -127,9 +127,9 @@ public class WolfSM : StateMachine
 
     public void WolfHasPrey()
     {
-        Vector3 lookPos = area.GetPrey().transform.position;
-        gameObject.transform.LookAt(lookPos);
-        gameObject.transform.position = lookPos - Vector3.forward *gameObject.transform.localScale.z;
+        //Vector3 lookPos = area.GetPrey().transform.position;
+        //gameObject.transform.LookAt(lookPos);
+        //gameObject.transform.position = lookPos - Vector3.forward *gameObject.transform.localScale.z;
         LifeController life = area.GetPrey().GetComponent<LifeController>();
         life.Die();
 
