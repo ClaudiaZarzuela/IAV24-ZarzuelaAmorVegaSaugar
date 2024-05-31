@@ -391,6 +391,7 @@ El sentido del olfato se rige por tres clases principales : **GenerateSmell**, *
 
 Ambos, ciervo y conejo, van dejando continuamente un rastro de olor (_Scent_) representado con distintos colores y escalas. En nuestro caso, la escala indica la intesidad del olor, la cual va disminuyendo con el tiempo hasta desaparecer por completo.
 
+
 ### Generate Smell
 ```
  timeToSpawn : float
@@ -411,6 +412,7 @@ Ambos, ciervo y conejo, van dejando continuamente un rastro de olor (_Scent_) re
 
      else elapsedTime += Time.deltaTime
 ```
+![TiposDeRastros](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/4f9a061a-f205-4e7a-94bd-421f52a9048f)
 
 La clase Scent hereda de IComparable para poder comparar dos olores y así poder meterlo a la lista de olores percibidos cumpliendo
 un orden de prioridad.
@@ -425,54 +427,106 @@ class Scent extends MonoBehaviour, IComparable<Scent>:
     originator : GameObject
     typeScent : string
 
-    public void SetOriginator(GameObject or)
-    {
-        originator = or;
-    }
-    public GameObject GetOriginator()
-    {
-        return originator;
-    }
-    public float GetIntensity()
-    {
-        return gameObject.transform.localScale.magnitude;
-    }
+    SetOriginator(GameObject or) -> void
+        originator = or
 
-    public string GetTypeScent()
-    {
-        return typeScent;
-    }
+    GetOriginator() -> GameObject
+        return originator
 
-    void Update()
-    {
-        if (alive)
-        {
-            if (gameObject.transform.localScale.x <= 0 || elapsedTime >= timeToLive)
-            {
-                Destroy(gameObject);
-                alive = false;
-            }
+    GetIntensity() -> float
+        return escala del objeto
+
+    GetTypeScent() -> string
+        return typeScent
+
+    Update() -> void
+        if alive:
+            if escala <= 0 elapsedTime >= timeToLive
+                Destruyo el objeto
+                alive = false
             else
-            {
-                elapsedTime += Time.deltaTime;
-                gameObject.transform.localScale -= new Vector3(decreaseFactor / timeToLive, 0, decreaseFactor / timeToLive) * Time.deltaTime;
-                Color color = _renderer.material.color;
-                color.g += 0.1f * Time.deltaTime;
-                _renderer.material.color = color;
-            }
-        }
-    }
+                elapsedTime += Time.deltaTime
+                //Disminuir escala con el tiempo
+                escala -= Vector3(decreaseFactor / timeToLive, 0, decreaseFactor / timeToLive) * tiempo
+                //Aclarar el color con el tiempo
+                color.g += 0.1f * tiempo
 
-    public int CompareTo(Scent other)
-        if (other == null) return 1;
+    //Método que compara dos olores dependiendo de su tipo y su intensidad
+    // Un olor de tipo Ciervo es más prioritario que uno de un Conejo pero, en caso de ser del mismo tipo, a mayor intensidad mayor preferencia
+    CompareTo(Scent other) -> int
+        //Devolver 1 significa que es más prioritario y -1 menos prioritario
+        if other == null: return 1
 
-        bool isStagThis = typeScent == "Stag";
-        bool isStagOther = other.GetTypeScent() == "Stag";
+        isStagThis : bool = typeScent == "Stag"
+        isStagOther : bool = other.GetTypeScent() == "Stag"
 
-        if (isStagThis && !isStagOther) return -1;
-        if (!isStagThis && isStagOther) return 1;
+        if isStagThis && !isStagOther: return -1
+        if !isStagThis && isStagOther : return 1
 
-        return other.GetIntensity().CompareTo(this.GetIntensity());
+        return other.GetIntensity().CompareTo(this.GetIntensity())
+```
+
+El lobo consta de un área de detección para el olfato por la que, en caso de entrar por ella, registrará los olores nuevos y los añadirá en una lista según su preferencia. Si entran dos rastros del mismo animal, solo se quedará con la de mayor intensidad. La lista estará ordenda según el tipo de animal y la intensidad, 
+favoreciendo a aquellos rastros originados por los ciervos y con mayor intensidad.
+
+```
+class SmellArea extends MonoBehaviour :
+    listScent : List<Scent>
+
+    function HasDetectedSmell() -> bool
+        return tamaño de la listScent > 0
+
+    function GetPrey() -> GameObject
+        if tamaño de la listScent > 0 :
+           return animal creador del rastro más potente, el primero en la lista
+        else :
+           return null
+    
+    GetScent() -> GameObject
+       if tamaño de la listScent > 0 :
+           return rastro más potente, el primero en la lista
+        else :
+           return null
+    
+    OnTriggerEnter(Collider other) -> void
+        if other es de tipo Scent :
+            //Comprueba si todos los objetod de la lista siguen existiendo, evita errores entre ticks
+            CheckIfStillSmells()
+
+            //Compruba si en la lista ya hay un rastro proveniente del mismo animal
+            if (!CheckIfAlreadyInList(otherScent)) listScent.Add(otherScent);
+
+            //Ordena la lista
+            listScent.Sort(); 
+
+
+    OnTriggerExit(Collider other) -> void
+        if other es de tipo Scent :
+            //Comprueba si todos los objetod de la lista siguen existiendo, evita errores entre ticks
+            CheckIfStillSmells()
+            //Saca de la lista el olor en caso de estar
+            listScent.Remove(otherScent);
+
+    Update() -> void
+        if tamaño de la listScent > 0 :
+            Comprueba si el rastro más potente, el primero de la lista, sigue activo y, en caso de no estarlo, lo elimina
+            if listScent[0] == null : 
+                listScent.Remove(listScent[0])
+
+    CheckIfAlreadyInList(Scent newScent) -> bool
+        foreach Scent scent in listScent :
+            //Si ya hay un rastro del mismo animal que ha creado el nuevo
+            if scent.GetOriginator() == newScent.GetOriginator()
+                //Compara con cual nos interesa quedarnos, lo añade y elimina el otro
+                if scent.CompareTo(newScent) > 0
+                    listScent.Add(newScent);
+                    listScent.Remove(scent);
+                return true
+
+        return false
+
+    CheckIfStillSmells() -> void
+        Elimina todos los rastros que ya hayan desaparecido de la lista
 ```
 
 ## Input, cámaras y HUD
