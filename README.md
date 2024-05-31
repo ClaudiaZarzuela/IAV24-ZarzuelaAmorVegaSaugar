@@ -18,7 +18,7 @@ Wildlife Simulator será un simulador en el que distintos tipos de animales conv
 
 Para dar vida a la simulación contaremos con tres tipos de animales. Para representar a los herbívoros usaremos ciervos, a los carnívoros un lobo y añadiremos conejos para equilibrar el hábitat y evitar que el lobo acabe con los ciervos rápidamente. Estos conejos simplemente se usarán como cebo y se encargarán exclusivamente de merodear. En caso de oler a ambos animales, el lobo preferirá cazar a los ciervos. 
 
-Cada animal tendrá que tener cuidado de no dejar bajar sus niveles demasiado, ya que de agotarse, morirán. Ambos comenzarán merodeando tranquilamente por el bosque, bajando constantemente  poco a poco su nivel de energía y rápidamente su nivel de hambre. 
+Cada animal tendrá que tener cuidado de no dejar bajar sus niveles demasiado, ya que de agotarse, morirán. Ambos comenzarán merodeando tranquilamente por el bosque, bajando constantemente poco a poco su nivel de energía y rápidamente su nivel de hambre. 
 
 ![Animales](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/a18be436-1821-4cbc-96f9-c168641cff51)
 
@@ -29,11 +29,99 @@ El hábitat consta de distintas zonas valiosas:
 
 - Esparcidos por el terreno, podremos encontrar arbustos con frutos para alimentar a los herbívoros. Estos arbustos se posicionarán de manera pseudoaleatoria utilizando **Perlin Noise**, un tipo de ruido basado en gradientes, desarrollado por Ken Perlin en 1983. La ventaja que tiene el Perlin Noise frente a otros ruidos clásicos ( como puede ser el White Noise ) es que es un ruido aleatorio, pero coherente. Después de que un ciervo se pare a comer, deberán transcurrir unos segundos (20) antes de que salgan nuevos frutos.
 
-- Durante la partida habra un número determinado de conejos rondando el área, aunque irán siendo cazados por el lobo. Estos sólo tienen un comportamiento de merodeo y sirven para evitar que el lobo acabe con los ciervos de inmediato.
+- Al principio de la partida aparecerán en posiciones aleatorias del terreno unos conejos. Estos sólo tienen un comportamiento de merodeo y sirven para evitar que el lobo acabe con los ciervos de inmediato. 
 
   ![Diagrama terreno](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/5cc055e6-0b0c-44c3-9b0e-10fed633d730)
 
-### Ciervo
+### Animales
+Para el comportamiento de los animales se optó por una **FSM (Finite State Machine)** general, utilizando Behavior Trees como estados, permitiendo comprender las acciones globales para todos cómo:
+| Estado | Función |
+|:-:|:--|
+| **WANDER** | Estado controlado por un Behavoir Tree en el que el animal merodea por el hábitat, escogiendo y dirigiéndose a puntos aleatorios. Se trata del estado predeterminado pero en caso de detectar que el hambre o energía se encuentran por debajo de lo especificado, cambiara de estado.|
+| **GO_HOME** | Estado controlado por un Behavoir Tree en el que el animal escoge la casa a la que debe ir y se dirige a ella. Una vez dentro, espera unos segundos mientras recarga por completo la energía. Una vez llena por completo, el animal saldrá de su hogar y comenzará a merodear de nuevo.|
+| **RECHARGE** | Tras realizar la acción de comer, se encarga de esperar unos segundos y subirle el hambre al máximo antes de volver a meordear por la zona.  |
+| **NONE** | Cuando un animal muere, se necesita destruir todos los BTs del resto de estados para que no se ejecuten mientras tanto. Por tanto, este estado permite manejar los errores que puedan ocasionarse por componentes que esten activos cuando no deben. |
+
+```
+class StateMachine extends MonoBehavior:
+
+//Estados generales de los animlaes
+ enum States = { WANDER, GO_HOME, RECHARGE, EAT, NONE }
+
+//Referencia al estado actual, el cual comenzará siendo merodeo
+currentState : States = States.WANDER
+
+//Pizzarra global par aguardar variables de los comportamnientos
+blackboard : Blackboard
+
+//Referencia al controlador de energía del animal, el cual actualiza la energía y el hambre 
+energyController : EnergyController
+
+//Tiempo de espera a la hora de recargar el hambre o la energía
+elapsedTime : float = 0
+rechargeTime : float = 2
+
+//Referencia a los BT de cada estado
+behaviorExecutorList : List<BehaviorExecutor>
+
+//Se llama cuando un animal se muere
+function AnimalDied() -> void
+     Destruir cada acción realizada por un BT
+     currentState = States.NONE
+
+//Preguntar si una accion es la que se está realizando actualmente
+function CheckActiveAction(accion) -> bool
+     return action == currentState
+
+ function ChangeAction() -> void
+     Activar el BT asociado al currentState
+
+function DeactivateAction(accion) -> void
+     Desactivar el BT asociado a la accion pasada como parámetro
+
+function Awake() -> void
+     Inicializar variables y blackboard
+     Añadir variables globales al blackboard como:
+        - "minHunger" : float =  75.0f
+        - "minEnergy" : float = 25.0f
+
+//Método asociado al estado de merodeo
+function Wander() -> void
+     if (hambre <= "minHunger": currentState = States.EAT
+     else if energía <= "minEnergy" : currentState = States.GO_HOME;
+     else : currentState = States.WANDER
+
+//Método asociado al estado de recarga
+function Recharge() -> void 
+     if elapsedTime >= rechargeTime :
+         Poner en marcha el energyController para que comience a actualizar el hambre y la energía dr nuevo
+     	 currentState = States.WANDER;
+     else :
+         Sumar elapsedTime
+         Restaurar el hambre, ponerlo al máximo
+         Parar el energyController para que no actualice el hambre y la energía mientras tanto
+
+//Método asociado al estado de ir a casa, sobreescrito por los hijos
+function GoHome() -> virtual void
+
+//Método asociado al estado de comer, sobreescrito por los hijos
+function Eat() -> virtual void
+
+//Método que devuelve la casa a la que hay que ir en caso de tener sueño, sobreescrito por los hijos
+function GetHouse() -> virtual GameObject
+
+function Update() -> void
+    //Cambio entre estados con un switch
+     switch (currentState)
+         case States.WANDER: Wander()
+         case States.RECHARGE Recharge()
+         case States.EAT: Eat()
+         case States.GO_HOME: GoHome()
+```
+
+Debido a la diferencia entre algunos comportamientos en ambos animales, como puede ser la acción de comer, de esta FSM general podrán heredas dos máuinas de estados distintas (ciervo y lobo) para sobreescribir dihcas comportamientos.
+
+- EAT:
 El esquema de comportamiento en Behaviour Bricks de los ciervos es el siguiente:
 
  ![herbivoros](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/99989921/4f87fbc7-fe76-4c35-8952-f94b6ed484b5)
