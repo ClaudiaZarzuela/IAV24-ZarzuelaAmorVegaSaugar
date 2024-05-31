@@ -150,4 +150,9 @@ public class WolfSM : StateMachine
     {
         behaviorExecutorList[(int)currentState].SetBehaviorParam("target", wolfHouse);
     }
+
+    public GameObject getHouse()
+    {
+        return wolfHouse;
+    }
 }

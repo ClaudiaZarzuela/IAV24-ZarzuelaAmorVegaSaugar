@@ -83,6 +83,7 @@ public class StateMachine : MonoBehaviour
 
     protected void Update()
     {
+        Debug.Log(currentState);
         switch (currentState)
         {
             case States.WANDER:

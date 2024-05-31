@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -8,7 +9,8 @@ public class DeerSM : StateMachine
     [SerializeField]
     private GameObject deerHouse = null;
 
-    private bool assignHouse = false;
+    [SerializeField]
+    private BehaviorExecutor eat = null;
 
     private void Awake()
     {
@@ -16,6 +18,7 @@ public class DeerSM : StateMachine
         blackboard.Set("searchedBush", typeof(bool), false);
         blackboard.Set("bush", typeof(GameObject), null);
         blackboard.Set("arrivedAtBush", typeof(bool), false);
+        blackboard.Set("hasSlept", typeof(bool), false);
     }
 
     // Start is called before the first frame update
@@ -30,24 +33,49 @@ public class DeerSM : StateMachine
         base.Update();
     }
 
+    public override void DeactivateAction(int action)
+    {
+        if (action == (int)States.EAT)
+        {
+            eat.enabled = false;
+        }
+        else base.DeactivateAction(action);
+    }
+
     protected override void Eat()
     {
+        eat.enabled = true;
         if ((bool)blackboard.Get("searchedBush", typeof(bool)) && (GameObject)blackboard.Get("bush", typeof(GameObject)) == null)
         {
-            Debug.Log("No hay arbustos disponibles");
-            behaviorExecutorList[(int)States.WANDER].enabled = true;
+            //Debug.Log("No hay arbustos disponibles");
+            currentState = States.WANDER;
+            eat.enabled = false;
+            ChangeAction();
         }
         else if ((bool)blackboard.Get("arrivedAtBush", typeof(bool)))
         {
-            Debug.Log("He llegado");
+            //Debug.Log("He llegado");
             ((GameObject)blackboard.Get("bush", typeof(GameObject))).GetComponent<BushBehaviour>().StartEating();
+
+            blackboard.Set("searchedBush", typeof(bool), false);
+            blackboard.Set("bush", typeof(GameObject), null);
+            blackboard.Set("arrivedAtBush", typeof(bool), false);
+            eat.enabled = false;
+
             currentState = States.RECHARGE;
         }
     }
 
     protected override void GoHome()
-    {  
-        behaviorExecutorList[(int)currentState].SetBehaviorParam("target", deerHouse);
+    {
+        //Debug.Log("Hola");
+        if ((bool)blackboard.Get("hasSlept", typeof(bool)))
+        {
+            //Debug.Log("DURMIO");
+            currentState = States.WANDER;
+            ChangeAction();
+            blackboard.Set("hasSlept", typeof(bool), false);
+        }
     }
 
     public GameObject getHouse()

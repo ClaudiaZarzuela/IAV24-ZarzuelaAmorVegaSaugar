@@ -33,9 +33,11 @@ namespace BBUnity.Actions
             }
 
             DeerSM deer = gameObject.GetComponent<DeerSM>();
-            if(deer != null && deer.CheckActiveAction(3))
+            if(deer != null && deer.CheckActiveAction(1))
+            {
                 target = deer.getHouse();
-
+                deer.blackboard.Set("almostHome", typeof(bool), true);
+            }
 
 
             if (target == null)

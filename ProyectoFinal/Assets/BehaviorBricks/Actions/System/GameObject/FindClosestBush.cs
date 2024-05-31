@@ -19,6 +19,7 @@ namespace BBUnity.Actions
 
         public override void OnStart()
         {
+            Debug.Log("Hola");
             dSM = gameObject.GetComponent<DeerSM>();
             list = EnvironmentController.Instance.GetBushesList();
 

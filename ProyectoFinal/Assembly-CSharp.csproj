@@ -126,6 +126,7 @@
     <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\FindGameObjectByName.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\Animation\PlayAnimation.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
+    <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\WakeUp.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\FindGameObjectByTag.cs" />
     <Compile Include="Assets\Scripts\Behaviour\UpdateStatus.cs" />
     <Compile Include="Assets\Scripts\WolfSM.cs" />
@@ -155,6 +156,7 @@
     <Compile Include="Assets\BehaviorBricks\Samples\ProgrammersQuickStartGuide\Done\DoneBulletScript.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\Track.cs" />
     <Compile Include="Assets\BehaviorBricks\Samples\ProgrammersQuickStartGuide\Done\DoneDayNightCycle.cs" />
+    <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\Sleep.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\SetActive.cs" />
     <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\GetRandomPoint.cs" />
     <Compile Include="Assets\Scripts\Controllers\RabitController.cs" />
