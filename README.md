@@ -22,8 +22,7 @@ Cada animal tendrá que tener cuidado de no dejar bajar sus niveles demasiado, y
 
 ![Animales](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/a18be436-1821-4cbc-96f9-c168641cff51)
 
-## Mecánicas de juego
-### Terreno
+## Terreno
 El hábitat consta de distintas zonas valiosas:
 - A los extremos encontramos los hogares de ambos animales, la derecha siendo de los carnívoros y la izquierda de herbívoros. En estas áreas, los animales podrán resguardarse con seguridad de cualquier animal ya que solo los de su misma especie pueden entrar en dicho lugar. Aquí los animales descansarán hasta que su barra de energía esté completa. Una vez recuperados, continuarán con sus rutinas normales.
 
@@ -31,9 +30,14 @@ El hábitat consta de distintas zonas valiosas:
 
 - Al principio de la partida aparecerán en posiciones aleatorias del terreno unos conejos. Estos sólo tienen un comportamiento de merodeo y sirven para evitar que el lobo acabe con los ciervos de inmediato. 
 
-  ![Diagrama terreno](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/5cc055e6-0b0c-44c3-9b0e-10fed633d730)
+![Diagrama terreno](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/49333fbf-4258-43d3-bc89-e521ca535d88)
 
-### Animales
+## Generación procedural
+### Perlin
+
+Instertar y explicar el algoritmo de perlin usado blah
+
+## Estructura de los comportamientos
 Para el comportamiento de los animales se optó por una **FSM (Finite State Machine)** general, utilizando Behavior Trees como estados, permitiendo comprender las acciones globales para todos cómo:
 | Estado | Función |
 |:-:|:--|
@@ -118,35 +122,34 @@ function Update() -> void
          case States.EAT: Eat()
          case States.GO_HOME: GoHome()
 ```
+### Behavior Trees Globales
+![Wander+GoHomeBTs](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/e5488fdf-2d88-4af9-b5d0-801c30372fda)
 
-Debido a la diferencia entre algunos comportamientos en ambos animales, como puede ser la acción de comer, de esta FSM general podrán heredas dos máuinas de estados distintas (ciervo y lobo) para sobreescribir dihcas comportamientos.
+### Comportamientos individuales
+Debido a la diferencia entre algunos comportamientos en ambos animales, como puede ser comer, de esta FSM general podrán heredas dos máquinas de estados distintas (ciervo y lobo) para sobreescribir dichas acciones.
 
-- EAT:
-El esquema de comportamiento en Behaviour Bricks de los ciervos es el siguiente:
-
- ![herbivoros](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/99989921/4f87fbc7-fe76-4c35-8952-f94b6ed484b5)
- 
+#### Estado EAT CIERVO
 En primer lugar harán la comprobación más prioritaria, siendo esta la de su sentido del oído, para comprobar si están siendo acechados por algún lobo y en ese caso iniciar la huida.
 
 A continuación comprobarán sus niveles de hambre, en caso de necesitarlo buscarán el arbusto más cercano, y si está disponible comerán de él. Si por el contrario el arbusto está ocupado, o siguen teniendo hambre, repetirán esa búsqueda con el siguiente arbusto más cercano hasta quedar satisfechos.
 
 Una vez comprobada el hambre, comprobarán su energía, que en el caso de estar baja, les obligará a volver a su "guarida" para reponerla.
 
-En caso de que no se cumpla ninguna de las condiciones anteriores (ha detectado a un enemigo, tiene hambre o tiene sueño), el animal se dedicará a merodear por el escenario.
+En caso de que no se cumpla ninguna de las condiciones anteriores (ha detectado a un enemigo, tiene hambre o tiene sueño), el animal se dedicará a merodear por el escenario
+ ![EatStagBT](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/e12ea1d7-cc54-4f48-9d66-5abd55157766)
 
-
-### Lobos
-El esquema de comportamiento en Behaviour Bricks de los lobos es el siguiente:
-
-![carnivoros](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/99989921/cce034d8-0bc6-44bd-9d9e-6d45cd097987)
-
-En el caso de los lobos, como no están en peligro de ser perseguidos su primera comprobación será su olfato. Esto es así porque en caso de chequear primero el hambre y no encontrar ningún rastro nunca saldría de ese bucle.
+ #### Estado EAT LOBO
+ En el caso de los lobos, como no están en peligro de ser perseguidos su primera comprobación será su olfato. Esto es así porque en caso de chequear primero el hambre y no encontrar ningún rastro nunca saldría de ese bucle.
 
 En caso de haber encontrado un rastro y tener hambre, seguirán el rastro de la presa hasta estar lo suficientemente cerca como para verla, momento en el cual comenzarán a perseguirla hasta cazarla o perder su rastro.
 
 En segundo lugar comprobarán su energía, lo cual funcionará igual que en el caso de los ciervos, en caso de estar baja irán a la "guarida" a descansar.
 
 Y por último, también símil a los ciervos, si todas estas comprobaciones fallan, se limitarán a merodear por el escenario.
+![EatWolfBT](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/25d7c8fb-0ca6-4a55-b1b8-5a5ea9c31376)
+
+### FMS individuales
+
 
 ## Input, cámaras y HUD
 ### Cámara principal 
@@ -164,161 +167,6 @@ Una vez cambiado a la cámara individual de un animal, aparecerá arriba a la iz
 ![MainMenu](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/5ff68812-3026-415a-b1c0-ac8de509b4e3)
 Al comienzo de la simulación se podrá especificár cuantos arbustos y conejos totales se quieren en la partida. En el caso de que todos los herbívoros mueran, se volverá al menú principal.
 
-## Punto de partida
-Se parte de las tres prácticas ya realizadas para la asignatura, las cuales podremos usar como base para el desarrollo de los distintos comportamientos, sistemas de percepción, y métodos de navegación.
-
-La idea es desarrollar los diferentes comportamientos y estados de los animales usando behaviour bricks, y teniendo en cuenta el estado de cada uno de ellos y cómo afecta a sus acciones. Su desplazamiento usaría comportamientos como el de huída, persecución o merodeo pero aplicados a un NavMesh como el usado en la tercera práctica, e integrándolos con el uso de waypoints. 
-
-#### Wander
-```
-class Wander extends AgentBehaviour:
-    wanderOffset : float = 1.5f
-    wanderRadius : float = 4f
-    wanderRate : float = 0.4f
-    wanderOrientation : float = 0f
-
-    timeToWait : float = 0.1f
-    float auxTime : float = 0f
-	
-    function RandomBinomial() -> float
-        return (Random.value : float - Random.value : float)
-	
-    function OrientationToVector(orientation : float) -> Vector3
-	return (Cos(orientation), 0, Sin(orientation)) : Vector3
-
-    function Start() -> void
-	agente.orientacion = Random(0f, 360f);
-	
-    function GetDireccion() -> Direccion
-	result : Direccion
-        if (auxTime > timeToWait)
-        {
-	    wanderOrientation += RandomBinomial() * wanderRate
-	    targetOrientation : float = wanderOrientation + agent.orientation
-	    targetPosition : Vector3 = agent.transform.position + (wanderOffset * OrientationToVector(agent.orientation))	
-	    targetPosition += wanderRadius * OrientationToVector(targetOrientation)
-	    result.lineal = targetPosition - agent.transform.position
-	    result.lineal.Normalize()
-	    result.lineal *= agent.accelerationMax
-	    return result
-	    auxTime = 0
-	}
-	else result = agente.direction
-	auxTime += deltaTime
-```
-
-#### Pursue
-```
-class Pursue extends Seek:
-    maxPrediction : float = 2.0f
-    
-    function SetObjetive(obj : GameObject) -> void:
-        objetive = obj
-
-    function getDirection() -> Direction:
-        direction : Direction
-
-        dir : Vector3 = objetive.position - character.position
-        distance : float = dir.magnitude
-
-        speed : float = Rigidbody.velocity.magnitude
-        prediction : float
-
-        if speed <= distance / maxPrediction:
-            prediction = maxPrediction
-        else:
-            prediction = distance / speed
-
-        predictionObjetive : Vector3 = objetive.position + objetive.Rigidbody.velocity * prediction
-        SetDirection(direction, predictionObjetive)
-        return direction
-```
-
-#### Flee
-```
-class Flee extends AgentBehaviour:
-    distance : float = 7
-    timeToTarget : float = 0.1f
-
-    function GetDirection() -> Direction
-        direction : Direction 
-        dir : Vector3 = transform.position - objetive.transform.position
-        distance = dir.magnitude
-        speed : float = 0
-        speed = agent.velocityMax
-        dir.Normalize()
-        dir *= speed
-        direction.lineal = dir - agent.velocity
-        direction.lineal /= timeToTarget
-
-        if direction.lineal.magnitude > agent.acelerationMax
-            direction.lineal.Normalize()
-            direction.lineal *= agent.acelerationMax
-
-        direction.angular = 0
-        return direction
-```
-
-##### LookAt
-Estado que apunta al target
-```
-class LookAt extends State
-    _finished : bool
-    function void Update() -> void
-        transform.LookAt(EnemyBlackboard.target)
-        _finished = true
-```
-
-##### MoveToGameObject
-Estado en el que se mueve a una entidad
-```
-class MoveToGameObject extends State
-    _target : GameObject
-    _closeDistance : float
-    _lockToFirstGameObjectPosition : bool
-
-    _navAgent : NavMeshAgent
-    _targetTransform : Transform
-
-    function Enter() -> void:
-        if _target is null:
-            return
-
-        _targetTransform = _target.transform
-
-        _navAgent = _gameObject.NavMeshAgent
-        if _navAgent is null:
-            _navAgent = _gameObject.AddComponent<NavMeshAgent>()
-
-        path : NavMeshPath = new NavMeshPath();
-        if _navAgent.CalculatePath(_targetTransform.position, path):
-            corners = path.corners
-            fullDistance : float = 0f
-
-            for int i = 1; i < corners.Length; i++:
-                fullDistance += Distance(corners[i - 1], corners[i])
-
-            if fullDistance > _closeDistance:
-                _navAgent.SetDestination(_targetTransform.position)
-
-
-            if UNITY_5_6_OR_NEWER:
-                _navAgent.isStopped = false;
-            else:
-                navAgent.Resume();
-
-    function void Update() -> void:
-        if not _lockToFirstGameObjectPosition and _navAgent.destination not equals _targetTransform.position:
-            _navAgent.SetDestination(_targetTransform.position)
-
-    function Exit() -> void:
-        if UNITY_5_6_OR_NEWER:
-            if _navAgent not equals null:
-                _navAgent.isStopped = true
-            else:
-                if navAgent not equals null
-                    navAgent.Stop()
-```
 ## Pruebas y métricas
 Para comprobar el correcto funcionamiento de la aplicación, la someteremos a diversas pruebas:
 
@@ -347,8 +195,6 @@ Nos aseguraremos de que cada especie se mueva por las zonas que hayamos determin
 
 - [Vídeo de la prueba E: Próximamente]()
 
-
-
 ## Producción
 Las tareas se han realizado y el esfuerzo ha sido repartido entre los autores.
 
@@ -359,6 +205,7 @@ Las tareas se han realizado y el esfuerzo ha sido repartido entre los autores.
 | ✔ | Botones de HUD (cambio entre cámaras) |13-04-2024|
 | ✔ | Creación Main Menu |23-04-2024|
 | ✔ | Spawn de conejos (con máximo total) |23-04-2024|
+
 ## Licencia
 Claudia Zarzuela, Andrea Vega Saugar, autores de la documentación, código y recursos de este trabajo, no concedemos permiso permanente a los profesores de la Facultad de Informática de la Universidad Complutense de Madrid para utilizar nuestro material, con sus comentarios y evaluaciones, con fines educativos o de investigación; ya sea para obtener datos agregados de forma anónima como para utilizarlo total o parcialmente reconociendo expresamente nuestra autoría.
 
