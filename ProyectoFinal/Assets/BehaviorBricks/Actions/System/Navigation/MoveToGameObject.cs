@@ -32,11 +32,11 @@ namespace BBUnity.Actions
                 gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().stoppingDistance = 0.5f;
             }
 
-            DeerSM deer = gameObject.GetComponent<DeerSM>();
-            if(deer != null && deer.CheckActiveAction(1))
+            StateMachine animal = gameObject.GetComponent<StateMachine>();
+            if(animal != null && animal.CheckActiveAction(1))
             {
-                target = deer.getHouse();
-                deer.blackboard.Set("almostHome", typeof(bool), true);
+                target = animal.GetHouse();
+                animal.blackboard.Set("almostHome", typeof(bool), true);
             }
 
 

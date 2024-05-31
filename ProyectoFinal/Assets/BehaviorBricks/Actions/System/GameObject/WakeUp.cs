@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine.AI;
 using static UnityEngine.GraphicsBuffer;
+using System.Security.Cryptography;
 
 namespace BBUnity.Actions
 {
@@ -14,27 +15,21 @@ namespace BBUnity.Actions
     public class WakeUp : GOAction
     {
         public GameObject house;
-        private DeerSM dSM;
-        private WolfSM wSM;
+        private StateMachine sM;
+
 
         public override void OnStart()
         {
             gameObject.GetComponent<NavMeshAgent>().enabled = true;
             gameObject.GetComponent<Rigidbody>().isKinematic = false;
 
-            dSM = gameObject.GetComponent<DeerSM>();
-            wSM = gameObject.GetComponent<WolfSM>();
-            if (dSM != null)
+
+            sM = gameObject.GetComponent<StateMachine>();
+            if (sM != null)
             {
-                house = dSM.getHouse().transform.GetChild(0).gameObject;
+                house = sM.GetHouse().transform.GetChild(0).gameObject;
                 gameObject.transform.position = house.transform.position;
-                dSM.blackboard.Set("hasSlept", typeof(bool), true);
-            }
-            if (wSM != null)
-            {
-                house = wSM.getHouse().transform.GetChild(0).gameObject;
-                gameObject.transform.position = house.transform.position;
-                wSM.blackboard.Set("hasSlept", typeof(bool), true);
+                sM.blackboard.Set("hasSlept", typeof(bool), true);
             }
             gameObject.GetComponent<EnergyController>().RestoreMaxEnergy();
         }

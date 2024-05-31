@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pada1.BBCore.Tasks;
 using Pada1.BBCore;
+using JetBrains.Annotations;
 
 public class StateMachine : MonoBehaviour
 {
@@ -76,11 +77,9 @@ public class StateMachine : MonoBehaviour
         }
     }
    
-    protected virtual void GoHome()
-    {
-    }
+    protected virtual void GoHome(){}
     protected virtual void Eat() {}
-
+    public virtual GameObject GetHouse() { return null; }
     protected void Update()
     {
         Debug.Log(currentState);
@@ -100,5 +99,6 @@ public class StateMachine : MonoBehaviour
                 break;
         }
 
+        
     }
 }

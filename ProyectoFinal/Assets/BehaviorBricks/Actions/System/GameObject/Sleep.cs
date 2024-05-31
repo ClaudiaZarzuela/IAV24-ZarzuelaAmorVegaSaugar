@@ -14,27 +14,19 @@ namespace BBUnity.Actions
     public class Sleep : GOAction
     {
         public GameObject house;
-        private DeerSM dSM;
-        private WolfSM wSM;
+        private StateMachine sM;
 
         public override void OnStart()
         {
             gameObject.GetComponent<NavMeshAgent>().enabled = false;
             gameObject.GetComponent<Rigidbody>().isKinematic = true;
 
-            dSM = gameObject.GetComponent<DeerSM>();
-            wSM = gameObject.GetComponent<WolfSM>();
-            if (dSM != null)
+            sM = gameObject.GetComponent<StateMachine>();
+            if (sM!= null)
             {
-                house = dSM.getHouse();
+                house = sM.GetHouse();
                 gameObject.transform.position = house.transform.position;
             }
-            if (wSM != null)
-            {
-                house = wSM.getHouse();
-                gameObject.transform.position = house.transform.position;
-            }
-
         }
 
         public override TaskStatus OnUpdate()

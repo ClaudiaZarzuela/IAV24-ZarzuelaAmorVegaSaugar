@@ -52,7 +52,7 @@ public class EnergyController : MonoBehaviour
 
     public void DecreaseEnergy()
     {
-        currentEnergy-=3;
+        currentEnergy--;
     }
 
     public void RestoreMaxHunger()
@@ -71,7 +71,7 @@ public class EnergyController : MonoBehaviour
             if (elapsedTime >= timeToDecrease)
             {
                 elapsedTime = 0;
-                //DecreaseHunger();
+                DecreaseHunger();
                 DecreaseEnergy();
             }
             else elapsedTime += Time.deltaTime;

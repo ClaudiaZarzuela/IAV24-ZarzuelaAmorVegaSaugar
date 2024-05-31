@@ -29,6 +29,7 @@ public class WolfSM : StateMachine
         base.Awake();
         blackboard.Set("target", typeof(GameObject), null);
         blackboard.Set("hasEat", typeof(bool), false);
+        blackboard.Set("hasSlept", typeof(bool), false);
     }
 
     public bool CheckIfHunting() {
@@ -148,10 +149,15 @@ public class WolfSM : StateMachine
 
     protected override void GoHome()
     {
-        behaviorExecutorList[(int)currentState].SetBehaviorParam("target", wolfHouse);
+        if ((bool)blackboard.Get("hasSlept", typeof(bool)))
+        {
+            currentState = States.WANDER;
+            ChangeAction();
+            blackboard.Set("hasSlept", typeof(bool), false);
+        }
     }
 
-    public GameObject getHouse()
+    public override GameObject GetHouse()
     {
         return wolfHouse;
     }

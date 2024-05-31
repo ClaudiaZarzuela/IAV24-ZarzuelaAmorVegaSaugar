@@ -78,7 +78,7 @@ public class DeerSM : StateMachine
         }
     }
 
-    public GameObject getHouse()
+    public override GameObject GetHouse()
     {
         return deerHouse;
     }
