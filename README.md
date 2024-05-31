@@ -38,6 +38,8 @@ El hábitat consta de distintas zonas valiosas:
 > El ruido de Perlin es un algoritmo desarrollado por Ken Perlin en 1983 usado para generación procedural. Hay varios tipos de algoritmos especializados pero, tras informarnos del resto de posibilidades, decidimos usar Perlin debido a su aspecto orgánico conseguido mediante ruido basado en gradientes. Esto es ideal para crear paisajes naturales ya que, en la naturaleza, las transiciones entre diferentes características del terreno como las densidades de vegetación suelen ser suaves. 
 
 
+https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/945d60fc-976d-40ba-8dd5-958d33381220
+
 Instertar y explicar el algoritmo de perlin usado blah
 
 ## Estructura de los comportamientos
