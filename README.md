@@ -35,12 +35,46 @@ El hábitat consta de distintas zonas valiosas:
 ## Generación procedural
 ### Perlin
 > [!NOTE]
-> El ruido de Perlin es un algoritmo desarrollado por Ken Perlin en 1983 usado para generación procedural. Hay varios tipos de algoritmos especializados pero, tras informarnos del resto de posibilidades, decidimos usar Perlin debido a su aspecto orgánico conseguido mediante ruido basado en gradientes. Esto es ideal para crear paisajes naturales ya que, en la naturaleza, las transiciones entre diferentes características del terreno como las densidades de vegetación suelen ser suaves. 
+> El ruido de Perlin es un algoritmo desarrollado por Ken Perlin en 1983 usado para generación procedural. Hay varios tipos de algoritmos especializados pero, tras informarnos del resto de posibilidades, decidimos usar Perlin debido a su aspecto orgánico conseguido mediante ruido basado en gradientes. Esto es ideal para crear paisajes naturales ya que, en la naturaleza, las transiciones entre diferentes características del terreno como las densidades de vegetación suelen ser suaves.
 
+```
+class InstanciateBushes extends MonoBehavior:
 
+//Definimos el área donde queremos generar los arbustos
+scaleX : float = ancho del objeto rectangular padre
+scaleZ : float = alto del objeto rectangular padre
+
+//Guardamos el número de arbustos generados por Perlin
+instanciatedBushes : int
+
+// Número máximo de arbustos que queremos generar por Perlin
+maxNumBushes : int = 50
+
+// Número total de arbustos deseados
+bushesNum : int = 10
+
+//Doble bucle for para recorrer todo el área y generar arbustos
+//Se generar más arbustos de los deseados para lugeo borrar el exceso y darle mucha más aleatoriedad
+desde x : float = 0 hasta  x = scaleX
+   desde z : float = 0 hasta z = scaleZ
+
+      //Se calcula el valor del ruido de Perlin para las coordenadas actuales (x, z) usando el método propio de Unity  Mathf.PerlinNoise()
+      // e introduciendo una variación aleatoria adicional (0.5f, 1.5f) para evitar patrones repetitivos.
+      noiseValue : float -> Mathf.PerlinNoise()
+
+      //Solo se instancian arbustos si el valor del ruido de Perlin supera 0.75 y si el número de arbustos instanciados es menor al máximo permitido
+      if noiseValue > 0.75 && instanciatedBushes < maxNumBushes :
+          Instanciamos un arvusto y lo guardamos
+          instanciatedBushes++
+
+//Bucle while para borrar el exceso de arbustos, de manera aleatoria para darle una forma más orgánica
+ mientras (instanciatedBushes > bushesNum)
+    Elegimos un arbusto generado de forma aleatoria y lo borramos
+
+```
+
+### Demostración visual
 https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/945d60fc-976d-40ba-8dd5-958d33381220
-
-Instertar y explicar el algoritmo de perlin usado blah
 
 ## Estructura de los comportamientos
 Para el comportamiento de los animales se optó por una **FSM (Finite State Machine)** general, utilizando Behavior Trees como estados, permitiendo comprender las acciones globales para todos cómo:
@@ -202,6 +236,7 @@ Nos aseguraremos de que cada especie se mueva por las zonas que hayamos determin
 - [Vídeo de la prueba E: Próximamente]()
 
 ## Producción
+### Reparto de tareas
 Las tareas se han realizado y el esfuerzo ha sido repartido entre los autores.
 
 | Estado  |  Tarea  |  Fecha  |  
