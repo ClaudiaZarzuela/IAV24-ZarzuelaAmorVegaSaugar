@@ -2956,11 +2956,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4101837537308595145, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
       propertyPath: currentHunger
-      value: 70
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4101837537308595145, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
       propertyPath: timeToDecrease
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4192979217314958750, guid: 8f8c141453ed84c4c8905e4885ba30ea, type: 3}
       propertyPath: m_Name
