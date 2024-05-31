@@ -15,7 +15,7 @@ public class StateMachine : MonoBehaviour
     protected States currentState = States.WANDER;
 
     private float elapsedTime = 0;
-    private float rechargeTime = 4;
+    private float rechargeTime = 3;
 
     [SerializeField]
     protected List<BehaviorExecutor> behaviorExecutorList = null;

@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class LifeController : MonoBehaviour
 {
     private float elapsedTime = 0;
-    private float timeToDie = 5;
+    private float timeToDie = 3;
 
     public bool alive = true;
    

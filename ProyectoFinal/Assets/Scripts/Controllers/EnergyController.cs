@@ -40,11 +40,6 @@ public class EnergyController : MonoBehaviour
     {
         LifeController life = gameObject.GetComponent<LifeController>();
         life.Die();
-
-        if (typeOfAnimal == "Stag")
-            EnvironmentController.Instance.RemoveStag(gameObject);
-        else
-            EnvironmentController.Instance.RemoveWolf(gameObject);
     }
     public void DecreaseHunger()
     {
