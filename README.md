@@ -173,6 +173,87 @@ function Update() -> void
 ![Wander+GoHomeBTs](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/e5488fdf-2d88-4af9-b5d0-801c30372fda)
 
 ### Pseudocódigo de componentes usados en los BTs Globales
+#### Class CheckFinised
+```
+class CheckFinished extends GOCondition
+
+    // parametro de entrada 
+    action : int
+
+    // Referencia a la stateMachine
+    StateMachine stateMachine = null
+
+    // Booleano que indica si la accion ha terminado
+    bool finished = false
+
+    // Metodo que comprueba si la accion ha terminado
+    function Check -> bool
+        if (tag del gameobject == "Wolf")
+            stateMachine = stateMachine de los lobos del gameObject
+            finished = !stateMachine.(metodo que devuelve si la action es igual a la accion que se esta ejecutando)
+        else if (tag del gameobject == "Stag")
+            stateMachine = stateMachine de los ciervos del gameObject
+            finished = !stateMachine.(metodo que devuelve si la action es igual a la accion que se esta ejecutando)
+        else return false
+        if (finished)
+            stateMachine.(metodo que desactiva la action)
+        return finished
+```
+
+#### class StartAnimation
+
+```
+class StartAnimation extends GOAction
+
+    // Nombre del clip de animacion que debe reproducirse
+    animationClip : string
+
+    // Metodo que le envia al animator del gameobject el clip que tiene que reproducir
+    function OnStart -> void
+        animator :Animator -> componente Animator del gameObject
+        animator.Play(animationClip)
+
+```
+
+#### class Sleep
+
+```
+class Sleep extends GOAction
+    
+    // Referencia a la guarida del animal
+    house : GameObject
+    // Referencia a la tateMachine del gameobject
+    sM : StateMachine
+
+    // Metodo que desactiva todo el movimiento del animaly lo mete a la casa
+    public override void OnStart
+        desactiva el navMesh del gameobject
+        setea su rigid body a kinemático
+        detiene la bajada de energia del gameObject
+        if (sM != null)
+            gameObject position = house position
+```
+
+#### class WakeUp
+
+```
+class WakeUp extends GOAction
+    
+    // Referencia a la guarida del animal
+    public GameObject house
+    // Referencia a la stateMAchine del gameobject
+    private StateMachine sM
+
+    // Funcion que devuelve al animal al terreno y le sube la energia
+    function OnStart -> void
+        reactiva el navMesh del gameObject
+        setea el rigidbody del gameobject como no kinematico
+        vuelve a activar la bajada de la energia del gameobject
+        if (sM != null)
+            gameObject position = house position
+            setea un bool de la blackboar que indica si ha dormido a true
+        gameObject.RestoreMaxEnergy()
+```
 
 ## Comportamientos individuales
 Debido a la diferencia entre algunos comportamientos en ambos animales, como puede ser comer, de esta FSM general podrán heredas dos máquinas de estados distintas (ciervo y lobo) para sobreescribir dichas acciones.
@@ -385,88 +466,6 @@ class WolfSM extends StateMachine:
         return wolfHouse
 ```
 ### Pseudocódigo de componentes usados en los BTs individuales de comer
-
-#### Class CheckFinised
-```
-class CheckFinished extends GOCondition
-
-    // parametro de entrada 
-    action : int
-
-    // Referencia a la stateMachine
-    StateMachine stateMachine = null
-
-    // Booleano que indica si la accion ha terminado
-    bool finished = false
-
-    // Metodo que comprueba si la accion ha terminado
-    function Check -> bool
-        if (tag del gameobject == "Wolf")
-            stateMachine = stateMachine de los lobos del gameObject
-            finished = !stateMachine.(metodo que devuelve si la action es igual a la accion que se esta ejecutando)
-        else if (tag del gameobject == "Stag")
-            stateMachine = stateMachine de los ciervos del gameObject
-            finished = !stateMachine.(metodo que devuelve si la action es igual a la accion que se esta ejecutando)
-        else return false
-        if (finished)
-            stateMachine.(metodo que desactiva la action)
-        return finished
-```
-
-#### class StartAnimation
-
-```
-class StartAnimation extends GOAction
-
-    // Nombre del clip de animacion que debe reproducirse
-    animationClip : string
-
-    // Metodo que le envia al animator del gameobject el clip que tiene que reproducir
-    function OnStart -> void
-        animator :Animator -> componente Animator del gameObject
-        animator.Play(animationClip)
-
-```
-
-#### class Sleep
-
-```
-class Sleep extends GOAction
-    
-    // Referencia a la guarida del animal
-    house : GameObject
-    // Referencia a la tateMachine del gameobject
-    sM : StateMachine
-
-    // Metodo que desactiva todo el movimiento del animaly lo mete a la casa
-    public override void OnStart
-        desactiva el navMesh del gameobject
-        setea su rigid body a kinemático
-        detiene la bajada de energia del gameObject
-        if (sM != null)
-            gameObject position = house position
-```
-
-#### class WakeUp
-
-```
-class WakeUp extends GOAction
-    
-    // Referencia a la guarida del animal
-    public GameObject house
-    // Referencia a la stateMAchine del gameobject
-    private StateMachine sM
-
-    // Funcion que devuelve al animal al terreno y le sube la energia
-    function OnStart -> void
-        reactiva el navMesh del gameObject
-        setea el rigidbody del gameobject como no kinematico
-        vuelve a activar la bajada de la energia del gameobject
-        if (sM != null)
-            gameObject position = house position
-            setea un bool de la blackboar que indica si ha dormido a true
-        gameObject.RestoreMaxEnergy()
-```
 
 #### class FindClosestBush
 
@@ -693,31 +692,31 @@ Para comprobar el correcto funcionamiento de la aplicación, la someteremos a di
 ### Prueba A: Generación del entorno
 Para comprobar que la generación del escenario es adecuada, iniciaremos la aplicación X número de veces, cambiando los parámetros de generación de arbustos y conejos cada vez, y comprobando que el terreno resultante es distinto en cada ejecución.
 
-- [Vídeo de la prueba A: Próximamente]()
+https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/675277a2-a51e-417b-a43a-db05679a8434
 
-### Prueba B: Sentidos
-Para comprobar la eficacia de los sentidos de los lobos y de los ciervos, cambiaremos sus rangos de percepción y comprobaremos que los lobos siguen el rastro de olor de un ciervo, y que los ciervos huyen al oír a un lobo.
+### Prueba B: Gestión de recursos
+Comprobaremos que los ciervos se mueven correctamente entre arbustos, y en caso de que su arbusto objetivo haya sido ocupado, se darán cuenta y buscarán otro del que alimentarse. En caso de encontrar un arbusto, irá a por el más cercano.
 
-- [Vídeo de la prueba B: Próximamente]()
+https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/e4e3f536-c077-4477-a330-dbd27fbdeef0
 
-### Prueba C: Gestión de recursos
-Comprobaremos que los ciervos se mueven correctamente entre arbustos, y en caso de que su arbusto objetivo haya sido ocupado, se darán cuenta y buscarán otro del que alimentarse.
 
-- [Vídeo de la prueba C: Próximamente]()
+### Prueba C: Hambre VS Sueño
+Debido a que el hambre baja más rapido que la energía, los animales priorizarán el hambre en caso de agotarse ambos.
 
-### Prueba D: Behaviour Bricks
-Para confirmar el correcto funcionamiento de los comportamientos implementados mediante behaviour bricks, cambiaremos los nieveles de hambre y energía de ciervos y de lobos y comprobaremos que sus acciones se corresponden con lo esperado: volver a la guarida cuando tienen poca energía, buscar comida cuando tienen hambre, merodear cuando no tienen necesidades, etc.
+https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/b21ba4d9-2800-46de-aa6d-573a14be0970
 
-- [Vídeo de la prueba D: Próximamente]()
+### Prueba D: Preferencia de olfato del lobo
+El lobo deberá escoger a sus presas dependiendo de su prioridad, ciervos antes que conejos y rastros de mayor intensidad antes que menos. Si ha dejado de detectar el rastro, volvera a merodear hasta detectar otro nuevo.
 
-### Prueba E: NavMesh
-Nos aseguraremos de que cada especie se mueva por las zonas que hayamos determinado mediante el uso de NavMesh, y para confirmar que funciona, guiaremos a cada especie a los bordes de su área correspondiente y comprobaremos que no se salen de su perímetro.
+https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/25b3609e-26e9-47eb-b19c-fb0409d1245b
 
-- [Vídeo de la prueba E: Próximamente]()
+https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/bb17306b-415c-43d2-bce2-98d1a1f06908
+
+
 
 ## Producción
 ### Reparto de tareas
-Las tareas se han realizado y el esfuerzo ha sido repartido entre los autores.
+Andrea Vega Saugar se ha encargado de la generación aleatoria de Perlin, mientras que Claudia Zarzuela Amor ha realizado el olfato del lobo. El resto de tareas necesarias para crear el proyecto se han realizado conjuntamente y el esfuerzo ha sido repartido entre los autores.
 
 | Estado  |  Tarea  |  Fecha  |  
 |:-:|:--|:-:|
@@ -726,7 +725,13 @@ Las tareas se han realizado y el esfuerzo ha sido repartido entre los autores.
 | ✔ | Botones de HUD (cambio entre cámaras) |13-04-2024|
 | ✔ | Creación Main Menu |23-04-2024|
 | ✔ | Spawn de conejos (con máximo total) |23-04-2024|
-
+| ✔ | Olfato |27-04-2024|
+| ✔ | Perlin |26-04-2024|
+| ✔ | BTs con todos los comportamientos |28-05-2024|
+| ✔ | Maquina de estados general |30-05-2024|
+| ✔ | Maquina de estados ciervo |30-05-2024|
+| ✔ | Maquina de estados lobo |30-05-2024|
+| ✔ | Readme actualizado |31-05-2024|
 ## Licencia
 Claudia Zarzuela, Andrea Vega Saugar, autores de la documentación, código y recursos de este trabajo, no concedemos permiso permanente a los profesores de la Facultad de Informática de la Universidad Complutense de Madrid para utilizar nuestro material, con sus comentarios y evaluaciones, con fines educativos o de investigación; ya sea para obtener datos agregados de forma anónima como para utilizarlo total o parcialmente reconociendo expresamente nuestra autoría.
 
