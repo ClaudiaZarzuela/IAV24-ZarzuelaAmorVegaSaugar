@@ -26,7 +26,7 @@ Cada animal tendrá que tener cuidado de no dejar bajar sus niveles demasiado, y
 El hábitat consta de distintas zonas valiosas:
 - A los extremos encontramos los hogares de ambos animales, la derecha siendo de los carnívoros y la izquierda de herbívoros. En estas áreas, los animales podrán resguardarse con seguridad de cualquier animal ya que solo los de su misma especie pueden entrar en dicho lugar. Aquí los animales descansarán hasta que su barra de energía esté completa. Una vez recuperados, continuarán con sus rutinas normales.
 
-- Esparcidos por el terreno, podremos encontrar arbustos con frutos para alimentar a los herbívoros. Estos arbustos se posicionarán de manera pseudoaleatoria utilizando **Perlin Noise**, un tipo de ruido basado en gradientes, desarrollado por Ken Perlin en 1983. La ventaja que tiene el Perlin Noise frente a otros ruidos clásicos ( como puede ser el White Noise ) es que es un ruido aleatorio, pero coherente. Después de que un ciervo se pare a comer, deberán transcurrir unos segundos (20) antes de que salgan nuevos frutos.
+- Esparcidos por el terreno, podremos encontrar arbustos con frutos para alimentar a los herbívoros. Estos arbustos se posicionarán de manera pseudoaleatoria utilizando **Perlin Noise**. Después de que un ciervo se pare a comer, deberán transcurrir unos segundos (20) antes de que salgan nuevos frutos.
 
 - Al principio de la partida aparecerán en posiciones aleatorias del terreno unos conejos. Estos sólo tienen un comportamiento de merodeo y sirven para evitar que el lobo acabe con los ciervos de inmediato. 
 
@@ -34,6 +34,9 @@ El hábitat consta de distintas zonas valiosas:
 
 ## Generación procedural
 ### Perlin
+> [!NOTE]
+> El ruido de Perlin es un algoritmo desarrollado por Ken Perlin en 1983 usado para generación procedural. Hay varios tipos de algoritmos especializados pero, tras informarnos del resto de posibilidades, decidimos usar Perlin debido a su aspecto orgánico conseguido mediante ruido basado en gradientes. Esto es ideal para crear paisajes naturales ya que, en la naturaleza, las transiciones entre diferentes características del terreno como las densidades de vegetación suelen ser suaves. 
+
 
 Instertar y explicar el algoritmo de perlin usado blah
 
@@ -136,7 +139,6 @@ A continuación comprobarán sus niveles de hambre, en caso de necesitarlo busca
 Una vez comprobada el hambre, comprobarán su energía, que en el caso de estar baja, les obligará a volver a su "guarida" para reponerla.
 
 En caso de que no se cumpla ninguna de las condiciones anteriores (ha detectado a un enemigo, tiene hambre o tiene sueño), el animal se dedicará a merodear por el escenario
- ![EatStagBT](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/e12ea1d7-cc54-4f48-9d66-5abd55157766)
 
  #### Estado EAT LOBO
  En el caso de los lobos, como no están en peligro de ser perseguidos su primera comprobación será su olfato. Esto es así porque en caso de chequear primero el hambre y no encontrar ningún rastro nunca saldría de ese bucle.
@@ -146,10 +148,12 @@ En caso de haber encontrado un rastro y tener hambre, seguirán el rastro de la 
 En segundo lugar comprobarán su energía, lo cual funcionará igual que en el caso de los ciervos, en caso de estar baja irán a la "guarida" a descansar.
 
 Y por último, también símil a los ciervos, si todas estas comprobaciones fallan, se limitarán a merodear por el escenario.
-![EatWolfBT](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/25d7c8fb-0ca6-4a55-b1b8-5a5ea9c31376)
+
+![Ciervo+LoboEat](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/162b98ae-aa66-41f3-a650-78b0ff1ac009)
 
 ### FMS individuales
 
+## Sentido del olfato
 
 ## Input, cámaras y HUD
 ### Cámara principal 
