@@ -387,6 +387,93 @@ class WolfSM extends StateMachine:
 ### Pseudocódigo de componentes usados en los BTs individuales de comer
 
 ## Sentido del olfato
+El sentido del olfato se rige por tres clases principales : **GenerateSmell**, **Scent** y **SmellArea**.
+
+Ambos, ciervo y conejo, van dejando continuamente un rastro de olor (_Scent_) representado con distintos colores y escalas. En nuestro caso, la escala indica la intesidad del olor, la cual va disminuyendo con el tiempo hasta desaparecer por completo.
+
+### Generate Smell
+```
+ timeToSpawn : float
+ scent : GameObject
+ elapsedTime : float
+ parent: Transform
+
+ function Update() -> void
+     if elapsedTime >= timeToSpawn
+         elapsedTime = 0
+
+         Instancia un olor con el método propio de Unity Istanciate()
+
+         Le pone al olor como padre el parent guardado para que cada rastro instanciado
+         de un mismo animal este encapsulado en un objeto único en el editor
+
+         Guarda la referencia al animal que ha dejado el rasto mediante el método SetOriginator()
+
+     else elapsedTime += Time.deltaTime
+```
+
+La clase Scent hereda de IComparable para poder comparar dos olores y así poder meterlo a la lista de olores percibidos cumpliendo
+un orden de prioridad.
+### Scent
+```
+class Scent extends MonoBehaviour, IComparable<Scent>:
+    timeToLive : float
+    decreaseFactor : float
+    _renderer : Renderer
+    elapsedTime : float
+    alive : bool = true
+    originator : GameObject
+    typeScent : string
+
+    public void SetOriginator(GameObject or)
+    {
+        originator = or;
+    }
+    public GameObject GetOriginator()
+    {
+        return originator;
+    }
+    public float GetIntensity()
+    {
+        return gameObject.transform.localScale.magnitude;
+    }
+
+    public string GetTypeScent()
+    {
+        return typeScent;
+    }
+
+    void Update()
+    {
+        if (alive)
+        {
+            if (gameObject.transform.localScale.x <= 0 || elapsedTime >= timeToLive)
+            {
+                Destroy(gameObject);
+                alive = false;
+            }
+            else
+            {
+                elapsedTime += Time.deltaTime;
+                gameObject.transform.localScale -= new Vector3(decreaseFactor / timeToLive, 0, decreaseFactor / timeToLive) * Time.deltaTime;
+                Color color = _renderer.material.color;
+                color.g += 0.1f * Time.deltaTime;
+                _renderer.material.color = color;
+            }
+        }
+    }
+
+    public int CompareTo(Scent other)
+        if (other == null) return 1;
+
+        bool isStagThis = typeScent == "Stag";
+        bool isStagOther = other.GetTypeScent() == "Stag";
+
+        if (isStagThis && !isStagOther) return -1;
+        if (!isStagThis && isStagOther) return 1;
+
+        return other.GetIntensity().CompareTo(this.GetIntensity());
+```
 
 ## Input, cámaras y HUD
 ### Cámara principal 
