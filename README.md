@@ -77,6 +77,7 @@ desde x : float = 0 hasta  x = scaleX
 https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/945d60fc-976d-40ba-8dd5-958d33381220
 
 ## Estructura de los comportamientos
+### General
 Para el comportamiento de los animales se optó por una **FSM (Finite State Machine)** general, utilizando Behavior Trees como estados, permitiendo comprender las acciones globales para todos cómo:
 | Estado | Función |
 |:-:|:--|
@@ -127,6 +128,7 @@ function Awake() -> void
      Añadir variables globales al blackboard como:
         - "minHunger" : float =  75.0f
         - "minEnergy" : float = 25.0f
+        - "hasSlept" : bool = false
 
 //Método asociado al estado de merodeo
 function Wander() -> void
@@ -144,8 +146,14 @@ function Recharge() -> void
          Restaurar el hambre, ponerlo al máximo
          Parar el energyController para que no actualice el hambre y la energía mientras tanto
 
-//Método asociado al estado de ir a casa, sobreescrito por los hijos
-function GoHome() -> virtual void
+//Método asociado al estado de ir a casa
+function GoHome() -> void
+     //Si ya ha pasado el tiempo necesario para recargar la energía pasa al estado de merodeo
+     if "hasSlept" :
+         currentState = States.WANDER
+         ChangeAction()
+         //Resetea el booleano del balckboard para la próxima vez que durmamos
+         "hasSlept" = false
 
 //Método asociado al estado de comer, sobreescrito por los hijos
 function Eat() -> virtual void
@@ -164,30 +172,219 @@ function Update() -> void
 ### Behavior Trees Globales
 ![Wander+GoHomeBTs](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/e5488fdf-2d88-4af9-b5d0-801c30372fda)
 
-### Comportamientos individuales
+### Pseudocódigo de componentes usados en los BTs Globales
+
+## Comportamientos individuales
 Debido a la diferencia entre algunos comportamientos en ambos animales, como puede ser comer, de esta FSM general podrán heredas dos máquinas de estados distintas (ciervo y lobo) para sobreescribir dichas acciones.
 
 #### Estado EAT CIERVO
-En primer lugar harán la comprobación más prioritaria, siendo esta la de su sentido del oído, para comprobar si están siendo acechados por algún lobo y en ese caso iniciar la huida.
-
-A continuación comprobarán sus niveles de hambre, en caso de necesitarlo buscarán el arbusto más cercano, y si está disponible comerán de él. Si por el contrario el arbusto está ocupado, o siguen teniendo hambre, repetirán esa búsqueda con el siguiente arbusto más cercano hasta quedar satisfechos.
-
-Una vez comprobada el hambre, comprobarán su energía, que en el caso de estar baja, les obligará a volver a su "guarida" para reponerla.
-
-En caso de que no se cumpla ninguna de las condiciones anteriores (ha detectado a un enemigo, tiene hambre o tiene sueño), el animal se dedicará a merodear por el escenario
-
+1. En primer lugar, al igual que el resto de BTs, se comprobará si se sigue estando en el estado Eat y en caso contrario se interrumpirá la acción.
+2. Buscará el arbusto activo y permitido más cercano a su posición. En caso de no encontrarlo, pasará al estado de merodeo.
+3. Se dirigirá hacia el arbusto deseado.
+4. Activará la animación de comer.
+5. Marcará el arbusto como inactivo para el resto de ciervos y se comerá los frutos que haya en él.
+   
  #### Estado EAT LOBO
- En el caso de los lobos, como no están en peligro de ser perseguidos su primera comprobación será su olfato. Esto es así porque en caso de chequear primero el hambre y no encontrar ningún rastro nunca saldría de ese bucle.
+El estado de comer para el lobo es mucho más compleja que la anterior y se rige por subestados propios para identificar cual es su presa, en caso de haberla detectado. Se explicará en más detalle en la sección de **FMS individuales**
 
-En caso de haber encontrado un rastro y tener hambre, seguirán el rastro de la presa hasta estar lo suficientemente cerca como para verla, momento en el cual comenzarán a perseguirla hasta cazarla o perder su rastro.
-
-En segundo lugar comprobarán su energía, lo cual funcionará igual que en el caso de los ciervos, en caso de estar baja irán a la "guarida" a descansar.
-
-Y por último, también símil a los ciervos, si todas estas comprobaciones fallan, se limitarán a merodear por el escenario.
+1. Al igual que el anterior, se comprobará si se sigue estando en el estado Eat y en caso contrario se interrumpirá la acción.
+2. Se dirigirá hacia el objetivo encontrado
+3. Le matará y se le comerá, habisando a su presa de que ha muerto para que reproduzca su animación de morir y se borre por completo.
 
 ![Ciervo+LoboEat](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/162b98ae-aa66-41f3-a650-78b0ff1ac009)
 
 ### FMS individuales
+## Ciervo
+```
+class DeerSM extends StateMachine:
+
+//Referecia a su casa para poder dirigirse a ella en caso de gastarse la energía
+ deerHouse : GameObject
+
+//Referecia a su BT que le permite realizar su estado de comer propio y único
+ eat : BehaviorExecutor 
+
+function Awake() -> void
+   //Se añade a la blackboard todas las variables importantes para el manejo de estados
+        "searchedBush" : bool = false
+        "bush" : GameObject =  null
+        "arrivedAtBush" : bool = false
+
+//Se sobreescribe este método del padre para que, a la hora de morir, también se elimine nuestro BT de comer
+function AnimalDied() -> override void
+        Destruir el BT eat
+        Llamar al AnimalDied() del padre
+
+//Se encarga de desactivar los BTs que no se esten usando. Se sobreescribe este método del padre para que, si el estado actual es comer
+//se desactive nuestro BT propio y, en caso contrario, los controlador por el padre
+function DeactivateAction(accion) -> override void
+        if accion == EAT:
+            Desactivamos el BT eat
+        else :
+            Llamamos al DeactivateAction(accion) del padre
+
+//Método encargado de realizar la acción propia de comer del ciervo
+function Eat() -> override void
+        Activamos el BT de eat
+
+        //Si estaba buscando un arbusto y no ha encontrado ninguno del que comer pasamos al estado de merodeo
+        if searchedBush && "bush" == null:
+            currentState = States.WANDER
+            Desactivamos el BT de eat
+            // Avisamos al padre de que hemos cambiado de estado
+            ChangeAction()
+
+        //Si ya he llegado al arbusto deseado entonces paso a el estado de recarga
+        else if "arrivedAtBush"
+
+            //Se llama al método  StartEating() del arbusto que me estoy comiendo para avisarle de que me estoy comiendo du fruta.
+            //Esto hará que el arbusto pase a estar inactivo para otro ciervo y desaparezcan las frutas
+            //Pasado un tiempo (20 segundos), se activará otra vez y reaparecerán las frutas
+            StartEating()
+
+            //Se resetean los valores del blackboard para la siguiente vez que comamos
+            "searchedBush" : bool = false
+            "bush" : GameObject =  null
+            "arrivedAtBush" : bool = false
+
+            Desactivamos el BT de eat
+
+            currentState = States.RECHARGE
+
+//Método que devuelve la casa a la que tengo que ir en caso de gastar la energía
+function GetHouse() -> override GameObject
+    return deerHouse
+```
+
+## Lobo
+```
+class WolfSM extends StateMachine:
+    //Subestados propios del estado eat
+    // SMELLING : estado que permite merodear hasta encontrar un rastro
+    // HUNT : una vez encontrado el rastro, lo persigue. Si el nivel de intensidad de ese rastro supera un
+              máximo deseado entonces estoy lo suficientemente cerca de mi presa y voy directamente a por ella
+    // EAT :  he cazado a la presa y ahora voy a pasar al estado global de recarga para tener mi hambre al máximo
+    // NONE : estado por defecto si no estoy realizando la acción de comer
+    enum WolfStates { SMELLING, HUNT, EAT, NONE }
+
+    //Estado actua, por defecto NONE
+    m_State : WolfStates = WolfStates.NONE;
+
+    //Referecia a su casa para poder dirigirse a ella en caso de gastarse la energía
+    wolfHouse : GameObject 
+
+    //Referencia a los BTs propios necesitados para realizar la acción de comer
+    smelling : BehaviorExecutor // BT que me permite merodear
+    trace : BehaviorExecutor // BT que me permite dirigirme a mi target, normalmente un rastro de olor
+                                pero si estoy lo suficientemente cerca, el animal en si
+
+    //Refernecia a mi area que delimita mi sentido del olfato
+    area : SmellArea 
+
+   function Awake() -> void
+       //Se añade a la blackboard todas las variables importantes para el manejo de estados
+        "target" : GameObject =  null
+        "hasEat" : bool = false
+
+   //Se sobreescribe este método del padre para que, a la hora de morir, también se elimine nuestro BT de comer
+   function AnimalDied() -> override void
+        Destruir los BTs de smelling y trace
+        Llamar al AnimalDied() del padre
+
+   function IsTracking() -> bool
+        return m_State == WolfStates.HUNT
+
+   //Avisa si tu target al que te estas dirigiendo es un olor o ya el animal en sí
+   function CheckIfHunting() -> bool
+        return target es un olor o el target genera rastro
+
+    //Verifica si una acción es el estado que se esta ejecutando ahora o no
+    functionCheckActiveAction(action) -> override bool
+        //Si estoy realizando la acción de comer, compruebo mis subestados propio
+        if m_State != WolfStates.NONE :
+            return action == m_State
+        //Si acabo de cazar a mi presa
+        else if "hasEat" :
+            Reinicio el balckboard para la siguiente y desactivo mis BTs propios
+            return false
+        //Sino llamo al del padre
+        else return CheckActiveAction(action) del padre
+
+    //Método que permite activar y desactivar los BTs dependiendo del subestado
+    function SwitchAction() -> void
+        if m_State == WolfStates.SMELLING :
+            activo el BT de smelling
+        else :
+            activo el BT de trace
+
+   //Se encarga de desactivar los BTs que no se esten usando. Se sobreescribe este método del padre para que, si el estado actual es comer
+   //se desactive nuestro BT propio y, en caso contrario, los controlador por el padre
+    function DeactivateAction(action) -> override void
+        if m_State != WolfStates.NONE
+            if action == WolfStates.SMELLING :
+                Desactivo el BT smelling
+            else :
+                Desactivo el BT trace
+
+        else Llamo al DeactivateAction(action) del padre
+
+   function Update() -> void
+        //Si estoy en el estado de comer
+        if m_State != WolfStates.NONE
+            //Compruebo si ha entrado algo en mi rango de detección olfativo
+            WolfSmelling()
+            //Si he detectado, empiezo a cazar
+            if m_State == WolfStates.HUNT :
+                WolfHunt()
+         else llamo al Update() del padre
+
+
+    function WolfSmelling() -> void
+        if area.HasDetectedSmell()
+            m_State = WolfStates.HUNT
+        else
+            m_State = WolfStates.SMELLING
+            SwitchAction()
+
+
+    function GetTarget() -> GameObject
+        return "target" //mi target del blackboard
+
+    //He detectado en mi area olfativa, asigno el target a lo que haya detectado para luego ir a por él
+    function WolfHunt() -> void
+        target : GameObject = area.GetScent()
+        if target != null
+            maxIntensity : float = 0.7f //por defecto
+            if animal generador del olor == ciervo :
+                maxIntensity = 0.9f; //Ya que el olor del ciervo es mayor
+
+            // Si estoy lo suficientemente cerca me guardo el animal
+            if intesidad del olor detectado >= maxIntensity && animal original no ha muerto :
+               "target" =  area.GetPrey()
+            // Sino me guardo el olor
+            else :
+                "target" =  area.GetScent()
+            SwitchAction()
+
+    //Método al que se llama cuando he cogido a mi presa
+    function WolfHasPrey() -> void
+        Aviso al LifeController de mi presa de que ha muerto, llamando a su método Die()
+        m_State = WolfStates.NONE //subestado por defecto
+        hasEat" = true //variable del blackboard que indica si acabo de cazar
+        currentState = States.RECHARGE //estado global
+
+    //Estado sobreescrito con comportamiento único del lobo
+    function Eat() ->  override void
+        //Si no estaba ya en marcha, comienzo merodeando para detectar un rastro
+        if m_State == WolfStates.NONE
+            m_State = WolfStates.SMELLING;
+            SwitchAction()
+
+    //Método que devuelve la casa a la que tengo que ir en caso de gastar la energía
+    function GetHouse() -> override GameObject
+        return wolfHouse
+```
+### Pseudocódigo de componentes usados en los BTs individuales de comer
 
 ## Sentido del olfato
 
