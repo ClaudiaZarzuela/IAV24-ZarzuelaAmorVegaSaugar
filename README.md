@@ -3,7 +3,10 @@
 ## Autores
 - Claudia Zarzuela Amor: Claudia Zarzuela - https://github.com/ClaudiaZarzuela
 - Andrea Vega Saugar: AndreaVegaSaugar - https://github.com/AndreaVegaSaugar
- 
+
+> [!IMPORTANT]
+> Enlace a la build
+> https://drive.google.com/drive/folders/1mEfzuiiinZTrvwhhucYa4gCViANZzoHQ
 ## Propuesta
 Este documento refleja la propuesta de proyecto final para la asignatura de Inteligencia Artificial para Videojuegos del Grado en Desarrollo de Videojuegos de la UCM.
 ![portada](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/c11f77eb-25d6-45cf-862f-99abc7fde9f9)
@@ -699,6 +702,7 @@ Comprobaremos que los ciervos se mueven correctamente entre arbustos, y en caso 
 
 https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/e4e3f536-c077-4477-a330-dbd27fbdeef0
 
+https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/b57ceb78-d96b-4073-95b8-206720830bc9
 
 ### Prueba C: Hambre VS Sueño
 Debido a que el hambre baja más rapido que la energía, los animales priorizarán el hambre en caso de agotarse ambos.
