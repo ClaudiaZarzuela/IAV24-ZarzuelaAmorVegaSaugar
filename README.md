@@ -173,6 +173,87 @@ function Update() -> void
 ![Wander+GoHomeBTs](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/e5488fdf-2d88-4af9-b5d0-801c30372fda)
 
 ### Pseudocódigo de componentes usados en los BTs Globales
+#### Class CheckFinised
+```
+class CheckFinished extends GOCondition
+
+    // parametro de entrada 
+    action : int
+
+    // Referencia a la stateMachine
+    StateMachine stateMachine = null
+
+    // Booleano que indica si la accion ha terminado
+    bool finished = false
+
+    // Metodo que comprueba si la accion ha terminado
+    function Check -> bool
+        if (tag del gameobject == "Wolf")
+            stateMachine = stateMachine de los lobos del gameObject
+            finished = !stateMachine.(metodo que devuelve si la action es igual a la accion que se esta ejecutando)
+        else if (tag del gameobject == "Stag")
+            stateMachine = stateMachine de los ciervos del gameObject
+            finished = !stateMachine.(metodo que devuelve si la action es igual a la accion que se esta ejecutando)
+        else return false
+        if (finished)
+            stateMachine.(metodo que desactiva la action)
+        return finished
+```
+
+#### class StartAnimation
+
+```
+class StartAnimation extends GOAction
+
+    // Nombre del clip de animacion que debe reproducirse
+    animationClip : string
+
+    // Metodo que le envia al animator del gameobject el clip que tiene que reproducir
+    function OnStart -> void
+        animator :Animator -> componente Animator del gameObject
+        animator.Play(animationClip)
+
+```
+
+#### class Sleep
+
+```
+class Sleep extends GOAction
+    
+    // Referencia a la guarida del animal
+    house : GameObject
+    // Referencia a la tateMachine del gameobject
+    sM : StateMachine
+
+    // Metodo que desactiva todo el movimiento del animaly lo mete a la casa
+    public override void OnStart
+        desactiva el navMesh del gameobject
+        setea su rigid body a kinemático
+        detiene la bajada de energia del gameObject
+        if (sM != null)
+            gameObject position = house position
+```
+
+#### class WakeUp
+
+```
+class WakeUp extends GOAction
+    
+    // Referencia a la guarida del animal
+    public GameObject house
+    // Referencia a la stateMAchine del gameobject
+    private StateMachine sM
+
+    // Funcion que devuelve al animal al terreno y le sube la energia
+    function OnStart -> void
+        reactiva el navMesh del gameObject
+        setea el rigidbody del gameobject como no kinematico
+        vuelve a activar la bajada de la energia del gameobject
+        if (sM != null)
+            gameObject position = house position
+            setea un bool de la blackboar que indica si ha dormido a true
+        gameObject.RestoreMaxEnergy()
+```
 
 ## Comportamientos individuales
 Debido a la diferencia entre algunos comportamientos en ambos animales, como puede ser comer, de esta FSM general podrán heredas dos máquinas de estados distintas (ciervo y lobo) para sobreescribir dichas acciones.
@@ -385,88 +466,6 @@ class WolfSM extends StateMachine:
         return wolfHouse
 ```
 ### Pseudocódigo de componentes usados en los BTs individuales de comer
-
-#### Class CheckFinised
-```
-class CheckFinished extends GOCondition
-
-    // parametro de entrada 
-    action : int
-
-    // Referencia a la stateMachine
-    StateMachine stateMachine = null
-
-    // Booleano que indica si la accion ha terminado
-    bool finished = false
-
-    // Metodo que comprueba si la accion ha terminado
-    function Check -> bool
-        if (tag del gameobject == "Wolf")
-            stateMachine = stateMachine de los lobos del gameObject
-            finished = !stateMachine.(metodo que devuelve si la action es igual a la accion que se esta ejecutando)
-        else if (tag del gameobject == "Stag")
-            stateMachine = stateMachine de los ciervos del gameObject
-            finished = !stateMachine.(metodo que devuelve si la action es igual a la accion que se esta ejecutando)
-        else return false
-        if (finished)
-            stateMachine.(metodo que desactiva la action)
-        return finished
-```
-
-#### class StartAnimation
-
-```
-class StartAnimation extends GOAction
-
-    // Nombre del clip de animacion que debe reproducirse
-    animationClip : string
-
-    // Metodo que le envia al animator del gameobject el clip que tiene que reproducir
-    function OnStart -> void
-        animator :Animator -> componente Animator del gameObject
-        animator.Play(animationClip)
-
-```
-
-#### class Sleep
-
-```
-class Sleep extends GOAction
-    
-    // Referencia a la guarida del animal
-    house : GameObject
-    // Referencia a la tateMachine del gameobject
-    sM : StateMachine
-
-    // Metodo que desactiva todo el movimiento del animaly lo mete a la casa
-    public override void OnStart
-        desactiva el navMesh del gameobject
-        setea su rigid body a kinemático
-        detiene la bajada de energia del gameObject
-        if (sM != null)
-            gameObject position = house position
-```
-
-#### class WakeUp
-
-```
-class WakeUp extends GOAction
-    
-    // Referencia a la guarida del animal
-    public GameObject house
-    // Referencia a la stateMAchine del gameobject
-    private StateMachine sM
-
-    // Funcion que devuelve al animal al terreno y le sube la energia
-    function OnStart -> void
-        reactiva el navMesh del gameObject
-        setea el rigidbody del gameobject como no kinematico
-        vuelve a activar la bajada de la energia del gameobject
-        if (sM != null)
-            gameObject position = house position
-            setea un bool de la blackboar que indica si ha dormido a true
-        gameObject.RestoreMaxEnergy()
-```
 
 #### class FindClosestBush
 
@@ -710,6 +709,7 @@ https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375
 El lobo deberá escoger a sus presas dependiendo de su prioridad, ciervos antes que conejos y rastros de mayor intensidad antes que menos. Si ha dejado de detectar el rastro, volvera a merodear hasta detectar otro nuevo.
 
 https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/25b3609e-26e9-47eb-b19c-fb0409d1245b
+
 https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/bb17306b-415c-43d2-bce2-98d1a1f06908
 
 
