@@ -32,7 +32,7 @@ MonoBehaviour:
     <RepeatDecorator id=\"20\" />\r\n            </child>\r\n          </GuardAndNode>\r\n       
     </elem>\r\n      </children>\r\n      <inputParams />\r\n      <outputParams
     />\r\n      <localParams />\r\n    </PrioritySelectorNode>\r\n    <ConditionEvalNode
-    id=\"16\" policy=\"WAIT_UNTIL_FALSE_AND_FAIL\" name=\"Basic/CheckFinished\">\r\n     
+    id=\"16\" policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\" name=\"Basic/CheckFinished\">\r\n     
     <inputParams />\r\n      <outputParams />\r\n      <localParams />\r\n    </ConditionEvalNode>\r\n   
     <ActionNode id=\"15\" action=\"Samples/ProgQuickStartGuide/SleepForever\">\r\n     
     <inputParams />\r\n      <outputParams />\r\n      <localParams />\r\n    </ActionNode>\r\n   

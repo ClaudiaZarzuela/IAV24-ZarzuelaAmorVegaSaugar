@@ -82,7 +82,6 @@ public class StateMachine : MonoBehaviour
     public virtual GameObject GetHouse() { return null; }
     protected void Update()
     {
-        Debug.Log(currentState);
         switch (currentState)
         {
             case States.WANDER:

@@ -30,6 +30,7 @@ namespace BBCore.Conditions
 
             if (finished)
             {
+                Debug.Log("Sleep: " + action);
                 stateMachine.DeactivateAction(action);
             }
 

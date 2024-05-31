@@ -22,7 +22,7 @@ namespace BBUnity.Actions
         {
             gameObject.GetComponent<NavMeshAgent>().enabled = true;
             gameObject.GetComponent<Rigidbody>().isKinematic = false;
-
+            gameObject.GetComponent<EnergyController>().Stop(true);
 
             sM = gameObject.GetComponent<StateMachine>();
             if (sM != null)

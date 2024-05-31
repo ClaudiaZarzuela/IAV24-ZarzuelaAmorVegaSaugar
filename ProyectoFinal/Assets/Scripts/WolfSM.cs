@@ -21,7 +21,7 @@ public class WolfSM : StateMachine
 
     public bool IsTracking()
     {
-        return m_State != WolfStates.SMELLING && m_State != WolfStates.EAT && m_State != WolfStates.NONE;
+        return m_State == WolfStates.HUNT;
     }
 
     private void Awake()
@@ -82,9 +82,9 @@ public class WolfSM : StateMachine
 
     private new void Update()
     {
+        Debug.Log(m_State);
         if(m_State != WolfStates.NONE)
         {
-            //Debug.Log(m_State);
             WolfSmelling();
             if (m_State == WolfStates.HUNT) WolfHunt();
         }

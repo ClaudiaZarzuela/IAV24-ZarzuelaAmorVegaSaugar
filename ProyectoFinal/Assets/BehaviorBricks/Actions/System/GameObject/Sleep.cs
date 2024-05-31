@@ -16,11 +16,12 @@ namespace BBUnity.Actions
         public GameObject house;
         private StateMachine sM;
 
+
         public override void OnStart()
         {
             gameObject.GetComponent<NavMeshAgent>().enabled = false;
             gameObject.GetComponent<Rigidbody>().isKinematic = true;
-
+            gameObject.GetComponent<EnergyController>().Stop(false);
             sM = gameObject.GetComponent<StateMachine>();
             if (sM!= null)
             {
