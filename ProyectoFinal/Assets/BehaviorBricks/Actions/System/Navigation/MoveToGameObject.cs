@@ -24,9 +24,23 @@ namespace BBUnity.Actions
         /// <remarks>Check if GameObject object exists and NavMeshAgent, if there is no NavMeshAgent, the default one is added.</remarks>
         public override void OnStart()
         {
-            Debug.Log("Estoy atacando");
+            StateMachine animal = gameObject.GetComponent<StateMachine>();
+            if(animal != null && animal.CheckActiveAction(1))
+            {
+                target = animal.GetHouse();
+                animal.blackboard.Set("almostHome", typeof(bool), true);
+            }
+
+            WolfSM wolf = gameObject.GetComponent<WolfSM>();
+            if (wolf != null && wolf.IsTracking())
+            {
+                target = wolf.GetTarget();
+                gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().stoppingDistance = 0.5f;
+            }
+
             if (target == null)
             {
+                
                 Debug.LogError("The movement target of this game object is null", gameObject);
                 return;
             }
@@ -43,7 +57,8 @@ namespace BBUnity.Actions
             {
                 navAgent.stoppingDistance = 1;
             }
-            else navAgent.SetDestination(targetTransform.position);
+            
+            navAgent.SetDestination(targetTransform.position);
 
 
 #if UNITY_5_6_OR_NEWER

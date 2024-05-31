@@ -15,36 +15,6 @@ namespace BBUnity.Actions
         [InParam("target")]
         [Help("Target game object")]
         public GameObject target;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         private Transform targetTransform;
 
         /// <summary>Initialization Method of LookAt.</summary>

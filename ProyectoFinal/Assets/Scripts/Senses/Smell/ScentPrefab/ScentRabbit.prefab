@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b7cd54aa4c2e574c8feb393a227b950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToLive: 5
+  timeToLive: 7
   decreaseFactor: 0.1
   _renderer: {fileID: 0}
   typeScent: Rabbit

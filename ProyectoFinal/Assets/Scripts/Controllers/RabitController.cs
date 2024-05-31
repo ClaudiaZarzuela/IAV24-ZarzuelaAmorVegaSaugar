@@ -13,6 +13,7 @@ public class RabitController : MonoBehaviour
         Vector3 randomPoint;
         NavMeshHit hit;
         Transform parent = new GameObject("Rabbits").transform;
+        parent.position = Vector3.zero;
 
         for (int i = EnvironmentController.Instance.GetRabitsNum(); i < EnvironmentController.rabitsNum; i++)
         {

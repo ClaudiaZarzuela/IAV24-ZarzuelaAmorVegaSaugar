@@ -8,7 +8,7 @@ public class EnergyController : MonoBehaviour
     [SerializeField]
     public string typeOfAnimal;
 
-    private bool stillAlive = true;
+    private bool decrease = true;
 
     [SerializeField]
     private float currentHunger = 100;
@@ -22,25 +22,24 @@ public class EnergyController : MonoBehaviour
 
     private float elapsedTime = 0;
     [SerializeField]
-    private float timeToDecrease = 1;
+    private float timeToDecrease = 0.1f;
 
     public void Start()
     {
         if(typeOfAnimal == "Stag")
-            EnvironmentController.Instance.RegisterStag(this.gameObject);
+            EnvironmentController.Instance.RegisterStag(gameObject);
         else
-            EnvironmentController.Instance.RegisterWolf(this.gameObject);
+            EnvironmentController.Instance.RegisterWolf(gameObject);
     }
 
     public float GetHunger() { return currentHunger; }
     public float GetEnergy() { return currentEnergy; }
-    public bool IsAlive() {  return stillAlive; }
+    public bool IsAlive() { return currentEnergy > 0 && currentHunger > 0; }
+    public void Stop(bool active) {  decrease = active; }
     public void AnimalDied()
     {
-        if (typeOfAnimal == "Stag")
-            EnvironmentController.Instance.RemoveStag(this.gameObject);
-        else
-            EnvironmentController.Instance.RemoveWolf(this.gameObject);
+        LifeController life = gameObject.GetComponent<LifeController>();
+        life.Die();
     }
     public void DecreaseHunger()
     {
@@ -56,26 +55,14 @@ public class EnergyController : MonoBehaviour
     {
         currentHunger = maxHunger;
     }
-    public void RestoreHunger(int h)
-    {
-        currentHunger += h;
-        if (currentHunger > maxHunger) currentHunger = maxHunger;
-    }
-
     public void RestoreMaxEnergy()
     {
         currentEnergy = maxEnergy;
     }
 
-    public void RestoreEnergy(int e)
-    {
-        currentEnergy += e;
-        if (currentEnergy > maxEnergy) currentEnergy = maxEnergy;
-    }
-
     public void Update()
     {
-        if (stillAlive)
+        if (decrease)
         {
             if (elapsedTime >= timeToDecrease)
             {
@@ -87,7 +74,7 @@ public class EnergyController : MonoBehaviour
 
             if(currentHunger <= 0 || currentEnergy <= 0)
             {
-                stillAlive = false;
+                decrease = false;
                 AnimalDied();
             }
         }

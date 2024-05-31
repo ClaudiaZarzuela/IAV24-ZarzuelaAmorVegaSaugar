@@ -19,14 +19,7 @@ namespace BBUnity.Actions
         /// <remarks>Check if GameObject object exists and NavMeshAgent, if there is no NavMeshAgent, the default one is added.</remarks>
         public override void OnStart()
         {
-            Debug.Log("Estoy trackeando");
             area = gameObject.GetComponent<SmellArea>();
-            if(area == null)
-            {
-                Debug.LogError("No hay SmellArea");
-                return;
-
-            }
             target = area.GetScent();
             targetTransform = target.transform;
             navAgent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
