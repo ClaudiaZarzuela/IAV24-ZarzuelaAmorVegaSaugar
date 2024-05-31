@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -47,14 +46,14 @@ public class DeerSM : StateMachine
         eat.enabled = true;
         if ((bool)blackboard.Get("searchedBush", typeof(bool)) && (GameObject)blackboard.Get("bush", typeof(GameObject)) == null)
         {
-            //Debug.Log("No hay arbustos disponibles");
+            Debug.Log("No hay arbustos disponibles");
             currentState = States.WANDER;
             eat.enabled = false;
             ChangeAction();
         }
         else if ((bool)blackboard.Get("arrivedAtBush", typeof(bool)))
         {
-            //Debug.Log("He llegado");
+            Debug.Log("He llegado");
             ((GameObject)blackboard.Get("bush", typeof(GameObject))).GetComponent<BushBehaviour>().StartEating();
 
             blackboard.Set("searchedBush", typeof(bool), false);
