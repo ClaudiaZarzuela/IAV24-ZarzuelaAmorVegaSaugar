@@ -11,25 +11,25 @@ Este documento refleja la propuesta de proyecto final para la asignatura de Inte
 
 Nos hemos inspirado en el comportamiento animal salvaje según su puesto en la cadena alimenticia y en el uso de sus diferentes sentidos para sobrevivir.
 
-Wildlife Simulator será un simulador en el que distintos tipos de animales convivirán juntos, manteniendo sus niveles de energía y hambre para seguir con vida. Nos centraremos específicamente en el comportamiento carnívoro y herbívoro:
+Wildlife Simulator será un simulador en el que distintos tipos de animales convivirán juntos, manteniendo sus niveles de energía y hambre para seguir con vida. Nos centraremos específicamente en la **Generacion procedural por Perlin** y en el desarrollo del agudo **Sentido del olfato de los carnívoros**.
 
-- Los herbívoros se alimentarán de plantas y usarán su avanzado sentido del oído para tratar de detectar a posibles depredadores, huyendo a su nido cuando se sientan atacados o necesiten descansar. 
-- Los carnívoros merodearán por el terreno y, cuando comiencen a tener hambre, tratarán de cazar algún animal usando su agudo sentido del olfato, teniendo constantemente en cuenta su nivel de energía, el cual bajará al correr y, en caso de agotarse, volverán a su hogar.
+- Los herbívoros se alimentarán de plantas distribuidas por el escenario mediante el ruido de perlin y cuyo número es personalizable en cada partida.
+- El carnívoro merodeará por el terreno y, cuando comience a tener hambre, tratará de cazar algún animal usando su agudo sentido del olfato, teniendo en cuenta su preferencia de Ciervos por encima de conejos y la intensidad de los rastros que encuentra.
 
-Para dar vida a la simulación contaremos con tres tipos de animales. Para representar a los herbívoros usaremos ciervos, a los carnívoros lobos y añadiremos conejos para equilibrar el hábitat y evitar que los lobos acaben con los ciervos rápidamente. Estos conejos simplemente se usarán como cebo y se encargarán exclusivamente de merodear. En caso de oler a ambos animales, los lobos preferirán cazar a los ciervos. 
+Para dar vida a la simulación contaremos con tres tipos de animales. Para representar a los herbívoros usaremos ciervos, a los carnívoros un lobo y añadiremos conejos para equilibrar el hábitat y evitar que el lobo acabe con los ciervos rápidamente. Estos conejos simplemente se usarán como cebo y se encargarán exclusivamente de merodear. En caso de oler a ambos animales, el lobo preferirá cazar a los ciervos. 
 
-Cada animal tendrá que tener cuidado de no dejar bajar sus niveles demasiado, ya que éstos tendrán un efecto en sus habilidades. Ambos comenzarán merodeando tranquilamente por el bosque, bajando constantemente  poco a poco su nivel de energía y rápidamente su nivel de hambre. 
+Cada animal tendrá que tener cuidado de no dejar bajar sus niveles demasiado, ya que de agotarse, morirán. Ambos comenzarán merodeando tranquilamente por el bosque, bajando constantemente  poco a poco su nivel de energía y rápidamente su nivel de hambre. 
 
 ![Animales](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/a18be436-1821-4cbc-96f9-c168641cff51)
 
 ## Mecánicas de juego
 ### Terreno
 El hábitat consta de distintas zonas valiosas:
-- A los extremos encontramos los hogares de ambos animales, la derecha siendo de los carnívoros y la izquierda de herbívoros. En estas áreas, los animales podrán resguardarse con seguridad de cualquier animal ya que solo los de su misma especie pueden entrar en dicho lugar. Aquí los animales descansarán hasta que ambas barras, de energía y hambre, esten completas. Una vez recuperados, continuarán con sus rutinas normales.
+- A los extremos encontramos los hogares de ambos animales, la derecha siendo de los carnívoros y la izquierda de herbívoros. En estas áreas, los animales podrán resguardarse con seguridad de cualquier animal ya que solo los de su misma especie pueden entrar en dicho lugar. Aquí los animales descansarán hasta que su barra de energía esté completa. Una vez recuperados, continuarán con sus rutinas normales.
 
-- Esparcidos por el terreno, podremos encontrar arbustos con frutos para alimentar a los herbívoros. Estos arbustos se posicionarán de manera aleatoria utilizando **Perlin Noise**, un tipo de ruido basado en gradientes, desarrollado por Ken Perlin en 1983. La ventaja que tiene el Perlin Noise frente a otros ruidos clásicos ( como puede ser el White Noise ) es que es un ruido aleatorio, pero coherente. Después de que un ciervo se pare a comer, deberán transcurrir unos segundos antes de que salgan nuevos frutos.
+- Esparcidos por el terreno, podremos encontrar arbustos con frutos para alimentar a los herbívoros. Estos arbustos se posicionarán de manera pseudoaleatoria utilizando **Perlin Noise**, un tipo de ruido basado en gradientes, desarrollado por Ken Perlin en 1983. La ventaja que tiene el Perlin Noise frente a otros ruidos clásicos ( como puede ser el White Noise ) es que es un ruido aleatorio, pero coherente. Después de que un ciervo se pare a comer, deberán transcurrir unos segundos (20) antes de que salgan nuevos frutos.
 
-- Durante la partida habra un número constante de conejos rondando el área. En caso de perder alguno, saldrán de sus madrigueras nuevos conejos, hasta llegar al número predefinido deseado. Este podrá ser modificado por el usuario para realizar distintas pruebas.
+- Durante la partida habra un número determinado de conejos rondando el área, aunque irán siendo cazados por el lobo. Estos sólo tienen un comportamiento de merodeo y sirven para evitar que el lobo acabe con los ciervos de inmediato.
 
   ![Diagrama terreno](https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/5cc055e6-0b0c-44c3-9b0e-10fed633d730)
 
