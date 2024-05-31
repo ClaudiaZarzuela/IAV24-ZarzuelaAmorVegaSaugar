@@ -5,7 +5,7 @@
 - Andrea Vega Saugar: AndreaVegaSaugar - https://github.com/AndreaVegaSaugar
 
 > [!IMPORTANT]
-> Enlace a la build
+> Enlace a la build y un video de una partida completa
 > https://drive.google.com/drive/folders/1mEfzuiiinZTrvwhhucYa4gCViANZzoHQ
 ## Propuesta
 Este documento refleja la propuesta de proyecto final para la asignatura de Inteligencia Artificial para Videojuegos del Grado en Desarrollo de Videojuegos de la UCM.
