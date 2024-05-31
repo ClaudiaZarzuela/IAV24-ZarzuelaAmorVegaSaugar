@@ -693,27 +693,20 @@ Para comprobar el correcto funcionamiento de la aplicación, la someteremos a di
 ### Prueba A: Generación del entorno
 Para comprobar que la generación del escenario es adecuada, iniciaremos la aplicación X número de veces, cambiando los parámetros de generación de arbustos y conejos cada vez, y comprobando que el terreno resultante es distinto en cada ejecución.
 
-- [Vídeo de la prueba A: Próximamente]()
 
-### Prueba B: Sentidos
-Para comprobar la eficacia de los sentidos de los lobos y de los ciervos, cambiaremos sus rangos de percepción y comprobaremos que los lobos siguen el rastro de olor de un ciervo, y que los ciervos huyen al oír a un lobo.
 
-- [Vídeo de la prueba B: Próximamente]()
+https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/675277a2-a51e-417b-a43a-db05679a8434
 
-### Prueba C: Gestión de recursos
+### Prueba B: Gestión de recursos
 Comprobaremos que los ciervos se mueven correctamente entre arbustos, y en caso de que su arbusto objetivo haya sido ocupado, se darán cuenta y buscarán otro del que alimentarse.
 
-- [Vídeo de la prueba C: Próximamente]()
+### Prueba C: Hambre VS Sueño
+Debido a que el hambre baja más rapido que la energía, los animales priorizarán el hambre en caso de agotarse ambos.
 
-### Prueba D: Behaviour Bricks
-Para confirmar el correcto funcionamiento de los comportamientos implementados mediante behaviour bricks, cambiaremos los nieveles de hambre y energía de ciervos y de lobos y comprobaremos que sus acciones se corresponden con lo esperado: volver a la guarida cuando tienen poca energía, buscar comida cuando tienen hambre, merodear cuando no tienen necesidades, etc.
+https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/b21ba4d9-2800-46de-aa6d-573a14be0970
 
-- [Vídeo de la prueba D: Próximamente]()
-
-### Prueba E: NavMesh
-Nos aseguraremos de que cada especie se mueva por las zonas que hayamos determinado mediante el uso de NavMesh, y para confirmar que funciona, guiaremos a cada especie a los bordes de su área correspondiente y comprobaremos que no se salen de su perímetro.
-
-- [Vídeo de la prueba E: Próximamente]()
+### Prueba D: Preferencia de olfato del lobo
+El lobo deberá escoger a sus presas dependiendo de su prioridad, ciervos antes que conejos y rastros de mayor intensidad antes que menos.
 
 ## Producción
 ### Reparto de tareas
