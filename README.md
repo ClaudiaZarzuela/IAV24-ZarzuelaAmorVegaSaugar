@@ -716,6 +716,8 @@ https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375
 
 https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/100291375/bb17306b-415c-43d2-bce2-98d1a1f06908
 
+https://github.com/ClaudiaZarzuela/IAV24-ZarzuelaAmorVegaSaugar/assets/99989921/5b2e9476-3c2e-47e4-9a69-0ebecc2e900c
+
 
 
 ## Producción
@@ -736,6 +738,7 @@ Andrea Vega Saugar se ha encargado de la generación aleatoria de Perlin, mientr
 | ✔ | Maquina de estados ciervo |30-05-2024|
 | ✔ | Maquina de estados lobo |30-05-2024|
 | ✔ | Readme actualizado |31-05-2024|
+
 ## Licencia
 Claudia Zarzuela, Andrea Vega Saugar, autores de la documentación, código y recursos de este trabajo, no concedemos permiso permanente a los profesores de la Facultad de Informática de la Universidad Complutense de Madrid para utilizar nuestro material, con sus comentarios y evaluaciones, con fines educativos o de investigación; ya sea para obtener datos agregados de forma anónima como para utilizarlo total o parcialmente reconociendo expresamente nuestra autoría.
 
