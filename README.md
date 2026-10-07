@@ -1,7 +1,7 @@
 # IAV-Propuesta final: WILDLIFE SIMULATOR
 
 ## Autores
-- Claudia Zarzuela Amor: Claudia Zarzuela - https://github.com/ClaudiaZarzuela
+- Tyler Zarzuela Amor: Tyler Zarzuela - https://github.com/ClaudiaZarzuela
 - Andrea Vega Saugar: AndreaVegaSaugar - https://github.com/AndreaVegaSaugar
 
 > [!IMPORTANT]
